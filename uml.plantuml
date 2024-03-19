@@ -5,118 +5,12 @@ class DefaultEntity{
 }
 
 class Usuario{
+    - nome: String
     - login: String
     - email: String
     - senha: String
     - cpf: String
-    - perfil: Perfil
     - dataNascimento: Date
-}
-
-Enum Perfil{
-    ADMIN
-    CLIENTE
-}
-
-class Telefone{
-    - codigoArea: String
-    - numero: String
-}
-
-class Jogo{
-    - nome: String
-    - descricao: String
-    - genero: Genero
-    - classificacao: Classificacao
-    - plataforma: Plataforma
-    - preco: Double
-    - estoque: Integer
-    - desevolvedora: Desenvolvedora
-}
-
-Enum Genero{
-    Acao
-    Aventura
-    Corrida
-    Esporte
-    Estrategia
-    Luta
-    RPG
-    Simulacao
-}
-
-class Endereco{
-    - cep: String
-    - logradouro: String
-    - numero: String
-    - complemento: String
-    - bairro: String
-    - cidade: Cidade
-    - estado: Estado
-}
-
-class Cidade{
-    - nome: String
-    - estado: Estado
-}
-
-class Estado{
-    - nome: String
-    - sigla: String
-}
-
-class Pedido{
-    - dataCompra: Date
-    - totalPedido: Double
-    - Endereco: Endereco
-    - itens : List<ItemPedido>
-    - usuario: Usuario
-    - status: StatusPedido
-}
-
-class ItemPedido{
-    - jogo: Jogo
-    - quantidade: Integer
-    - valor: Double
-
-}
-
-Enum StatusPedido{
-    PENDENTE
-    PAGO
-    CANCELADO
-    ENVIADO
-    ENTREGUE
-}
-
-class Desenvolvedora{
-    - nome: String
-    - cnpj: String
-}
-
-
-Enum Classificacao{
-    LIVRE
-    DEZ
-    DOZE
-    QUATORZE
-    DEZESSEIS
-    DEZOITO
-}
-
-class Boleto{
-    - codigoBarras: String
-    - dataEmissao: Date
-    - dataVencimento: Date
-}
-
-class Pix{
-    - chave: String
-}
-
-Enum TipoPix{
-    Aleatoria: int
-    CNPJ: int
 }
 
 class CartaoCredito{
@@ -133,30 +27,137 @@ class MetodoPagamento{
 }
 
 
+class Telefone{
+    - codigoArea: String
+    - numero: String
+}
+
+class Jogo{
+    - nome: String
+    - descricao: String
+    - genero: Genero
+    - preco: Double
+    - estoque: Integer
+}
+
+class Boleto{
+    - codigoBarras: String
+    - dataEmissao: Date
+    - dataVencimento: Date
+}
+
+class Pix{
+    - chave: String
+}
+
+class Endereco{
+    - cep: String
+    - logradouro: String
+    - numero: String
+    - complemento: String
+    - bairro: String
+}
+
+class Cidade{
+    - nome: String
+}
+
+class Estado{
+    - nome: String
+    - sigla: String
+}
+
+class Pedido{
+    - dataCompra: Date
+    - totalPedido: Double
+    - itens : List<ItemPedido>
+}
+
+class ItemPedido{
+    - quantidade: Integer
+    - valor: Double
+
+}
+
+class Desenvolvedora{
+    - nome: String
+    - cnpj: String
+}
+
+
+Enum Plataforma{
+    PC: int
+    PS4: int
+    PS5: int
+    XBOXONE: int
+    XBOXSERIES: int
+    NINTENDOSWITCH: int
+}
+
+Enum Genero{
+    Acao: int
+    Aventura: int
+    Corrida: int
+    Esporte: int
+    Estrategia: int
+    Luta: int
+    RPG: int
+    Simulacao: int
+}
+
+
+Enum StatusPedido{
+    PENDENTE: int
+    PAGO: int
+    CANCELADO: int
+    ENVIADO: int
+    ENTREGUE: int
+}
+
+Enum Classificacao{
+    LIVRE: int
+    DEZ: int
+    DOZE: int
+    QUATORZE: int
+    DEZESSEIS: int
+    DEZOITO: int
+}
+
+Enum TipoPix{
+    Aleatoria: int
+    CNPJ: int
+}
+
+Enum Perfil{
+    ADMIN: int
+    CLIENTE: int
+}
+
+
 
 Usuario "1" *--down-> "*" Telefone
-Usuario "1" *--up-> "*" Endereco
-Usuario "1" o--left-> "*" Jogo
-Usuario "1" --right-> "1" Perfil
+Usuario "1" *--right-> "*" Endereco
+Usuario "1" o--down-> "*" Jogo
+Usuario "1" --down-> "1" Perfil
 
-Pedido "*" o--down-> "1" Usuario
-Pedido "1" *--right-> "*" ItemPedido
-Pedido "1" --left-> "1" StatusPedido
-Pedido "1" *--up-> "1" Endereco
+Pedido "*" o--right-> "1" Usuario
+Pedido "1" *--right->"*" ItemPedido
+Pedido "1" --down-> "1" StatusPedido
+Pedido "1" *--right-> "1" Endereco
+Pedido "1" *--left-> "*" MetodoPagamento
 
 ItemPedido "1" o--> "1" Jogo
 
-Jogo "1" *--> "1" Desenvolvedora
-Jogo "1" o--> "1" Genero
-Jogo "1" o--> "1" Classificacao
-
+Jogo "*" *--right-> "*" Desenvolvedora
+Jogo "1" o--down-> "*" Genero
+Jogo "1" o--down-> "*" Classificacao
+Jogo "1" o--down-> "*" Plataforma
 Endereco "1" o--> "1" Cidade
 Cidade "1" o--> "*" Estado
 
-Pix "*" --> "1" TipoPix
+Pix "1" --up-> "1" TipoPix
 Boleto --|> MetodoPagamento
 Pix --|> MetodoPagamento
-MetodoPagamento "1" <--* "*" Pedido
 CartaoCredito --|> MetodoPagamento
 
 
