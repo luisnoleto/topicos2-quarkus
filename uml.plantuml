@@ -1,0 +1,163 @@
+@startuml Uml
+
+class DefaultEntity{
+    - id: Long
+}
+
+class Usuario{
+    - login: String
+    - email: String
+    - senha: String
+    - cpf: String
+    - perfil: Perfil
+    - dataNascimento: Date
+}
+
+Enum Perfil{
+    ADMIN
+    CLIENTE
+}
+
+class Telefone{
+    - codigoArea: String
+    - numero: String
+}
+
+class Jogo{
+    - nome: String
+    - descricao: String
+    - genero: Genero
+    - classificacao: Classificacao
+    - plataforma: Plataforma
+    - preco: Double
+    - estoque: Integer
+    - desevolvedora: Desenvolvedora
+}
+
+Enum Genero{
+    Acao
+    Aventura
+    Corrida
+    Esporte
+    Estrategia
+    Luta
+    RPG
+    Simulacao
+}
+
+class Endereco{
+    - cep: String
+    - logradouro: String
+    - numero: String
+    - complemento: String
+    - bairro: String
+    - cidade: Cidade
+    - estado: Estado
+}
+
+class Cidade{
+    - nome: String
+    - estado: Estado
+}
+
+class Estado{
+    - nome: String
+    - sigla: String
+}
+
+class Pedido{
+    - dataCompra: Date
+    - totalPedido: Double
+    - Endereco: Endereco
+    - itens : List<ItemPedido>
+    - usuario: Usuario
+    - status: StatusPedido
+}
+
+class ItemPedido{
+    - jogo: Jogo
+    - quantidade: Integer
+    - valor: Double
+
+}
+
+Enum StatusPedido{
+    PENDENTE
+    PAGO
+    CANCELADO
+    ENVIADO
+    ENTREGUE
+}
+
+class Desenvolvedora{
+    - nome: String
+    - cnpj: String
+}
+
+
+Enum Classificacao{
+    LIVRE
+    DEZ
+    DOZE
+    QUATORZE
+    DEZESSEIS
+    DEZOITO
+}
+
+class Boleto{
+    - codigoBarras: String
+    - dataEmissao: Date
+    - dataVencimento: Date
+}
+
+class Pix{
+    - chave: String
+}
+
+Enum TipoPix{
+    Aleatoria: int
+    CNPJ: int
+}
+
+class CartaoCredito{
+    - numero: String
+    - nomeTitular: String
+    - dataValidade: Date
+    - cvv: String
+}
+
+class MetodoPagamento{
+    - idPedido: Pedido
+    - totalPedido: Pedido
+    - dataPagamento: Date
+}
+
+
+
+Usuario "1" *--down-> "*" Telefone
+Usuario "1" *--up-> "*" Endereco
+Usuario "1" o--left-> "*" Jogo
+Usuario "1" --right-> "1" Perfil
+
+Pedido "*" o--down-> "1" Usuario
+Pedido "1" *--right-> "*" ItemPedido
+Pedido "1" --left-> "1" StatusPedido
+Pedido "1" *--up-> "1" Endereco
+
+ItemPedido "1" o--> "1" Jogo
+
+Jogo "1" *--> "1" Desenvolvedora
+Jogo "1" o--> "1" Genero
+Jogo "1" o--> "1" Classificacao
+
+Endereco "1" o--> "1" Cidade
+Cidade "1" o--> "*" Estado
+
+Pix "*" --> "1" TipoPix
+Boleto --|> MetodoPagamento
+Pix --|> MetodoPagamento
+MetodoPagamento "1" <--* "*" Pedido
+CartaoCredito --|> MetodoPagamento
+
+
+@enduml
