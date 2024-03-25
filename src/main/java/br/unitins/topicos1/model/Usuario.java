@@ -17,7 +17,6 @@ public class Usuario extends DefaultEntity {
     private String login;
     private String senha;
     private String email;
-    private Perfil perfil;
     private String cpf;
 
     private String nomeImage;
@@ -72,14 +71,6 @@ public class Usuario extends DefaultEntity {
 
     public void setListaEndereco(List<Endereco> listaEndereco) {
         this.listaEndereco = listaEndereco;
-    }
-
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
     }
 
     public String getCpf() {

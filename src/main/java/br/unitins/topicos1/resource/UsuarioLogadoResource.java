@@ -22,7 +22,6 @@ import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.repository.UsuarioRepository;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -36,7 +35,6 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
 import jakarta.ws.rs.core.Response.Status;
-
 
 @Path("/usuariologado")
 @Produces(MediaType.APPLICATION_JSON)
@@ -63,18 +61,15 @@ public class UsuarioLogadoResource {
 
     @GET
     @Path("/meusdados")
-    @RolesAllowed({ "User", "Admin" })
     public Response getUsuario() {
 
         String login = jwt.getSubject();
-
 
         return Response.ok(usuarioService.findByLogin(login)).build();
     }
 
     @POST
     @Path("/cadastro")
-    @RolesAllowed("Admin")
     public Response cadastrarUsuario(@Valid CadastroUsuarioDTO dto) {
         LOG.info("Iniciando a inserção de usuario");
 
@@ -82,7 +77,6 @@ public class UsuarioLogadoResource {
             LOG.info("Usuario não inserido, login já existente");
         } else
             LOG.info("Usuario inserido");
-
 
         CadastroUsuarioResponseDTO retorno = usuarioService.cadastrarUsuario(dto);
 
@@ -92,48 +86,41 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/senha")
-    @RolesAllowed({ "User", "Admin" })
-    public Response updateSenha(@Valid UpdateSenhaDTO dto){
+    public Response updateSenha(@Valid UpdateSenhaDTO dto) {
         LOG.info("Iniciando  o Update de senha");
 
         String login = jwt.getSubject();
 
         UsuarioResponseDTO retorno = usuarioService.updateSenha(dto, login);
-        
-
 
         return Response.status(201).entity(retorno).build();
     }
 
     @PATCH
     @Path("/alterar/nome")
-    @RolesAllowed({ "User", "Admin" })
-    public Response updateNome(@Valid UpdateNomeDTO dto){
+    public Response updateNome(@Valid UpdateNomeDTO dto) {
         LOG.info("Iniciando a o Update de nome");
         String login = jwt.getSubject();
 
         UsuarioResponseDTO retorno = usuarioService.updateNome(dto, login);
-        
-      
+
         return Response.status(201).entity(retorno).build();
     }
 
     @PATCH
     @Path("/alterar/email")
-    @RolesAllowed({ "User", "Admin" })
-    public Response updateEmail(@Valid UpdateEmailDTO dto){
+    public Response updateEmail(@Valid UpdateEmailDTO dto) {
         LOG.info("Iniciando a o Update de email");
         String login = jwt.getSubject();
 
         UsuarioResponseDTO retorno = usuarioService.updateEmail(dto, login);
-        LOG.info("Encerrando o update de email");        
+        LOG.info("Encerrando o update de email");
         return Response.status(201).entity(retorno).build();
     }
 
     @PATCH
     @Path("/alterar/telefone")
-    @RolesAllowed({ "User", "Admin" })
-    public Response updateTelefone(@Valid UpdateTelefoneDTO dto){
+    public Response updateTelefone(@Valid UpdateTelefoneDTO dto) {
         LOG.info("Iniciando a o Update de telefone");
         String login = jwt.getSubject();
 
@@ -142,6 +129,6 @@ public class UsuarioLogadoResource {
         return Response.status(201).entity(retorno).build();
     }
 
-    // --------------------------------- 
+    // ---------------------------------
 
 }
