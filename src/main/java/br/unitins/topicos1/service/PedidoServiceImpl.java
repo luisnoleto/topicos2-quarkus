@@ -51,9 +51,6 @@ public class PedidoServiceImpl implements PedidoService {
             }
         } 
 
-
-
-
         novoPedido.setPagamento(FormaPagamento.ValueOf(dto.pagamento()));
 
         novoPedido.setStatusPedido(StatusPedido.PROCESSANDO);
@@ -93,11 +90,11 @@ public class PedidoServiceImpl implements PedidoService {
         return PedidoResponseDTO.valueOf(pedidoRepository.findById(id));
     }
 
-    // @Override
-    // public List<PedidoResponseDTO> findByAll() {
-    // return pedidoRepository.listAll().stream()
-    // .map(e -> PedidoResponseDTO.valueOf(e)).toList();
-    // }
+    @Override
+    public List<PedidoResponseDTO> findByAll() {
+    return pedidoRepository.listAll().stream()
+    .map(e -> PedidoResponseDTO.valueOf(e)).toList();
+    }
 
     @Override
     public List<PedidoResponseDTO> findByAll(String login) {

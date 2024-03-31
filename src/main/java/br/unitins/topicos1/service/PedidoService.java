@@ -10,6 +10,6 @@ public interface PedidoService {
     
     public PedidoResponseDTO insert(String login, @Valid PedidoDTO dto);
     public PedidoResponseDTO findById(Long id);
-    // public List<PedidoResponseDTO> findByAll();
+    public List<PedidoResponseDTO> findByAll();
     public List<PedidoResponseDTO> findByAll(String login);
 }
