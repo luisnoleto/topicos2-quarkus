@@ -1,5 +1,8 @@
 package br.unitins.topicos1.model;
 
+import jakarta.persistence.Entity;
+
+@Entity
 public class Fabricante extends DefaultEntity {
     private String nome;
 
@@ -11,5 +14,4 @@ public class Fabricante extends DefaultEntity {
         this.nome = nome;
     }
 
-    
 }

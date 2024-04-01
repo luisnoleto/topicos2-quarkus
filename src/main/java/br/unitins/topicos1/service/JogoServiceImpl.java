@@ -38,12 +38,9 @@ public class JogoServiceImpl implements JogoService {
         novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
 
-
-        novoJogo.setPlataforma(Plataforma.ValueOf(dto.plataforma()));
-        novoJogo.setRequisito(Requisito.ValueOf(dto.requisito()));
-        novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
-
-     
+        // novoJogo.setPlataforma(Plataforma.ValueOf(dto.plataforma()));
+        // novoJogo.setRequisito(Requisito.ValueOf(dto.requisito()));
+        // novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
         if (dto.listaGeneros() != null &&
                 !dto.listaGeneros().isEmpty()) {

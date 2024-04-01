@@ -167,7 +167,7 @@ Endereco "1" o--> "1" Cidade
 Cidade "1" o--> "*" Estado
 
 Desenvolvedora "1" o--> "*" Pais
-
+Plataforma "1" o--> "*" Fabricante
 
 Pix "1" --up-> "1" TipoPix
 Boleto --|> MetodoPagamento

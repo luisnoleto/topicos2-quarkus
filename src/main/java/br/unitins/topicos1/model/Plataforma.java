@@ -1,10 +1,13 @@
 package br.unitins.topicos1.model;
+
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToOne;
 
 @Entity
-public class Plataforma extends DefaultEntity{
+public class Plataforma extends DefaultEntity {
 
     private String nome;
+    @ManyToOne
     private Fabricante fabricante;
 
     public Fabricante getFabricante() {
@@ -22,7 +25,5 @@ public class Plataforma extends DefaultEntity{
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-
 
 }

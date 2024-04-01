@@ -4,8 +4,11 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 
 @Entity
@@ -15,8 +18,11 @@ public class Jogo extends DefaultEntity {
     private String descricao;
     private Double preco;
     private int estoque;
+    @Enumerated(EnumType.STRING)
     private Classificacao classificacao;
+    @ManyToOne
     private Plataforma plataforma;
+    @ManyToOne
     private Requisito requisito;
     private String nomeImagem;
 
@@ -96,9 +102,4 @@ public class Jogo extends DefaultEntity {
         this.listaGeneros = listaGeneros;
     }
 
-    
-
-    
-    
 }
- 
