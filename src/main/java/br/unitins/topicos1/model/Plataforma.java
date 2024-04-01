@@ -8,7 +8,7 @@ import jakarta.persistence.ManyToOne;
 public class Plataforma extends DefaultEntity {
 
     private String nome;
-    @ManyToOne
+    
     @ManyToOne
     @JoinColumn(name = "id_fabricante")
     private Fabricante fabricante;
