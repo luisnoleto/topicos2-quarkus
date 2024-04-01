@@ -49,24 +49,23 @@ public class JogoResource {
     private static final Logger LOG = Logger.getLogger(JogoResource.class);
 
     @POST
-    @RolesAllowed({ "Admin" })
+    //@RolesAllowed({ "Admin" })
     public Response insert(@Valid JogoDTO dto) {
         return Response.status(Status.CREATED).entity(jogoService.insert(dto)).build();
     }
 
     @PUT
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
+   // @RolesAllowed({ "Admin" })
     public Response update(@Valid JogoDTO dto, @PathParam("id") Long id) {
         LOG.infof("Iniciando  o update do jogo %s", id);
         jogoService.update(dto, id);
-
         return Response.noContent().build();
     }
 
     @DELETE
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
+   // @RolesAllowed({ "Admin" })
     public Response delete(@PathParam("id") Long id) {
         LOG.infof("Iniciando  o delete do jogo %s", id);
         jogoService.delete(id);
@@ -76,22 +75,21 @@ public class JogoResource {
 
     @GET
     public Response findAll() {
-        LOG.info("Iniciando  a busca por todos os jogos");
-        jogoService.findByAll();
+        
 
-        return Response.ok().build();
+        return Response.ok(jogoService.findAll()).build();
     }
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
+   // @RolesAllowed({ "Admin" })
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Iniciando  a busca pelo jogo %s", id);
 
-        jogoService.findById(id);
-
         ;
-        return Response.ok().build();
+        return Response.ok(jogoService.findById(id)).build();
+
+
     }
 
     @GET
@@ -99,14 +97,12 @@ public class JogoResource {
     public Response findByNome(@PathParam("nome") String nome) {
         LOG.infof("Iniciando  a busca pelo jogo %s", nome);
 
-        jogoService.findByNome(nome);
-
-        return Response.ok().build();
+        return Response.ok(jogoService.findByNome(nome)).build();
     }
 
     @PATCH
     @Path("/upload/imagem/{id}")
-    @RolesAllowed({ "Admin" })
+   // @RolesAllowed({ "Admin" })
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     public Response salvarImagem(@MultipartForm JogoImageForm form, @PathParam("id") Long id) throws IOException {
         LOG.info("Iniciando a inserção de imagem");
@@ -120,7 +116,9 @@ public class JogoResource {
 
     @GET
     @Path("/download/imagem/jogo/{nomeImagem}")
-    @RolesAllowed({ "Admin" })
+
+    //@RolesAllowed({"Admin" })
+
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         LOG.info("Iniciando a inserção download imagem");

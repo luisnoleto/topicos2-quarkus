@@ -49,6 +49,9 @@ public class UsuarioLogadoResource {
 
     @GET
     @Path("/meusdados")
+
+    //@RolesAllowed({ "User", "Admin" })
+
     public Response getUsuario() {
 
         String login = jwt.getSubject();
@@ -58,6 +61,8 @@ public class UsuarioLogadoResource {
 
     @POST
     @Path("/cadastro")
+
+   // @RolesAllowed("Admin")
     public Response cadastrarUsuario(@Valid CadastroUsuarioDTO dto) {
         LOG.info("Iniciando a inserção de usuario");
 
@@ -74,7 +79,9 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/senha")
-    public Response updateSenha(@Valid UpdateSenhaDTO dto) {
+
+   // @RolesAllowed({ "User", "Admin" })
+    public Response updateSenha(@Valid UpdateSenhaDTO dto){
         LOG.info("Iniciando  o Update de senha");
 
         String login = jwt.getSubject();
@@ -86,7 +93,9 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/nome")
-    public Response updateNome(@Valid UpdateNomeDTO dto) {
+
+   // @RolesAllowed({ "User", "Admin" })
+    public Response updateNome(@Valid UpdateNomeDTO dto){
         LOG.info("Iniciando a o Update de nome");
         String login = jwt.getSubject();
 
@@ -97,7 +106,9 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/email")
-    public Response updateEmail(@Valid UpdateEmailDTO dto) {
+
+    //@RolesAllowed({ "User", "Admin" })
+    public Response updateEmail(@Valid UpdateEmailDTO dto){
         LOG.info("Iniciando a o Update de email");
         String login = jwt.getSubject();
 
@@ -108,7 +119,9 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/telefone")
-    public Response updateTelefone(@Valid UpdateTelefoneDTO dto) {
+
+    //@RolesAllowed({ "User", "Admin" })
+    public Response updateTelefone(@Valid UpdateTelefoneDTO dto){
         LOG.info("Iniciando a o Update de telefone");
         String login = jwt.getSubject();
 

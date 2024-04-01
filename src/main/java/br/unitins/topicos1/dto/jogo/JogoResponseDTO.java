@@ -1,7 +1,13 @@
 package br.unitins.topicos1.dto.jogo;
 
-import br.unitins.topicos1.model.Genero;
+import java.util.List;
+
+import br.unitins.topicos1.dto.genero.GeneroDTO;
+import br.unitins.topicos1.dto.plataforma.PlataformaDTO;
+import br.unitins.topicos1.dto.requisito.RequisitoDTO;
+import br.unitins.topicos1.model.Classificacao;
 import br.unitins.topicos1.model.Jogo;
+
 
 public record JogoResponseDTO(
         Long id,
@@ -9,7 +15,11 @@ public record JogoResponseDTO(
         String descricao,
         Double preco,
         int estoque,
-        Genero genero,
+        List<GeneroDTO> listaGenero,
+        PlataformaDTO plataforma,
+        RequisitoDTO requisito,
+        Classificacao classificacao,
+
         String nomeImagem) {
     public static JogoResponseDTO valueOf(Jogo jogo) {
 
@@ -19,7 +29,12 @@ public record JogoResponseDTO(
                 jogo.getDescricao(),
                 jogo.getPreco(),
                 jogo.getEstoque(),
-                jogo.getGenero(), 
+                jogo.getListaGeneros().stream()
+                        .map(t -> GeneroDTO.valueOf(t)).toList(),
+                PlataformaDTO.valueOf(jogo.getPlataforma()),
+                RequisitoDTO.valueOf(jogo.getRequisito()),
+                jogo.getClassificacao(),
+
                 jogo.getNomeImagem());
     }
 

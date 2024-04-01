@@ -1,11 +1,22 @@
 package br.unitins.topicos1.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
+import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
+
+import br.unitins.topicos1.dto.telefone.TelefoneDTO;
+import br.unitins.topicos1.model.Classificacao;
+import br.unitins.topicos1.model.FormaPagamento;
 import br.unitins.topicos1.model.Genero;
 import br.unitins.topicos1.model.Jogo;
+import br.unitins.topicos1.model.Plataforma;
+import br.unitins.topicos1.model.Requisito;
+import br.unitins.topicos1.model.Telefone;
+
 import br.unitins.topicos1.repository.JogoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -27,7 +38,23 @@ public class JogoServiceImpl implements JogoService {
         novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
 
-        novoJogo.setGenero(Genero.ValueOf(dto.idGenero()));
+
+        novoJogo.setPlataforma(Plataforma.ValueOf(dto.plataforma()));
+        novoJogo.setRequisito(Requisito.ValueOf(dto.requisito()));
+        novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
+
+     
+
+        if (dto.listaGeneros() != null &&
+                !dto.listaGeneros().isEmpty()) {
+            novoJogo.setListaGeneros(new ArrayList<Genero>());
+            for (GeneroDTO gen : dto.listaGeneros()) {
+                Genero genero = new Genero();
+                genero.setNome(gen.nome());
+
+                novoJogo.getListaGeneros().add(genero);
+            }
+        }
 
         repository.persist(novoJogo);
 
@@ -44,7 +71,21 @@ public class JogoServiceImpl implements JogoService {
             jogo.setNome(dto.nome());
             jogo.setDescricao(dto.descricao());
             jogo.setPreco(dto.preco());
-            jogo.setGenero(Genero.ValueOf(dto.idGenero()));
+
+            List<Genero> generos = new ArrayList<Genero>();
+
+            if (dto.listaGeneros() != null && !dto.listaGeneros().isEmpty()) {
+                jogo.setListaGeneros(new ArrayList<Genero>());
+                for (GeneroDTO gen : dto.listaGeneros()) {
+                    Genero genero = new Genero();
+
+                    genero.setNome(gen.nome());
+
+                    generos.add(genero);
+                }
+            }
+
+            jogo.setListaGeneros(generos);
 
         } else {
             throw new NotFoundException();
@@ -78,9 +119,8 @@ public class JogoServiceImpl implements JogoService {
     }
 
     @Override
-    public List<JogoResponseDTO> findByAll() {
-        return repository.findAll()
-                .stream()
+    public List<JogoResponseDTO> findAll() {
+        return repository.findAll().list().stream()
                 .map(e -> JogoResponseDTO.valueOf(e))
                 .toList();
     }

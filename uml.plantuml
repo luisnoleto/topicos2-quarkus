@@ -82,26 +82,30 @@ class ItemPedido{
 class Pais{
     - nome: String
     - sigla: String
+
 }
 
 class Desenvolvedora{
     - nome: String
     - cnpj: String
+    - pais: Pais
 }
 
 
 class Plataforma{
     nome: String
-    
-}
-
-class Fabricante{
-    nome: String
+    fabricante: String
 }
 
 class Genero{
     nome: String
 }
+
+
+class Fabricante{
+    nome: String
+}
+
 
 class Requisitos{
     processador: String
@@ -153,16 +157,17 @@ Pedido "1" *--left-> "*" MetodoPagamento
 
 ItemPedido "1" o--> "1" Jogo
 
-Jogo "1" o--right-> "*" Desenvolvedora
-Jogo "*" o--down-> "*" Genero
+
+Jogo "*" *--right-> "1" Desenvolvedora
+Jogo "1" o--down-> "*" Genero
 Jogo "1" o--down-> "*" Classificacao
 Jogo "1" o--down-> "*" Plataforma
 Jogo "1" o--down-> "*" Requisitos
-Endereco "1" o--> "*" Cidade
+Endereco "1" o--> "1" Cidade
 Cidade "1" o--> "*" Estado
 
 Desenvolvedora "1" o--> "*" Pais
-Plataforma "1" o--> "*" Fabricante
+
 
 Pix "1" --up-> "1" TipoPix
 Boleto --|> MetodoPagamento

@@ -49,7 +49,9 @@ public class PedidoServiceImpl implements PedidoService {
             if (dto.endereco() == end.getId()) {
                 novoPedido.setEndereco(end);
             }
+
         }
+
 
         novoPedido.setPagamento(FormaPagamento.ValueOf(dto.pagamento()));
 
@@ -90,11 +92,11 @@ public class PedidoServiceImpl implements PedidoService {
         return PedidoResponseDTO.valueOf(pedidoRepository.findById(id));
     }
 
-    // @Override
-    // public List<PedidoResponseDTO> findByAll() {
-    // return pedidoRepository.listAll().stream()
-    // .map(e -> PedidoResponseDTO.valueOf(e)).toList();
-    // }
+    @Override
+    public List<PedidoResponseDTO> findByAll() {
+    return pedidoRepository.listAll().stream()
+    .map(e -> PedidoResponseDTO.valueOf(e)).toList();
+    }
 
     @Override
     public List<PedidoResponseDTO> findByAll(String login) {
