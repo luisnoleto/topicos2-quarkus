@@ -264,3 +264,15 @@ VALUES (
     'Complemento J',
     '11111-222'
   );
+INSERT INTO pais (nome, sigla)
+VALUES ('Brasil', 'BR');
+INSERT INTO pais (nome, sigla)
+VALUES ('Estados Unidos', 'EUA');
+INSERT INTO pais (nome, sigla)
+VALUES ('Argentina', 'ARG');
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora1', '12345678901234', 1);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora2', '12345678901234', 2);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora3', '12345678901234', 3);

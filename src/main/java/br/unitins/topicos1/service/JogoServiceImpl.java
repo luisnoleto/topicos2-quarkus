@@ -4,10 +4,8 @@ import java.util.List;
 
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
-import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.model.Genero;
 import br.unitins.topicos1.model.Jogo;
-import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.repository.JogoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -26,9 +24,8 @@ public class JogoServiceImpl implements JogoService {
         Jogo novoJogo = new Jogo();
         novoJogo.setNome(dto.nome());
         novoJogo.setDescricao(dto.descricao());
-        novoJogo.setPreco(dto.preco()); 
+        novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
-    
 
         novoJogo.setGenero(Genero.ValueOf(dto.idGenero()));
 
@@ -61,7 +58,7 @@ public class JogoServiceImpl implements JogoService {
     @Transactional
     public void delete(Long id) {
         Jogo jogo = repository.findById(id);
-        
+
         repository.delete(jogo);
     }
 

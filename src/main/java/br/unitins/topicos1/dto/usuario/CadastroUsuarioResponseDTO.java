@@ -3,7 +3,6 @@ package br.unitins.topicos1.dto.usuario;
 import java.util.List;
 
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
-import br.unitins.topicos1.model.Perfil;
 import br.unitins.topicos1.model.Usuario;
 
 public record CadastroUsuarioResponseDTO(

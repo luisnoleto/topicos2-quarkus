@@ -81,12 +81,12 @@ class ItemPedido{
 
 class Pais{
     - nome: String
+    - sigla: String
 }
 
 class Desenvolvedora{
     - nome: String
     - cnpj: String
-    - pais: Pais
 }
 
 
@@ -153,8 +153,8 @@ Pedido "1" *--left-> "*" MetodoPagamento
 
 ItemPedido "1" o--> "1" Jogo
 
-Jogo "*" o--right-> "1" Desenvolvedora
-Jogo "1" o--down-> "*" Genero
+Jogo "1" o--right-> "*" Desenvolvedora
+Jogo "*" o--down-> "*" Genero
 Jogo "1" o--down-> "*" Classificacao
 Jogo "1" o--down-> "*" Plataforma
 Jogo "1" o--down-> "*" Requisitos

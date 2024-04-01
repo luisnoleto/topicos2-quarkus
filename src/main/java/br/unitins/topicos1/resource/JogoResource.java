@@ -9,7 +9,6 @@ import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 import br.unitins.topicos1.form.JogoImageForm;
-import br.unitins.topicos1.service.FileService;
 import br.unitins.topicos1.service.JogoFileService;
 import br.unitins.topicos1.service.JogoService;
 import br.unitins.topicos1.service.JwtService;
@@ -29,7 +28,6 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
 import jakarta.ws.rs.core.Response.Status;
-import br.unitins.topicos1.application.Error;
 
 @Path("/jogos")
 @Produces(MediaType.APPLICATION_JSON)
@@ -92,7 +90,7 @@ public class JogoResource {
 
         jogoService.findById(id);
 
-;
+        ;
         return Response.ok().build();
     }
 
@@ -106,7 +104,6 @@ public class JogoResource {
         return Response.ok().build();
     }
 
-    
     @PATCH
     @Path("/upload/imagem/{id}")
     @RolesAllowed({ "Admin" })
@@ -123,13 +120,13 @@ public class JogoResource {
 
     @GET
     @Path("/download/imagem/jogo/{nomeImagem}")
-    @RolesAllowed({"Admin" })
+    @RolesAllowed({ "Admin" })
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         LOG.info("Iniciando a inserção download imagem");
         ResponseBuilder response = Response.ok(jogoFileService.obter(nomeImagem));
-        response.header("Content-Disposition", "attachment;filename="+nomeImagem);
+        response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
         return response.build();
     }
-    
+
 }
