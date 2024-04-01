@@ -31,14 +31,15 @@ public class JogoServiceImpl implements JogoService {
     @Transactional
     public JogoResponseDTO insert(JogoDTO dto) {
         Jogo novoJogo = new Jogo();
+        // Plataforma plataforma = plataformaRepository.findById(dto.plataforma());
+        // Requisito requisito = requisitoRepository.findById(dto.requisito());
+
+
         novoJogo.setNome(dto.nome());
         novoJogo.setDescricao(dto.descricao());
         novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
 
-
-        novoJogo.setPlataforma(Plataforma.ValueOf(dto.plataforma()));
-        novoJogo.setRequisito(Requisito.ValueOf(dto.requisito()));
         novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
      
