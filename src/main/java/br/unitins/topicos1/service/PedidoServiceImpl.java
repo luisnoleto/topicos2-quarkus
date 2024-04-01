@@ -17,7 +17,6 @@ import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.repository.JogoRepository;
 import br.unitins.topicos1.repository.PedidoRepository;
 import br.unitins.topicos1.repository.UsuarioRepository;
-import br.unitins.topicos1.validation.ValidationException;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -44,12 +43,15 @@ public class PedidoServiceImpl implements PedidoService {
         novoPedido.setUsuario(usuario);
         novoPedido.setDataCompra(LocalDateTime.now());
 
-        // Front-end resolve facil facil a excessão desse possivel erro, não deixando o usuario escolher além do seus endereços listados
+        // Front-end resolve facil facil a excessão desse possivel erro, não deixando o
+        // usuario escolher além do seus endereços listados
         for (Endereco end : usuario.getListaEndereco()) {
             if (dto.endereco() == end.getId()) {
                 novoPedido.setEndereco(end);
             }
-        } 
+
+        }
+
 
         novoPedido.setPagamento(FormaPagamento.ValueOf(dto.pagamento()));
 
