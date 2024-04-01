@@ -1,4 +1,5 @@
 package br.unitins.topicos1.model;
+
 import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
@@ -21,7 +22,7 @@ public class Usuario extends DefaultEntity {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "usuario_telefone", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_telefone"))
-    private List<Telefone> listaTelefone = new ArrayList<>();
+    private List<Telefone> listaTelefone;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "usuario_endereco", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_endereco"))
