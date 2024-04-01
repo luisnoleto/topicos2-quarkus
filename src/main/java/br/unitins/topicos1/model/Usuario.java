@@ -1,12 +1,9 @@
 package br.unitins.topicos1.model;
-
 import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-// import jakarta.persistence.EnumType;
-// import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
@@ -18,14 +15,13 @@ public class Usuario extends DefaultEntity {
     private String login;
     private String senha;
     private String email;
-    private Perfil perfil;
     private String cpf;
     private Date dataNascimento;
     private String nomeImage;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "usuario_telefone", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_telefone"))
-    private List<Telefone> listaTelefone;
+    private List<Telefone> listaTelefone = new ArrayList<>();
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "usuario_endereco", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_endereco"))
@@ -69,14 +65,6 @@ public class Usuario extends DefaultEntity {
 
     public void setListaEndereco(List<Endereco> listaEndereco) {
         this.listaEndereco = listaEndereco;
-    }
-
-    public Perfil getPerfil() {
-        return perfil;
-    }
-
-    public void setPerfil(Perfil perfil) {
-        this.perfil = perfil;
     }
 
     public String getCpf() {
