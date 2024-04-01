@@ -1,9 +1,9 @@
 package br.unitins.topicos1.model;
+
 import jakarta.persistence.Entity;
 
 @Entity
-public class Genero extends DefaultEntity{
-
+public class Fabricante extends DefaultEntity {
     private String nome;
 
     public String getNome() {
@@ -13,7 +13,5 @@ public class Genero extends DefaultEntity{
     public void setNome(String nome) {
         this.nome = nome;
     }
-
-
 
 }

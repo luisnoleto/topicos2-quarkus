@@ -19,7 +19,7 @@ public interface JogoService {
 
     public List<JogoResponseDTO> findByNome(String nome);
 
-    public List<JogoResponseDTO> findByAll(); 
+    public List<JogoResponseDTO> findAll(); 
 
     public JogoResponseDTO updateNomeImagem(Long id, String nomeImagem);
 }

@@ -1,12 +1,9 @@
 package br.unitins.topicos1.model;
-
+import java.util.Date;
 import java.util.ArrayList;
 import java.util.List;
-
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
-// import jakarta.persistence.EnumType;
-// import jakarta.persistence.Enumerated;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.OneToMany;
@@ -19,12 +16,8 @@ public class Usuario extends DefaultEntity {
     private String senha;
     private String email;
     private String cpf;
-
+    private Date dataNascimento;
     private String nomeImage;
-
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinTable(name = "biblioteca_jogos", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_jogo"))
-    private List<Jogo> meusJogos;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "usuario_telefone", joinColumns = @JoinColumn(name = "id_usuario"), inverseJoinColumns = @JoinColumn(name = "id_telefone"))
@@ -90,14 +83,6 @@ public class Usuario extends DefaultEntity {
         this.email = email;
     }
 
-    public List<Jogo> getMeusJogos() {
-        return meusJogos;
-    }
-
-    public void setMeusJogos(List<Jogo> meusJogos) {
-        this.meusJogos = meusJogos;
-    }
-
     public String getNomeImage() {
         return nomeImage;
     }
@@ -107,6 +92,14 @@ public class Usuario extends DefaultEntity {
     }
 
     public void setNomeImagem(String nomeImagem) {
+    }
+
+    public Date getDataNascimento() {
+        return dataNascimento;
+    }
+
+    public void setDataNascimento(Date dataNascimento) {
+        this.dataNascimento = dataNascimento;
     }
 
 }
