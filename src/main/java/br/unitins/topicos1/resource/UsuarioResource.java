@@ -6,8 +6,6 @@ import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.repository.UsuarioRepository;
 import br.unitins.topicos1.service.UsuarioService;
-
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -45,7 +43,6 @@ public class UsuarioResource {
         } else
             LOG.info("Usuario inserido");
 
-
         UsuarioResponseDTO retorno = service.insert(dto);
 
         LOG.infof("Terminando a inserção do usuario", dto.nome());
@@ -55,7 +52,6 @@ public class UsuarioResource {
     @PUT
     @Transactional
     @Path("/{id}")
-    @RolesAllowed({"Admin" })
     public Response update(@Valid UsuarioDTO dto, @PathParam("id") Long id) {
         LOG.infof("Atualizando o dados do Usuario %s", id);
         service.update(dto, id);
@@ -66,16 +62,14 @@ public class UsuarioResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
-    public Response delete( @PathParam("id") Long id) {
+    public Response delete(@PathParam("id") Long id) {
         LOG.infof("Deletando Usuario %s", id);
         service.delete(id);
-        
+
         return Response.noContent().build();
     }
 
     @GET
-    @RolesAllowed({ "Admin" })
     public Response findAll() {
 
         return Response.ok(service.findByAll()).build();
@@ -83,20 +77,17 @@ public class UsuarioResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Procurando o Usuario %s", id);
-        
-        
+
         return Response.ok(service.findById(id)).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
-    @RolesAllowed({ "Admin" })
     public Response findByNome(@PathParam("nome") String nome) {
         LOG.infof("Buscando usuario pelo nome: %s", nome);
-       
+
         return Response.ok(service.findByNome(nome)).build();
     }
 }

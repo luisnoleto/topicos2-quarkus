@@ -21,11 +21,7 @@ public class Jogo extends DefaultEntity {
 
     @Enumerated(EnumType.STRING)
     private Classificacao classificacao;
-    @ManyToOne
-    @JoinColumn(name = "id_plataforma")
     private Plataforma plataforma;
-    @ManyToOne
-    @JoinColumn(name = "id_requisito")
     private Requisito requisito;
     
     private String nomeImagem;
@@ -106,9 +102,4 @@ public class Jogo extends DefaultEntity {
         this.listaGeneros = listaGeneros;
     }
 
-    
-
-    
-    
 }
- 

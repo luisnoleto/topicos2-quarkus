@@ -7,6 +7,7 @@ import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
 import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
+
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
 import br.unitins.topicos1.model.Classificacao;
 import br.unitins.topicos1.model.FormaPagamento;
@@ -15,6 +16,7 @@ import br.unitins.topicos1.model.Jogo;
 import br.unitins.topicos1.model.Plataforma;
 import br.unitins.topicos1.model.Requisito;
 import br.unitins.topicos1.model.Telefone;
+
 import br.unitins.topicos1.repository.JogoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -40,9 +42,9 @@ public class JogoServiceImpl implements JogoService {
         novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
 
-        novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
-
-     
+        // novoJogo.setPlataforma(Plataforma.ValueOf(dto.plataforma()));
+        // novoJogo.setRequisito(Requisito.ValueOf(dto.requisito()));
+        // novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
         if (dto.listaGeneros() != null &&
                 !dto.listaGeneros().isEmpty()) {
