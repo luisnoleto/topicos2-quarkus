@@ -1,5 +1,6 @@
 package br.unitins.topicos1.dto.requisito;
 
+import br.unitins.topicos1.model.Desempenho;
 import br.unitins.topicos1.model.Requisito;
 
 
@@ -9,7 +10,8 @@ public record RequisitoDTO(
     String memoria,
     String processador,
     String placaVideo,
-    String sistemaOperacional
+    String sistemaOperacional,
+    Desempenho desempenho
 
 ) {
     public static RequisitoDTO valueOf(Requisito requisito){
@@ -18,7 +20,8 @@ public record RequisitoDTO(
             requisito.getMemoria(),
             requisito.getProcessador(),
             requisito.getPlacaVideo(),
-            requisito.getSistemaOperacional()          
+            requisito.getSistemaOperacional(),
+            requisito.getDesempenho()          
         );
     }
 }
