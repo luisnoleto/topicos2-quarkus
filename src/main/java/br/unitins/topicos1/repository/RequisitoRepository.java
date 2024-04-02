@@ -9,7 +9,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class RequisitoRepository implements PanacheRepository<Requisito>{
-    public List<Requisito> findByRequisitos(Desempenho desempenho) {
+    public List<Requisito> findByRequisitos(String desempenho) {
         return find("UPPER(desempenho) LIKE UPPER(?1) ", "%"+desempenho+"%").list();
     }
 }
