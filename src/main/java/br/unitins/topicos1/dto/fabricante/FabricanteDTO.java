@@ -1,6 +1,5 @@
 package br.unitins.topicos1.dto.fabricante;
 
-import br.unitins.topicos1.model.Fabricante;
 import jakarta.validation.constraints.NotEmpty;
 
 public record FabricanteDTO(
@@ -8,9 +7,10 @@ public record FabricanteDTO(
         String nome
 
 ) {
-    public static FabricanteDTO valueOf(Fabricante fabricante) {
-        return new FabricanteDTO(
-                fabricante.getNome()
-        );
-    }
+
 }
+
+
+
+
+
