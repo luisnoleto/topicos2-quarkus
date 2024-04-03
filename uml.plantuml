@@ -35,7 +35,6 @@ class Telefone{
 class Jogo{
     - nome: String
     - descricao: String
-    - genero: List<Genero>
     - preco: Double
     - estoque: Integer
 }
@@ -88,13 +87,11 @@ class Pais{
 class Desenvolvedora{
     - nome: String
     - cnpj: String
-    - pais: Pais
 }
 
 
 class Plataforma{
     nome: String
-    fabricante: String
 }
 
 class Genero{
@@ -114,6 +111,8 @@ class Requisitos{
     sistemaOperacional: String
     armazenamento: String
 }
+
+
 
 Enum StatusPedido{
     PENDENTE: int
@@ -142,32 +141,39 @@ Enum Perfil{
     CLIENTE: int
 }
 
+Enum Desempenho{
+    BAIXO: int
+    MEDIO: int
+    ALTO: int
+}
 
 
-Usuario "1" *--down-> "*" Telefone
-Usuario "1" *--right-> "*" Endereco
-Usuario "1" o--down-> "*" Jogo
-Usuario "1" --down-> "1" Perfil
+Usuario "1" *---> "*" Endereco
+Usuario "1" *---> "*" Telefone
+Usuario "1" o---> "*" Jogo
+Usuario "1" ---> "1" Perfil
 
-Pedido "*" o--right-> "1" Usuario
-Pedido "1" *--right->"*" ItemPedido
-Pedido "1" --down-> "1" StatusPedido
-Pedido "1" *--right-> "1" Endereco
-Pedido "1" *--left-> "*" MetodoPagamento
+Pedido "*" o---> "1" Usuario
+Pedido "1" *--->"*" ItemPedido
+Pedido "1" ---> "1" StatusPedido
+Pedido "1" *---> "1" Endereco
+Pedido "1" *---> "*" MetodoPagamento
 
-ItemPedido "1" o--> "1" Jogo
+ItemPedido "1" o---> "1" Jogo
 
 
-Jogo "*" *--right-> "1" Desenvolvedora
-Jogo "1" o--down-> "*" Genero
-Jogo "1" o--down-> "*" Classificacao
-Jogo "1" o--down-> "*" Plataforma
-Jogo "1" o--down-> "*" Requisitos
+Jogo "*" *---> "1" Desenvolvedora
+Jogo "1" o---> "*" Genero
+Jogo "1" o---> "*" Classificacao
+Jogo "1" o---> "*" Plataforma
+Jogo "1" o---> "*" Requisitos
 Endereco "1" o--> "1" Cidade
 Cidade "1" o--> "*" Estado
 
 Desenvolvedora "1" o--> "*" Pais
 Plataforma "1" o--> "*" Fabricante
+
+Requisitos "1" o--> "*" Desempenho
 
 Pix "1" --up-> "1" TipoPix
 Boleto --|> MetodoPagamento

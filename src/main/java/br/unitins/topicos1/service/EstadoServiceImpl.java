@@ -47,8 +47,13 @@ public class EstadoServiceImpl implements EstadoService {
     @Override
     @Transactional
     public void delete(Long id) {
-        if (!repository.deleteById(id)) 
+        Estado estado = repository.findById(id);
+
+        if (estado == null) {
             throw new NotFoundException();
+        } 
+        repository.delete(estado);
+
     }
 
     @Override

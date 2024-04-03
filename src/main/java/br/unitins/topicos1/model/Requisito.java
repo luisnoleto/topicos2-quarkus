@@ -10,6 +10,7 @@ public class Requisito extends DefaultEntity{
     private String placaVideo;
     private String sistemaOperacional;
     private String armazenamento;
+    private Desempenho desempenho;
 
 
     public String getProcessador() {
@@ -43,5 +44,12 @@ public class Requisito extends DefaultEntity{
         this.armazenamento = armazenamento;
     }
 
+    public Desempenho getDesempenho() {
+        return desempenho;
+    }
+
+    public void setDesempenho(Desempenho desempenho) {
+        this.desempenho = desempenho;
+    }
     
 }

@@ -7,12 +7,6 @@ public record GeneroDTO(
     @Size(max = 50, min = 3, message = "O nome deve conter entre 3 e 50 caracteres")
     String nome
 
-) {
-    public static GeneroDTO valueOf(Genero genero){
-        return new GeneroDTO(
-            genero.getNome()
-
-            
-        );
-    }
+) { 
+    
 }

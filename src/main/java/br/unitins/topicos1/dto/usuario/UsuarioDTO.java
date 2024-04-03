@@ -12,9 +12,12 @@ import jakarta.validation.constraints.Size;
 public record UsuarioDTO(
 
         Long id,
-        @NotBlank(message = "O campo nome não pode ser nulo.") String nome,
-        @NotBlank(message = "O campo login não pode ser nulo.") String login,
-        @NotBlank(message = "O campo senha não pode ser nulo.") @Size(min = 3, max = 15) String senha,
+        @NotBlank(message = "O campo nome não pode ser nulo.") 
+        String nome,
+        @NotBlank(message = "O campo login não pode ser nulo.") 
+        String login,
+        @NotBlank(message = "O campo senha não pode ser nulo.") @Size(min = 3, max = 15) 
+        String senha,
 
         @Email String email,
 
@@ -22,3 +25,4 @@ public record UsuarioDTO(
         @Valid List<TelefoneDTO> listaTelefone) {
 
 }
+

@@ -15,7 +15,7 @@ public record JogoDTO(
     @NotEmpty(message = "O campo nome não pode ser nulo.")
     int estoque,
     @NotEmpty(message = "O campo nome não pode ser nulo.")
-    Long classificacao,
+    Integer classificacao,
     @NotEmpty(message = "O campo nome não pode ser nulo.")
     Long plataforma,
     @NotEmpty(message = "O campo nome não pode ser nulo.")

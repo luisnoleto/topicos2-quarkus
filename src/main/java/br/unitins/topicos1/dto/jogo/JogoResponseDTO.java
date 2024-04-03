@@ -2,9 +2,9 @@ package br.unitins.topicos1.dto.jogo;
 
 import java.util.List;
 
-import br.unitins.topicos1.dto.genero.GeneroDTO;
-import br.unitins.topicos1.dto.plataforma.PlataformaDTO;
-import br.unitins.topicos1.dto.requisito.RequisitoDTO;
+import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
+import br.unitins.topicos1.dto.plataforma.PlataformaResponseDTO;
+import br.unitins.topicos1.dto.requisito.RequisitoResponseDTO;
 import br.unitins.topicos1.model.Classificacao;
 import br.unitins.topicos1.model.Jogo;
 
@@ -15,9 +15,9 @@ public record JogoResponseDTO(
         String descricao,
         Double preco,
         int estoque,
-        List<GeneroDTO> listaGenero,
-        PlataformaDTO plataforma,
-        RequisitoDTO requisito,
+        List<GeneroResponseDTO> listaGenero,
+        PlataformaResponseDTO plataforma,
+        RequisitoResponseDTO requisito,
         Classificacao classificacao,
 
         String nomeImagem) {
@@ -30,9 +30,9 @@ public record JogoResponseDTO(
                 jogo.getPreco(),
                 jogo.getEstoque(),
                 jogo.getListaGeneros().stream()
-                        .map(t -> GeneroDTO.valueOf(t)).toList(),
-                PlataformaDTO.valueOf(jogo.getPlataforma()),
-                RequisitoDTO.valueOf(jogo.getRequisito()),
+                        .map(t -> GeneroResponseDTO.valueOf(t)).toList(),
+                PlataformaResponseDTO.valueOf(jogo.getPlataforma()),
+                RequisitoResponseDTO.valueOf(jogo.getRequisito()),
                 jogo.getClassificacao(),
 
                 jogo.getNomeImagem());

@@ -18,12 +18,16 @@ public class Jogo extends DefaultEntity {
     private String descricao;
     private Double preco;
     private int estoque;
+
     @Enumerated(EnumType.STRING)
     private Classificacao classificacao;
     @ManyToOne
+    @JoinColumn(name = "id_plataforma")
     private Plataforma plataforma;
     @ManyToOne
+    @JoinColumn(name = "id_requisito")
     private Requisito requisito;
+    
     private String nomeImagem;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -102,4 +106,9 @@ public class Jogo extends DefaultEntity {
         this.listaGeneros = listaGeneros;
     }
 
+    
+
+    
+    
 }
+ 
