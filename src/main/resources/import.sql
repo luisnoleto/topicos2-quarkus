@@ -4,84 +4,94 @@
 -- insert into myentity (id, field) values(2, 'field-2');
 -- insert into myentity (id, field) values(3, 'field-3');
 -- alter sequence myentity_seq restart with 4;
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Joao Silva',
     'joao123',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'joao@email.com',
+    2,
     '123.456.789-00'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Maria Oliveira',
     'maria456',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'maria@email.com',
+    2,
     '987.654.321-00'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Carlos Santos',
     'carlos789',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'carlos@email.com',
+    2,
     '456.789.123-00'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Ana Pereira',
     'ana321',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'ana@email.com',
+    1,
     '789.123.456-00'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Lucas Souza',
     'lucas654',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'lucas@email.com',
+    2,
     '321.654.987-00'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Isabela Lima',
     'isabela987',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'isabela@email.com',
+    1,
     '654.321.789-00'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Pedro Almeida',
     'pedro555',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'pedro@email.com',
+    1,
     '987.789.654-00'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Mariana Costa',
     'mariana111',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'mariana@email.com',
+    1,
     '111.222.333-44'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Felipe Rocha',
     'felipe222',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'felipe@email.com',
+    1,
     '555.666.777-88'
   );
-INSERT INTO usuario (nome, login, senha, email, cpf)
+INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Laura Martins',
     'laura333',
     'UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==',
     'laura@email.com',
+    2,
     '999.888.777-66'
   );
 insert into estado(nomeEstado, sigla)

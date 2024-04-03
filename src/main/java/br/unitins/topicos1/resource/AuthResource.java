@@ -2,6 +2,7 @@ package br.unitins.topicos1.resource;
 
 import org.jboss.logging.Logger;
 
+import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.LoginDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.service.HashService;
@@ -15,8 +16,6 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
-
-
 
 @Path("/auth")
 @Produces(MediaType.APPLICATION_JSON)
@@ -44,13 +43,13 @@ public class AuthResource {
 
         LOG.debug(hashSenha);
 
-        UsuarioResponseDTO result = service.findByLoginAndSenha(dto.login(), hashSenha);
+        CadastroUsuarioResponseDTO result = service.findByLoginAndSenhaPerfil(dto.login(), hashSenha);
 
         if (result != null)
             LOG.info("Login e senha corretos.");
         else
             LOG.info("Login e senha incorretos.");
-        
+
         String token = jwtService.generateJwt(result);
 
         LOG.info("Finalizando o processo de login.");
@@ -58,5 +57,4 @@ public class AuthResource {
         return Response.ok().header("Authorization", token).build();
     }
 
-  
 }

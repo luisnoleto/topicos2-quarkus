@@ -11,6 +11,7 @@ import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
 import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotEmpty;
 
 public interface UsuarioService {
 
@@ -28,8 +29,8 @@ public interface UsuarioService {
 
     public UsuarioResponseDTO findByLogin(String login);
 
-    public List<UsuarioResponseDTO> findByAll(); 
-    
+    public List<UsuarioResponseDTO> findByAll();
+
     public UsuarioResponseDTO updateSenha(@Valid UpdateSenhaDTO dto, String login);
 
     public UsuarioResponseDTO updateNome(@Valid UpdateNomeDTO dto, String login);
@@ -38,6 +39,8 @@ public interface UsuarioService {
 
     public UsuarioResponseDTO updateTelefone(@Valid UpdateTelefoneDTO dto, String login);
 
-    public CadastroUsuarioResponseDTO cadastrarUsuario (@Valid CadastroUsuarioDTO dto);
-    
+    public CadastroUsuarioResponseDTO cadastrarUsuario(@Valid CadastroUsuarioDTO dto);
+
+    public CadastroUsuarioResponseDTO findByLoginAndSenhaPerfil(String login, String hashSenha);
+
 }

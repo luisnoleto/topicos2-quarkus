@@ -250,6 +250,15 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
+    public CadastroUsuarioResponseDTO findByLoginAndSenhaPerfil(String login, String senha) {
+        Usuario usuario = repository.findByLoginAndSenha(login, senha);
+        if (usuario == null)
+            throw new ValidationException("login", "Login ou senha inválido");
+
+        return CadastroUsuarioResponseDTO.valueOf(usuario);
+    }
+
+    @Override
     public UsuarioResponseDTO findByLogin(String login) {
         Usuario usuario = repository.findByLogin(login);
         if (usuario == null)
