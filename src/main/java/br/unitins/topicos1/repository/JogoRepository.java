@@ -15,3 +15,4 @@ public class JogoRepository implements PanacheRepository<Jogo>{
         return find("UPPER(nome) LIKE UPPER(?1) ", "%"+nome.toUpperCase()+"%");
     }
 }
+                        
