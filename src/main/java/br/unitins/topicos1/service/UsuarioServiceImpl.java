@@ -12,6 +12,7 @@ import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
+import br.unitins.topicos1.model.Perfil;
 import br.unitins.topicos1.model.Telefone;
 import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.repository.UsuarioRepository;
@@ -48,6 +49,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         novoUsuario.setEmail(dto.email());
         novoUsuario.setSenha(hashService.getHashSenha(dto.senha()));
 
+        novoUsuario.setPerfil(Perfil.ValueOf(1));
+
         if (dto.listaTelefone() != null &&
                 !dto.listaTelefone().isEmpty()) {
             novoUsuario.setListaTelefone(new ArrayList<Telefone>());
@@ -56,6 +59,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                 telefone.setCodigoArea(tel.codigoArea());
                 telefone.setNumero(tel.numero());
                 novoUsuario.getListaTelefone().add(telefone);
+                telefone.setUsuario(novoUsuario);
             }
         }
 
@@ -78,6 +82,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         novoUsuario.setCpf(dto.cpf());
         novoUsuario.setEmail(dto.email());
         novoUsuario.setSenha(hashService.getHashSenha(dto.senha()));
+
+        novoUsuario.setPerfil(Perfil.ValueOf(dto.idPerfil()));
 
         if (dto.listaTelefone() != null &&
                 !dto.listaTelefone().isEmpty()) {

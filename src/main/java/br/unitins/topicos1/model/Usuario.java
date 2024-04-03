@@ -1,7 +1,6 @@
 package br.unitins.topicos1.model;
 
 import java.util.Date;
-import java.util.ArrayList;
 import java.util.List;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
@@ -17,6 +16,7 @@ public class Usuario extends DefaultEntity {
     private String senha;
     private String email;
     private String cpf;
+    private Perfil perfil;
     private Date dataNascimento;
     private String nomeImage;
 
@@ -74,6 +74,14 @@ public class Usuario extends DefaultEntity {
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
+    }
+
+    public Perfil getPerfil() {
+        return perfil;
+    }
+
+    public void setPerfil(Perfil perfil) {
+        this.perfil = perfil;
     }
 
     public String getEmail() {

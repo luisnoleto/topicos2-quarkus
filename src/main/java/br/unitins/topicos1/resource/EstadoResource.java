@@ -5,7 +5,6 @@ import org.jboss.logging.Logger;
 import br.unitins.topicos1.dto.estado.EstadoDTO;
 import br.unitins.topicos1.dto.estado.EstadoResponseDTO;
 import br.unitins.topicos1.service.EstadoService;
-import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -31,18 +30,18 @@ public class EstadoResource {
     private static final Logger LOG = Logger.getLogger(EstadoResource.class);
 
     @POST
-    //@RolesAllowed({ "Admin" })
+    // @RolesAllowed({ "Admin" })
     public Response insert(EstadoDTO dto) {
         LOG.info("Iniciando insert estado");
         EstadoResponseDTO retorno = service.insert(dto);
-        //return Response.status(Status.CREATED).entity(retorno).build();
+        // return Response.status(Status.CREATED).entity(retorno).build();
         return Response.status(201).entity(retorno).build();
     }
 
     @PUT
     @Transactional
     @Path("/{id}")
-   // @RolesAllowed({ "Admin" })
+    // @RolesAllowed({ "Admin" })
     public Response update(EstadoDTO dto, @PathParam("id") Long id) {
         service.update(dto, id);
         return Response.status(Status.NO_CONTENT).build();
@@ -51,14 +50,14 @@ public class EstadoResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-   // @RolesAllowed({ "Admin" })
+    // @RolesAllowed({ "Admin" })
     public Response delete(@PathParam("id") Long id) {
         service.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @GET
-   // @RolesAllowed({"Admin" })
+    // @RolesAllowed({"Admin" })
     public Response findAll() {
         LOG.debug("Exemplo de debug.");
         return Response.ok(service.findByAll()).build();
@@ -66,14 +65,14 @@ public class EstadoResource {
 
     @GET
     @Path("/{id}")
-   // @RolesAllowed({"Admin"})
+    // @RolesAllowed({"Admin"})
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
-    
+
     @GET
     @Path("/search/nome/{nome}")
-  //  @RolesAllowed({ "Admin" })
+    // @RolesAllowed({ "Admin" })
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }
