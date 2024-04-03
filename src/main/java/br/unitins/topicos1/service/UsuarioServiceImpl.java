@@ -2,7 +2,6 @@ package br.unitins.topicos1.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
@@ -48,6 +47,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         novoUsuario.setCpf(dto.cpf());
         novoUsuario.setEmail(dto.email());
         novoUsuario.setSenha(hashService.getHashSenha(dto.senha()));
+        // novoUsuario.setDataNascimento(dto.dataNascimento());
 
         novoUsuario.setPerfil(Perfil.ValueOf(1));
 
@@ -82,8 +82,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         novoUsuario.setCpf(dto.cpf());
         novoUsuario.setEmail(dto.email());
         novoUsuario.setSenha(hashService.getHashSenha(dto.senha()));
-
         novoUsuario.setPerfil(Perfil.ValueOf(dto.idPerfil()));
+        // novoUsuario.setDataNascimento(dto.dataNascimento());
 
         if (dto.listaTelefone() != null &&
                 !dto.listaTelefone().isEmpty()) {

@@ -4,6 +4,26 @@
 -- insert into myentity (id, field) values(2, 'field-2');
 -- insert into myentity (id, field) values(3, 'field-3');
 -- alter sequence myentity_seq restart with 4;
+INSERT INTO Usuario (
+    nome,
+    login,
+    senha,
+    email,
+    cpf,
+    perfil,
+    dataNascimento,
+    nomeImage
+  )
+VALUES (
+    'Test User',
+    'testuser',
+    'password',
+    'testuser@example.com',
+    '123.456.789-00',
+    1,
+    '2022-01-01',
+    'image.jpg'
+  );
 INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Joao Silva',

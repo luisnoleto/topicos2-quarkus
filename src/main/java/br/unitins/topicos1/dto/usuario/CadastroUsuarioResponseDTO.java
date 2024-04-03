@@ -1,5 +1,6 @@
 package br.unitins.topicos1.dto.usuario;
 
+import java.util.Date;
 import java.util.List;
 
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
@@ -13,6 +14,7 @@ public record CadastroUsuarioResponseDTO(
         String login,
         String email,
         Perfil perfil,
+        // Date dataNascimento,
 
         List<TelefoneDTO> listaTelefone) {
     public static CadastroUsuarioResponseDTO valueOf(Usuario usuario) {
@@ -23,6 +25,7 @@ public record CadastroUsuarioResponseDTO(
                 usuario.getLogin(),
                 usuario.getEmail(),
                 usuario.getPerfil(),
+                // usuario.getDataNascimento(),
                 usuario.getListaTelefone()
                         .stream()
                         .map(t -> TelefoneDTO.valueOf(t)).toList());

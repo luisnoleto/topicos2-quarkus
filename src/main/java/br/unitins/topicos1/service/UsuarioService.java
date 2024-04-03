@@ -11,7 +11,6 @@ import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotEmpty;
 
 public interface UsuarioService {
 
