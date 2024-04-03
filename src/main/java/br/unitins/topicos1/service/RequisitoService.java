@@ -18,6 +18,7 @@ public interface RequisitoService {
 
     public List<RequisitoResponseDTO> findByRequisito(String desempenho);
 
-    public List<RequisitoResponseDTO> findByAll();
+    public List<RequisitoResponseDTO> findByAll(int page, int pageSize);
 
+    public long count();
 }
