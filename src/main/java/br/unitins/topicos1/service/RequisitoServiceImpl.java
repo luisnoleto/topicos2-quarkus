@@ -21,8 +21,6 @@ public class RequisitoServiceImpl implements RequisitoService {
     @Inject
     RequisitoRepository repository;
 
-    @Inject
-    PaisRepository PaisRepository;
 
     @Override
     @Transactional
@@ -33,8 +31,9 @@ public class RequisitoServiceImpl implements RequisitoService {
         novoRequisito.setPlacaVideo(dto.placaVideo());
         novoRequisito.setProcessador(dto.processador());
         novoRequisito.setSistemaOperacional(dto.sistemaOperacional());
-        //novoRequisito.setDesempenho();
+        Desempenho desempenho = Desempenho.ValueOf(dto.desempenho());
 
+        novoRequisito.setDesempenho(desempenho);
 
         repository.persist(novoRequisito);
 
@@ -52,8 +51,10 @@ public class RequisitoServiceImpl implements RequisitoService {
             requisito.setPlacaVideo(dto.placaVideo());
             requisito.setProcessador(dto.processador());
             requisito.setSistemaOperacional(dto.sistemaOperacional());
-            //requisito.setDesempenho();
+            Desempenho desempenho = Desempenho.ValueOf(dto.desempenho());
 
+            requisito.setDesempenho(desempenho);
+            
         } else {
             throw new NotFoundException();
         }

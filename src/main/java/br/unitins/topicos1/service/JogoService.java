@@ -19,7 +19,9 @@ public interface JogoService {
 
     public List<JogoResponseDTO> findByNome(String nome);
 
-    public List<JogoResponseDTO> findAll(); 
+    public List<JogoResponseDTO> findAll(int page , int pageSize); 
 
     public JogoResponseDTO updateNomeImagem(Long id, String nomeImagem);
+
+    public long count();
 }

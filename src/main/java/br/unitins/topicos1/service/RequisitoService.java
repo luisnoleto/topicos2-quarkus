@@ -16,7 +16,7 @@ public interface RequisitoService {
 
     public RequisitoResponseDTO findById(Long id);
 
-    public List<RequisitoResponseDTO> findByRequisito(String nome);
+    public List<RequisitoResponseDTO> findByRequisito(String desempenho);
 
     public List<RequisitoResponseDTO> findByAll();
 

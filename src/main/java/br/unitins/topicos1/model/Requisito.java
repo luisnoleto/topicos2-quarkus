@@ -1,6 +1,8 @@
 package br.unitins.topicos1.model;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 
 @Entity
 public class Requisito extends DefaultEntity{
@@ -10,6 +12,8 @@ public class Requisito extends DefaultEntity{
     private String placaVideo;
     private String sistemaOperacional;
     private String armazenamento;
+    
+    @Enumerated(EnumType.STRING)
     private Desempenho desempenho;
 
 

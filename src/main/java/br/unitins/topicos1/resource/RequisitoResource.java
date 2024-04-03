@@ -55,7 +55,7 @@ public class RequisitoResource {
 
     @GET
     public Response findAll() {
-        LOG.debug("Encontrando Países.");
+        LOG.debug("Encontrando Requisitos.");
         return Response.ok(service.findByAll()).build();
     }
 
@@ -66,8 +66,8 @@ public class RequisitoResource {
     }
 
     @GET
-    @Path("/search/nome/{requisito}")
-    public Response findByNome(@PathParam("nome") String requisito) {
+    @Path("/search/requisito/{requisito}")
+    public Response findByNome(@PathParam("requisito") String requisito) {
         return Response.ok(service.findByRequisito(requisito)).build();
     }
 }

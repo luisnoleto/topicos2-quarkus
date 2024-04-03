@@ -16,7 +16,7 @@ public record JogoResponseDTO(
         Double preco,
         int estoque,
         List<GeneroResponseDTO> listaGenero,
-        PlataformaResponseDTO plataforma,
+        //PlataformaResponseDTO plataforma,
         RequisitoResponseDTO requisito,
         Classificacao classificacao,
 
@@ -31,7 +31,7 @@ public record JogoResponseDTO(
                 jogo.getEstoque(),
                 jogo.getListaGeneros().stream()
                         .map(t -> GeneroResponseDTO.valueOf(t)).toList(),
-                PlataformaResponseDTO.valueOf(jogo.getPlataforma()),
+               // PlataformaResponseDTO.valueOf(jogo.getPlataforma()),
                 RequisitoResponseDTO.valueOf(jogo.getRequisito()),
                 jogo.getClassificacao(),
 
