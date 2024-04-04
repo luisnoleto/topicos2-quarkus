@@ -6,9 +6,7 @@ import java.util.stream.Collectors;
 import br.unitins.topicos1.dto.fabricante.FabricanteDTO;
 import br.unitins.topicos1.dto.fabricante.FabricanteResponseDTO;
 import br.unitins.topicos1.model.Fabricante;
-import br.unitins.topicos1.model.Pais;
 import br.unitins.topicos1.repository.FabricanteRepository;
-import br.unitins.topicos1.repository.PaisRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -21,15 +19,11 @@ public class FabricanteServiceImpl implements FabricanteService {
     @Inject
     FabricanteRepository repository;
 
-    @Inject
-    PaisRepository PaisRepository;
-
     @Override
     @Transactional
     public FabricanteResponseDTO insert(@Valid FabricanteDTO dto) {
         Fabricante novoFabricante = new Fabricante();
         novoFabricante.setNome(dto.nome());
-       
 
         repository.persist(novoFabricante);
 
@@ -72,7 +66,7 @@ public class FabricanteServiceImpl implements FabricanteService {
     @Override
     public List<FabricanteResponseDTO> findByAll(int page, int pageSize) {
         List<Fabricante> fabricantes = repository.findAll().page(page, pageSize).list();
-        
+
         return fabricantes.stream()
                 .map(e -> FabricanteResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
