@@ -30,6 +30,7 @@ public class PaisResource {
     private static final Logger LOG = Logger.getLogger(PaisResource.class);
 
     @POST
+    @Path("/cadastro")
     public Response insert(PaisDTO dto) {
         LOG.info("Iniciando insert pais");
         PaisResponseDTO retorno = service.insert(dto);

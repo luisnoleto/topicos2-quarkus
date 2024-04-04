@@ -2,7 +2,6 @@ package br.unitins.topicos1.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
@@ -12,6 +11,7 @@ import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
+import br.unitins.topicos1.model.Perfil;
 import br.unitins.topicos1.model.Telefone;
 import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.repository.UsuarioRepository;
@@ -47,6 +47,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         novoUsuario.setCpf(dto.cpf());
         novoUsuario.setEmail(dto.email());
         novoUsuario.setSenha(hashService.getHashSenha(dto.senha()));
+        // novoUsuario.setDataNascimento(dto.dataNascimento());
+
+        novoUsuario.setPerfil(Perfil.ValueOf(1));
 
         if (dto.listaTelefone() != null &&
                 !dto.listaTelefone().isEmpty()) {
@@ -56,6 +59,7 @@ public class UsuarioServiceImpl implements UsuarioService {
                 telefone.setCodigoArea(tel.codigoArea());
                 telefone.setNumero(tel.numero());
                 novoUsuario.getListaTelefone().add(telefone);
+                telefone.setUsuario(novoUsuario);
             }
         }
 
@@ -78,6 +82,8 @@ public class UsuarioServiceImpl implements UsuarioService {
         novoUsuario.setCpf(dto.cpf());
         novoUsuario.setEmail(dto.email());
         novoUsuario.setSenha(hashService.getHashSenha(dto.senha()));
+        novoUsuario.setPerfil(Perfil.ValueOf(dto.idPerfil()));
+        // novoUsuario.setDataNascimento(dto.dataNascimento());
 
         if (dto.listaTelefone() != null &&
                 !dto.listaTelefone().isEmpty()) {
@@ -241,6 +247,15 @@ public class UsuarioServiceImpl implements UsuarioService {
             throw new ValidationException("login", "Login ou senha inválido");
 
         return UsuarioResponseDTO.valueOf(usuario);
+    }
+
+    @Override
+    public CadastroUsuarioResponseDTO findByLoginAndSenhaPerfil(String login, String senha) {
+        Usuario usuario = repository.findByLoginAndSenha(login, senha);
+        if (usuario == null)
+            throw new ValidationException("login", "Login ou senha inválido");
+
+        return CadastroUsuarioResponseDTO.valueOf(usuario);
     }
 
     @Override
