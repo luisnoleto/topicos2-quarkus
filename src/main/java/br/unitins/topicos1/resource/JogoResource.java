@@ -12,10 +12,14 @@ import br.unitins.topicos1.form.JogoImageForm;
 import br.unitins.topicos1.service.JogoFileService;
 import br.unitins.topicos1.service.JogoService;
 import br.unitins.topicos1.service.JwtService;
+
+import jakarta.annotation.security.RolesAllowed;
+import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
@@ -23,6 +27,7 @@ import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
@@ -73,9 +78,13 @@ public class JogoResource {
     }
 
     @GET
-    public Response findAll() {
 
-        return Response.ok(jogoService.findAll()).build();
+    public Response findAll( 
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+
+        return Response.ok(jogoService.findAll(page, pageSize)).build();
+        }
     }
 
     @GET
@@ -122,6 +131,14 @@ public class JogoResource {
         ResponseBuilder response = Response.ok(jogoFileService.obter(nomeImagem));
         response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
         return response.build();
+    }   
+
+
+    @GET
+    @Path("/count")
+    public long count() {
+        return jogoService.count();
     }
+
 
 }

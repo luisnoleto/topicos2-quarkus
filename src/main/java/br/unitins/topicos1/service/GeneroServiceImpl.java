@@ -1,6 +1,7 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
@@ -68,10 +69,18 @@ public class GeneroServiceImpl implements GeneroService {
                 .map(e -> GeneroResponseDTO.valueOf(e)).toList();
     }
 
+
     @Override
-    public List<GeneroResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> GeneroResponseDTO.valueOf(e)).toList();
+    public List<GeneroResponseDTO> findByAll(int page, int pageSize) {
+        List<Genero> generos = repository.findAll().page(page, pageSize).list();
+
+        return generos.stream()
+                .map(e -> GeneroResponseDTO.valueOf(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
     }
 
 }

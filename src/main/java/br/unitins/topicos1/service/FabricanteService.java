@@ -18,6 +18,7 @@ public interface FabricanteService {
 
     public List<FabricanteResponseDTO> findByNome(String nome);
 
-    public List<FabricanteResponseDTO> findByAll();
+    public List<FabricanteResponseDTO> findByAll(int page, int pageSize);
 
+    public long count();
 }

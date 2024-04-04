@@ -2,6 +2,9 @@ package br.unitins.topicos1.service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+
+import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
 
 import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
 import br.unitins.topicos1.dto.genero.GeneroDTO;
@@ -16,8 +19,10 @@ import br.unitins.topicos1.model.Jogo;
 import br.unitins.topicos1.model.Plataforma;
 import br.unitins.topicos1.model.Requisito;
 import br.unitins.topicos1.model.Telefone;
-
+import br.unitins.topicos1.repository.GeneroRepository;
 import br.unitins.topicos1.repository.JogoRepository;
+import br.unitins.topicos1.repository.PlataformaRepository;
+import br.unitins.topicos1.repository.RequisitoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -28,31 +33,34 @@ public class JogoServiceImpl implements JogoService {
 
     @Inject
     JogoRepository repository;
+    @Inject
+    PlataformaRepository plataformaRepository;
+    @Inject
+    RequisitoRepository requisitoRepository;
+    @Inject
+    GeneroRepository generoRepository;
 
     @Override
     @Transactional
     public JogoResponseDTO insert(JogoDTO dto) {
         Jogo novoJogo = new Jogo();
-        // Plataforma plataforma = plataformaRepository.findById(dto.plataforma());
-        // Requisito requisito = requisitoRepository.findById(dto.requisito());
-
+        //Plataforma plataforma = plataformaRepository.findById(dto.idPlataforma());
+        Requisito requisito = requisitoRepository.findById(dto.idRequisito());
 
         novoJogo.setNome(dto.nome());
         novoJogo.setDescricao(dto.descricao());
         novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
 
-        // novoJogo.setPlataforma(Plataforma.ValueOf(dto.plataforma()));
-        // novoJogo.setRequisito(Requisito.ValueOf(dto.requisito()));
-        // novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
+        //novoJogo.setPlataforma(plataforma);
+        novoJogo.setRequisito(requisito);
+        novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
-        if (dto.listaGeneros() != null &&
-                !dto.listaGeneros().isEmpty()) {
+        if (dto.listaIdGeneros() != null &&
+                !dto.listaIdGeneros().isEmpty()) {
             novoJogo.setListaGeneros(new ArrayList<Genero>());
-            for (GeneroDTO gen : dto.listaGeneros()) {
-                Genero genero = new Genero();
-                genero.setNome(gen.nome());
-
+            for (Long idGenero : dto.listaIdGeneros()) {
+                Genero genero = generoRepository.findById(idGenero);
                 novoJogo.getListaGeneros().add(genero);
             }
         }
@@ -75,14 +83,12 @@ public class JogoServiceImpl implements JogoService {
 
             List<Genero> generos = new ArrayList<Genero>();
 
-            if (dto.listaGeneros() != null && !dto.listaGeneros().isEmpty()) {
+            if (dto.listaIdGeneros() != null &&
+                    !dto.listaIdGeneros().isEmpty()) {
                 jogo.setListaGeneros(new ArrayList<Genero>());
-                for (GeneroDTO gen : dto.listaGeneros()) {
-                    Genero genero = new Genero();
-
-                    genero.setNome(gen.nome());
-
-                    generos.add(genero);
+                for (Long idGenero : dto.listaIdGeneros()) {
+                    Genero genero = generoRepository.findById(idGenero);
+                    jogo.getListaGeneros().add(genero);
                 }
             }
 
@@ -120,10 +126,10 @@ public class JogoServiceImpl implements JogoService {
     }
 
     @Override
-    public List<JogoResponseDTO> findAll() {
-        return repository.findAll().list().stream()
-                .map(e -> JogoResponseDTO.valueOf(e))
-                .toList();
+    public List<JogoResponseDTO> findAll(int page , int pageSize) {
+        List<Jogo> jogos = repository.findAll().page(page, pageSize).list();
+
+        return jogos.stream().map(e -> JogoResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
     @Override
@@ -134,4 +140,11 @@ public class JogoServiceImpl implements JogoService {
         return JogoResponseDTO.valueOf(jogo);
     }
 
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
+
+    
 }

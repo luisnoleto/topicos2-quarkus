@@ -1,6 +1,7 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.requisito.RequisitoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoResponseDTO;
@@ -21,9 +22,6 @@ public class RequisitoServiceImpl implements RequisitoService {
     @Inject
     RequisitoRepository repository;
 
-    @Inject
-    PaisRepository PaisRepository;
-
     @Override
     @Transactional
     public RequisitoResponseDTO insert(@Valid RequisitoDTO dto) {
@@ -33,8 +31,9 @@ public class RequisitoServiceImpl implements RequisitoService {
         novoRequisito.setPlacaVideo(dto.placaVideo());
         novoRequisito.setProcessador(dto.processador());
         novoRequisito.setSistemaOperacional(dto.sistemaOperacional());
-        //novoRequisito.setDesempenho();
+        Desempenho desempenho = Desempenho.ValueOf(dto.desempenho());
 
+        novoRequisito.setDesempenho(desempenho);
 
         repository.persist(novoRequisito);
 
@@ -52,7 +51,9 @@ public class RequisitoServiceImpl implements RequisitoService {
             requisito.setPlacaVideo(dto.placaVideo());
             requisito.setProcessador(dto.processador());
             requisito.setSistemaOperacional(dto.sistemaOperacional());
-            //requisito.setDesempenho();
+            Desempenho desempenho = Desempenho.ValueOf(dto.desempenho());
+
+            requisito.setDesempenho(desempenho);
 
         } else {
             throw new NotFoundException();
@@ -80,9 +81,16 @@ public class RequisitoServiceImpl implements RequisitoService {
     }
 
     @Override
-    public List<RequisitoResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> RequisitoResponseDTO.valueOf(e)).toList();
+    public List<RequisitoResponseDTO> findByAll(int page, int pageSize) {
+        List<Requisito> requisitos = repository.findAll().page(page, pageSize).list();
+
+        return requisitos.stream()
+                .map(e -> RequisitoResponseDTO.valueOf(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
     }
 
 }

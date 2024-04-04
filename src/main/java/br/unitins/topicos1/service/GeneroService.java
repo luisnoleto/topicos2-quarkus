@@ -18,6 +18,7 @@ public interface GeneroService {
 
     public List<GeneroResponseDTO> findByNome(String nome);
 
-    public List<GeneroResponseDTO> findByAll();
+    public List<GeneroResponseDTO> findByAll(int page, int pageSize);
 
+    public long count();
 }

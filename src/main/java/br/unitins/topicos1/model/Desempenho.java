@@ -5,9 +5,9 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 @JsonFormat(shape = JsonFormat.Shape.OBJECT)
 public enum Desempenho {
     
-    ALTO(1,"Pix"),
-    LEVE(2, "Boleto"),
-    MEDIO(3, "Cartão de Crédito");
+    ALTO(1,"Alto"),
+    LEVE(2, "Leve"),
+    MEDIO(3, "Médio");
 
     private final Integer id;
     private final String label;

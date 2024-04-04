@@ -9,12 +9,14 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -54,9 +56,12 @@ public class RequisitoResource {
     }
 
     @GET
-    public Response findAll() {
-        LOG.debug("Encontrando Países.");
-        return Response.ok(service.findByAll()).build();
+    public Response findAll(
+        @QueryParam("page") @DefaultValue("0") int page, 
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize){
+        LOG.debug("Encontrando Requisitos.");
+
+        return Response.ok(service.findByAll(page, pageSize)).build();
     }
 
     @GET
@@ -66,8 +71,15 @@ public class RequisitoResource {
     }
 
     @GET
-    @Path("/search/nome/{requisito}")
-    public Response findByNome(@PathParam("nome") String requisito) {
+    @Path("/search/requisito/{requisito}")
+    public Response findByNome(@PathParam("requisito") String requisito) {
         return Response.ok(service.findByRequisito(requisito)).build();
     }
+
+    @GET
+    @Path("/count")
+    public long count() {
+        return service.count();
+    }
+
 }
