@@ -30,6 +30,7 @@ public class DesenvoledoraResource {
     private static final Logger LOG = Logger.getLogger(DesenvoledoraResource.class);
 
     @POST
+    @Path("/cadastro")
     public Response insert(DesenvolvedoraDTO dto) {
         LOG.info("Iniciando insert desenvolvedora");
         DesenvolvedoraResponseDTO retorno = service.insert(dto);

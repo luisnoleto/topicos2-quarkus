@@ -30,7 +30,7 @@ public class DesenvolvedoraServiceImpl implements DesenvolvedoraService {
         novoDesenvolvedora.setNome(dto.nome());
         novoDesenvolvedora.setCnpj(dto.cnpj());
 
-        Pais pais = PaisRepository.findById(dto.paisId());
+        Pais pais = PaisRepository.findById(dto.pais());
         novoDesenvolvedora.setPais(pais);
 
         repository.persist(novoDesenvolvedora);
@@ -43,9 +43,11 @@ public class DesenvolvedoraServiceImpl implements DesenvolvedoraService {
     public DesenvolvedoraResponseDTO update(DesenvolvedoraDTO dto, Long id) {
 
         Desenvolvedora desenvolvedora = repository.findById(id);
+
         if (desenvolvedora != null) {
             desenvolvedora.setNome(dto.nome());
             desenvolvedora.setCnpj(dto.cnpj());
+            desenvolvedora.setPais(PaisRepository.findById(dto.pais()));
 
         } else {
             throw new NotFoundException();
