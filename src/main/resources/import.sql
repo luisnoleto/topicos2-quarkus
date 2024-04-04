@@ -301,8 +301,16 @@ VALUES ('Estados Unidos', 'EUA');
 INSERT INTO pais (nome, sigla)
 VALUES ('Argentina', 'ARG');
 INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora1', '12345678901234', 1);
+VALUES ('AGAMES', '12345678901234', 1);
 INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora2', '12345678901234', 2);
+VALUES ('Ninja Theory', '12345678901234', 2);
 INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora3', '12345678901234', 3);
+VALUES ('Xbox Studios', '12345678901234', 3);
+INSERT INTO fabricante (nome)
+VALUES ('Microsoft');
+INSERT INTO fabricante (nome)
+VALUES ('Sony');
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('Xbox', 1);
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('Playstation', 2);

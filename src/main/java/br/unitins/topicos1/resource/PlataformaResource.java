@@ -2,40 +2,38 @@ package br.unitins.topicos1.resource;
 
 import org.jboss.logging.Logger;
 
-import br.unitins.topicos1.dto.fabricante.FabricanteDTO;
-import br.unitins.topicos1.dto.fabricante.FabricanteResponseDTO;
-import br.unitins.topicos1.service.FabricanteService;
+import br.unitins.topicos1.dto.plataforma.PlataformaDTO;
+import br.unitins.topicos1.dto.plataforma.PlataformaResponseDTO;
+import br.unitins.topicos1.service.PlataformaService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
-import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
-import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
-@Path("/fabricante")
+@Path("/plataforma")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
-public class FabricanteResource {
+public class PlataformaResource {
 
     @Inject
-    FabricanteService service;
+    PlataformaService service;
 
-    private static final Logger LOG = Logger.getLogger(FabricanteResource.class);
+    private static final Logger LOG = Logger.getLogger(PlataformaResource.class);
 
     @POST
     @Path("/cadastro")
-    public Response insert(FabricanteDTO dto) {
-        LOG.info("Iniciando insert fabricante");
-        FabricanteResponseDTO retorno = service.insert(dto);
+    public Response insert(PlataformaDTO dto) {
+        LOG.info("Iniciando insert plataforma");
+        PlataformaResponseDTO retorno = service.insert(dto);
         // return Response.status(Status.CREATED).entity(retorno).build();
         return Response.status(201).entity(retorno).build();
     }
@@ -43,7 +41,7 @@ public class FabricanteResource {
     @PUT
     @Transactional
     @Path("/{id}")
-    public Response update(FabricanteDTO dto, @PathParam("id") Long id) {
+    public Response update(PlataformaDTO dto, @PathParam("id") Long id) {
         service.update(dto, id);
         return Response.status(Status.NO_CONTENT).build();
     }
@@ -57,11 +55,9 @@ public class FabricanteResource {
     }
 
     @GET
-    public Response findAll(
-            @QueryParam("page") @DefaultValue("0") int page,
-            @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
-        LOG.debug("Encontrando Fabricantes.");
-        return Response.ok(service.findByAll(page, pageSize)).build();
+    public Response findAll() {
+        LOG.debug("Encontrando Países.");
+        return Response.ok(service.findByAll()).build();
     }
 
     @GET
@@ -75,11 +71,4 @@ public class FabricanteResource {
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }
-
-    @GET
-    @Path("/count")
-    public long count() {
-        return service.count();
-    }
-
 }

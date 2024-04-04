@@ -79,12 +79,11 @@ public class JogoResource {
 
     @GET
 
-    public Response findAll( 
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+    public Response findAll(
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
 
         return Response.ok(jogoService.findAll(page, pageSize)).build();
-        }
     }
 
     @GET
@@ -131,14 +130,12 @@ public class JogoResource {
         ResponseBuilder response = Response.ok(jogoFileService.obter(nomeImagem));
         response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
         return response.build();
-    }   
-
+    }
 
     @GET
     @Path("/count")
     public long count() {
         return jogoService.count();
     }
-
 
 }
