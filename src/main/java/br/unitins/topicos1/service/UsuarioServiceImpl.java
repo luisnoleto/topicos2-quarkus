@@ -1,10 +1,14 @@
 package br.unitins.topicos1.service;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
+import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.dto.usuario.UpdateEmailDTO;
 import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
@@ -82,7 +86,7 @@ public class UsuarioServiceImpl implements UsuarioService {
         novoUsuario.setCpf(dto.cpf());
         novoUsuario.setEmail(dto.email());
         novoUsuario.setSenha(hashService.getHashSenha(dto.senha()));
-        novoUsuario.setPerfil(Perfil.ValueOf(dto.idPerfil()));
+        novoUsuario.setPerfil(Perfil.ValueOf(dto.perfil()));
         // novoUsuario.setDataNascimento(dto.dataNascimento());
 
         if (dto.listaTelefone() != null &&
@@ -99,6 +103,26 @@ public class UsuarioServiceImpl implements UsuarioService {
         repository.persist(novoUsuario);
 
         return CadastroUsuarioResponseDTO.valueOf(novoUsuario);
+    }
+
+    @Override
+    @Transactional
+    public PerfilDTO perfilNome(String login) {
+        Usuario usuario = repository.findByLogin(login);
+        if (usuario == null) {
+            return new PerfilDTO(1, "USER");
+        }
+
+        Perfil perfil = usuario.getPerfil();
+        return new PerfilDTO(perfil.ordinal() + 1, perfil.name());
+    }
+
+    @Override
+    @Transactional
+    public List<PerfilDTO> findAllPerfis() {
+        return Arrays.stream(Perfil.values())
+                .map(perfil -> new PerfilDTO(perfil.ordinal() + 1, perfil.name()))
+                .collect(Collectors.toList());
     }
 
     // -------------------------------------------- UPDATE's usuario normal e com

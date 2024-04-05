@@ -6,6 +6,7 @@ import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
+import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.dto.usuario.UpdateEmailDTO;
 import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
@@ -41,5 +42,9 @@ public interface UsuarioService {
     public CadastroUsuarioResponseDTO cadastrarUsuario(@Valid CadastroUsuarioDTO dto);
 
     public CadastroUsuarioResponseDTO findByLoginAndSenhaPerfil(String login, String hashSenha);
+
+    public PerfilDTO perfilNome(String login);
+
+    public List<PerfilDTO> findAllPerfis();
 
 }

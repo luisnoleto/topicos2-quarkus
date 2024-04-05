@@ -13,7 +13,9 @@ public record CadastroUsuarioResponseDTO(
         String nome,
         String login,
         String email,
-        Perfil perfil,
+        String cpf,
+        PerfilDTO perfil,
+
         // Date dataNascimento,
 
         List<TelefoneDTO> listaTelefone) {
@@ -24,7 +26,8 @@ public record CadastroUsuarioResponseDTO(
                 usuario.getNome(),
                 usuario.getLogin(),
                 usuario.getEmail(),
-                usuario.getPerfil(),
+                usuario.getCpf(),
+                PerfilDTO.valueOf(usuario.getPerfil()),
                 // usuario.getDataNascimento(),
                 usuario.getListaTelefone()
                         .stream()
