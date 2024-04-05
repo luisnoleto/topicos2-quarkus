@@ -5,6 +5,7 @@ import br.unitins.topicos1.model.Requisito;
 
 public record RequisitoResponseDTO(
 
+    Long id,
     String armazenamento,
     String memoria,
     String processador,
@@ -15,6 +16,7 @@ public record RequisitoResponseDTO(
 ) {
      public static RequisitoResponseDTO valueOf(Requisito requisito){
         return new RequisitoResponseDTO(
+            requisito.getId(),
             requisito.getArmazenamento(),
             requisito.getMemoria(),
             requisito.getProcessador(),

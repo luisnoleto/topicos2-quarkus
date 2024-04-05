@@ -13,7 +13,7 @@ public class Desenvolvedora extends DefaultEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_pais")
-    private @NotNull(message = "O campo pais não pode ser nulo") Pais pais;
+    private Pais pais;
 
     public String getNome() {
         return nome;

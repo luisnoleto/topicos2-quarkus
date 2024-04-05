@@ -23,6 +23,10 @@ public class Jogo extends DefaultEntity {
     private Classificacao classificacao;
 
     @ManyToOne
+    @JoinColumn(name = "id_desenvolvedora")
+    private Desenvolvedora desenvolvedora;
+
+    @ManyToOne
     @JoinColumn(name = "id_plataforma")
     private Plataforma plataforma;
     
@@ -108,8 +112,13 @@ public class Jogo extends DefaultEntity {
         this.listaGeneros = listaGeneros;
     }
 
-    
+    public Desenvolvedora getDesenvolvedora() {
+        return desenvolvedora;
+    }
 
+    public void setDesenvolvedora(Desenvolvedora desenvolvedora) {
+        this.desenvolvedora = desenvolvedora;
+    }
     
     
 }

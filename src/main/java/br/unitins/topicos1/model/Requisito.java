@@ -16,7 +16,6 @@ public class Requisito extends DefaultEntity{
     @Enumerated(EnumType.STRING)
     private Desempenho desempenho;
 
-
     public String getProcessador() {
         return processador;
     }

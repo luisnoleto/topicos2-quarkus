@@ -21,7 +21,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
-@Path("/fabricante")
+@Path("/fabricantes")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class FabricanteResource {
@@ -32,7 +32,6 @@ public class FabricanteResource {
     private static final Logger LOG = Logger.getLogger(FabricanteResource.class);
 
     @POST
-    @Path("/cadastro")
     public Response insert(FabricanteDTO dto) {
         LOG.info("Iniciando insert fabricante");
         FabricanteResponseDTO retorno = service.insert(dto);
