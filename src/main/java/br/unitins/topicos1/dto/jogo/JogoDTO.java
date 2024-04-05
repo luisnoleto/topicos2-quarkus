@@ -16,12 +16,14 @@ public record JogoDTO(
     Double preco,  
     @NotNull(message = "O campo nome não pode ser nulo.")
     int estoque,
-    @NotNull(message = "O campo nome não pode ser nulo.")
-    Integer classificacao,
     //@NotNull(message = "O campo nome não pode ser nulo.")
+    Integer classificacao,
+    @NotNull(message = "O campo nome não pode ser nulo.")
     Long idPlataforma,
     @NotNull(message = "O campo nome não pode ser nulo.")
     Long idRequisito,
+    @NotNull(message = "O campo nome não pode ser nulo.")
+    Long idDesenvolvedora,
 
     @NotEmpty(message = "O campo nome não pode ser nulo.")
     List<Long> listaIdGeneros,

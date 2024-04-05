@@ -1,9 +1,13 @@
 package br.unitins.topicos1.resource;
 
+import java.util.List;
+
 import org.jboss.logging.Logger;
 
+import br.unitins.topicos1.dto.requisito.DesempenhoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoResponseDTO;
+import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.service.RequisitoService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -21,7 +25,7 @@ import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
 
-@Path("/requisito")
+@Path("/requisitos")
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class RequisitoResource {
@@ -80,6 +84,13 @@ public class RequisitoResource {
     @Path("/count")
     public long count() {
         return service.count();
+    }
+
+        @GET
+    @Path("/perfis")
+    public Response findAllDesempenhos() {
+        List<DesempenhoDTO> desempenho = service.findAllDesempenhos();
+        return Response.ok(desempenho).build();
     }
 
 }

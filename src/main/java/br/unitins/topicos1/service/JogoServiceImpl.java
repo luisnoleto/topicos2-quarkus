@@ -13,12 +13,14 @@ import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
 import br.unitins.topicos1.model.Classificacao;
+import br.unitins.topicos1.model.Desenvolvedora;
 import br.unitins.topicos1.model.FormaPagamento;
 import br.unitins.topicos1.model.Genero;
 import br.unitins.topicos1.model.Jogo;
 import br.unitins.topicos1.model.Plataforma;
 import br.unitins.topicos1.model.Requisito;
 import br.unitins.topicos1.model.Telefone;
+import br.unitins.topicos1.repository.DesenvolvedoraRepository;
 import br.unitins.topicos1.repository.GeneroRepository;
 import br.unitins.topicos1.repository.JogoRepository;
 import br.unitins.topicos1.repository.PlataformaRepository;
@@ -39,21 +41,28 @@ public class JogoServiceImpl implements JogoService {
     RequisitoRepository requisitoRepository;
     @Inject
     GeneroRepository generoRepository;
+    @Inject
+    DesenvolvedoraRepository desenvolvedoraRepository;
+
 
     @Override
     @Transactional
     public JogoResponseDTO insert(JogoDTO dto) {
         Jogo novoJogo = new Jogo();
-        //Plataforma plataforma = plataformaRepository.findById(dto.idPlataforma());
+        Plataforma plataforma = plataformaRepository.findById(dto.idPlataforma());
         Requisito requisito = requisitoRepository.findById(dto.idRequisito());
+        Desenvolvedora desenvolvedora = desenvolvedoraRepository.findById(dto.idDesenvolvedora());
+
 
         novoJogo.setNome(dto.nome());
         novoJogo.setDescricao(dto.descricao());
         novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
 
-        //novoJogo.setPlataforma(plataforma);
+        novoJogo.setDesenvolvedora(desenvolvedora);
+        novoJogo.setPlataforma(plataforma);
         novoJogo.setRequisito(requisito);
+
         novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
         if (dto.listaIdGeneros() != null &&
@@ -75,11 +84,23 @@ public class JogoServiceImpl implements JogoService {
     public JogoResponseDTO update(JogoDTO dto, Long id) {
 
         Jogo jogo = repository.findById(id);
+        Plataforma plataforma = plataformaRepository.findById(dto.idPlataforma());
+        Requisito requisito = requisitoRepository.findById(dto.idRequisito());
+        Desenvolvedora desenvolvedora = desenvolvedoraRepository.findById(dto.idDesenvolvedora());
 
         if (jogo != null) {
             jogo.setNome(dto.nome());
             jogo.setDescricao(dto.descricao());
             jogo.setPreco(dto.preco());
+            jogo.setEstoque(dto.estoque());
+
+
+            
+            jogo.setDesenvolvedora(desenvolvedora);
+            jogo.setPlataforma(plataforma);
+            jogo.setRequisito(requisito);
+
+            jogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
             List<Genero> generos = new ArrayList<Genero>();
 

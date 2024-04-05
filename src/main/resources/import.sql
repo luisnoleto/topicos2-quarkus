@@ -194,26 +194,10 @@ insert into usuario_telefone (id_usuario, id_telefone)
 values(2, 3);
 insert into usuario_telefone (id_usuario, id_telefone)
 values(2, 4);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo1', 'Descrição do Jogo1', 49.99, 100);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo2', 'Descrição do Jogo2', 29.99, 75);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES('Jogo3', 'Descrição do Jogo3', 39.99, 50);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo4', 'Descrição do Jogo4', 59.99, 120);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo5', 'Descrição do Jogo5', 19.99, 80);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo6', 'Descrição do Jogo6', 49.99, 90);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES('Jogo7', 'Descrição do Jogo7', 69.99, 60);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo8', 'Descrição do Jogo8', 24.99, 110);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo9', 'Descrição do Jogo9', 34.99, 70);
-INSERT INTO jogo (nome, descricao, preco, estoque)
-VALUES ('Jogo10', 'Descrição do Jogo10', 44.99, 85);
+
+
+
+
 INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
 VALUES (
     'Rua A',
@@ -294,23 +278,295 @@ VALUES (
     'Complemento J',
     '11111-222'
   );
-INSERT INTO pais (nome, sigla)
-VALUES ('Brasil', 'BR');
-INSERT INTO pais (nome, sigla)
-VALUES ('Estados Unidos', 'EUA');
-INSERT INTO pais (nome, sigla)
-VALUES ('Argentina', 'ARG');
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('AGAMES', '12345678901234', 1);
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Ninja Theory', '12345678901234', 2);
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Xbox Studios', '12345678901234', 3);
-INSERT INTO fabricante (nome)
-VALUES ('Microsoft');
+
+
+/* ---------------------------Insert de requisitos---------------------------- */
+
+-- Primeiro insert
+INSERT INTO requisito (processador, desempenho ,memoria, placaVideo, sistemaOperacional, armazenamento )
+VALUES ('Intel Core i5', 'ALTO','8GB', 'NVIDIA GeForce GTX 1050', 'Windows 10', '512GB SSD');
+
+-- Segundo insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('AMD Ryzen 7', 'MEDIO', '16GB', 'AMD Radeon RX 5700', 'Ubuntu 20.04', '1TB HDD');
+
+-- Terceiro insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('Intel Core i9', 'LEVE', '32GB', 'NVIDIA GeForce RTX 3080', 'MacOS Big Sur', '2TB SSD');
+
+-- Quarto insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('AMD Ryzen 5', 'ALTO', '12GB', 'NVIDIA GeForce GTX 1660', 'Windows 11', '256GB SSD + 1TB HDD');
+
+-- Quinto insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('Intel Core i7', 'MEDIO', '24GB', 'AMD Radeon RX 6800', 'Fedora 35', '1TB NVMe SSD');
+
+-- Sexto insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('AMD Ryzen 9', 'LEVE', '64GB', 'NVIDIA GeForce RTX 3090', 'Arch Linux', '4TB HDD');
+
+-- Sétimo insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('Intel Core i3', 'ALTO', '4GB', 'NVIDIA GeForce GTX 1050 Ti', 'Windows 10', '128GB SSD');
+
+-- Oitavo insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('AMD Ryzen 3', 'MEDIO', '8GB', 'AMD Radeon RX 5600 XT', 'Ubuntu 22.04', '512GB NVMe SSD');
+
+-- Nono insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('Intel Core i5', 'LEVE', '16GB', 'NVIDIA GeForce RTX 3060', 'Windows 11', '1TB HDD');
+
+-- Décimo insert
+INSERT INTO requisito (processador, desempenho, memoria, placaVideo, sistemaOperacional, armazenamento)
+VALUES ('AMD Ryzen 7', 'ALTO', '32GB', 'NVIDIA GeForce GTX 1070', 'Ubuntu 21.10', '512GB NVMe SSD');
+
+
+/* ---------------------------Insert de generos---------------------------- */
+-- Primeiro insert
+INSERT INTO genero (nome)
+VALUES ('Ação');
+
+-- Segundo insert
+INSERT INTO genero (nome)
+VALUES ('Aventura');
+
+-- Terceiro insert
+INSERT INTO genero (nome)
+VALUES ('RPG');
+
+-- Quarto insert
+INSERT INTO genero (nome)
+VALUES ('Estratégia');
+
+-- Quinto insert
+INSERT INTO genero (nome)
+VALUES ('Esporte');
+
+-- Sexto insert
+INSERT INTO genero (nome)
+VALUES ('Corrida');
+
+-- Sétimo insert
+INSERT INTO genero (nome)
+VALUES ('Simulação');
+
+-- Oitavo insert
+INSERT INTO genero (nome)
+VALUES ('Quebra-Cabeça');
+
+-- Nono insert
+INSERT INTO genero (nome)
+VALUES ('Ficção Científica');
+
+-- Décimo insert
+INSERT INTO genero (nome)
+VALUES ('Fantasia');
+
+
+/* ---------------------------Insert de fabricante---------------------------- */
+-- Primeiro insert
 INSERT INTO fabricante (nome)
 VALUES ('Sony');
+
+-- Segundo insert
+INSERT INTO fabricante (nome)
+VALUES ('Microsoft');
+
+-- Terceiro insert
+INSERT INTO fabricante (nome)
+VALUES ('Nintendo');
+
+-- Quarto insert
+INSERT INTO fabricante (nome)
+VALUES ('Intel');
+
+-- Quinto insert
+INSERT INTO fabricante (nome)
+VALUES ('AMD');
+
+-- Sexto insert
+INSERT INTO fabricante (nome)
+VALUES ('NVIDIA');
+
+-- Sétimo insert
+INSERT INTO fabricante (nome)
+VALUES ('Apple');
+
+-- Oitavo insert
+INSERT INTO fabricante (nome)
+VALUES ('Samsung');
+
+-- Nono insert
+INSERT INTO fabricante (nome)
+VALUES ('Google');
+
+-- Décimo insert
+INSERT INTO fabricante (nome)
+VALUES ('ASUS');
+
+/* ---------------------------Insert de plataforma---------------------------- */
+-- Primeiro insert
 INSERT INTO plataforma (nome, id_fabricante)
-VALUES ('Xbox', 1);
+VALUES ('PlayStation 5', 1);
+
+-- Segundo insert
 INSERT INTO plataforma (nome, id_fabricante)
-VALUES ('Playstation', 2);
+VALUES ('Xbox Series X', 2);
+
+-- Terceiro insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('Nintendo Switch', 3);
+
+-- Quarto insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('PC', 4);
+
+-- Quinto insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('PlayStation 4', 1);
+
+-- Sexto insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('Xbox One', 2);
+
+-- Sétimo insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('Nintendo 3DS', 3);
+
+-- Oitavo insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('PlayStation 3', 1);
+
+-- Nono insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('Xbox 360', 2);
+
+-- Décimo insert
+INSERT INTO plataforma (nome, id_fabricante)
+VALUES ('Nintendo Wii', 3);
+
+
+/* ---------------------------Insert de pais---------------------------- */
+-- Primeiro insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Brasil', 'BR');
+
+-- Segundo insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Estados Unidos', 'US');
+
+-- Terceiro insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Japão', 'JP');
+
+-- Quarto insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Alemanha', 'DE');
+
+-- Quinto insert
+INSERT INTO pais (nome, sigla)
+VALUES ('China', 'CN');
+
+-- Sexto insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Rússia', 'RU');
+
+-- Sétimo insert
+INSERT INTO pais (nome, sigla)
+VALUES ('França', 'FR');
+
+-- Oitavo insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Reino Unido', 'UK');
+
+-- Nono insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Índia', 'IN');
+
+-- Décimo insert
+INSERT INTO pais (nome, sigla)
+VALUES ('Itália', 'IT');
+
+/* ---------------------------Insert de desenvolvedora---------------------------- */
+-- Primeiro insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 1', '11111111111111', 1);
+
+-- Segundo insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 2', '22222222222222', 2);
+
+-- Terceiro insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 3', '33333333333333', 3);
+
+-- Quarto insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 4', '44444444444444', 4);
+
+-- Quinto insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 5', '55555555555555', 5);
+
+-- Sexto insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 6', '66666666666666', 6);
+
+-- Sétimo insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 7', '77777777777777', 7);
+
+-- Oitavo insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 8', '88888888888888', 8);
+
+-- Nono insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 9', '99999999999999', 9);
+
+-- Décimo insert
+INSERT INTO desenvolvedora (nome, cnpj, id_pais)
+VALUES ('Desenvolvedora 10', '10101010101010', 10);
+
+/* ---------------------------Insert de jogo---------------------------- */
+-- Primeiro insert (Classificação: Livre)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 1', 'Descrição do Jogo 1', 99.99, 100, 'LIVRE', 1, 1, 1);
+
+-- Segundo insert (Classificação: 10 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 2', 'Descrição do Jogo 2', 49.99, 50, 'DEZ_ANOS', 2, 2, 2);
+
+-- Terceiro insert (Classificação: 12 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 3', 'Descrição do Jogo 3', 29.99, 30, 'DOZE_ANOS', 3, 3, 3);
+
+-- Quarto insert (Classificação: 14 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 4', 'Descrição do Jogo 4', 79.99, 80, 'QUATORZE_ANOS', 4, 4, 4);
+
+-- Quinto insert (Classificação: 16 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 5', 'Descrição do Jogo 5', 39.99, 40, 'DEZESSEIS_ANOS', 5, 5, 5);
+
+-- Sexto insert (Classificação: 18 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 6', 'Descrição do Jogo 6', 69.99, 70, 'DEZOITO_ANOS', 6, 6, 6);
+
+-- Sétimo insert (Classificação: Livre)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 7', 'Descrição do Jogo 7', 59.99, 60, 'LIVRE', 7, 7, 7);
+
+-- Oitavo insert (Classificação: 10 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 8', 'Descrição do Jogo 8', 89.99, 90, 'DEZ_ANOS', 8, 8, 8);
+
+-- Nono insert (Classificação: 12 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 9', 'Descrição do Jogo 9', 19.99, 20, 'DOZE_ANOS', 9, 9, 9);
+
+-- Décimo insert (Classificação: 14 anos)
+INSERT INTO jogo (nome, descricao, preco, estoque, classificacao, id_desenvolvedora, id_plataforma, id_requisito)
+VALUES ('Jogo 10', 'Descrição do Jogo 10', 109.99, 110, 'QUATORZE_ANOS', 10, 10, 10);

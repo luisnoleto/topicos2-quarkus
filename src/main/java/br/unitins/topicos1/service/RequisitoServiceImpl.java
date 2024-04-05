@@ -1,13 +1,18 @@
 package br.unitins.topicos1.service;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.unitins.topicos1.dto.requisito.DesempenhoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoResponseDTO;
+import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.model.Requisito;
+import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.model.Desempenho;
 import br.unitins.topicos1.model.Pais;
+import br.unitins.topicos1.model.Perfil;
 import br.unitins.topicos1.repository.RequisitoRepository;
 import br.unitins.topicos1.repository.PaisRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -93,4 +98,11 @@ public class RequisitoServiceImpl implements RequisitoService {
         return repository.count();
     }
 
+    @Override
+    @Transactional
+    public List<DesempenhoDTO> findAllDesempenhos() {
+        return Arrays.stream(Desempenho.values())
+                .map(desempenho -> new DesempenhoDTO(desempenho.ordinal() + 1, desempenho.name()))
+                .collect(Collectors.toList());
+    }
 }
