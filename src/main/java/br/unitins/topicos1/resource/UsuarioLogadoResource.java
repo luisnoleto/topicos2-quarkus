@@ -1,8 +1,6 @@
 package br.unitins.topicos1.resource;
 
-import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
@@ -17,7 +15,6 @@ import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
-import br.unitins.topicos1.model.Perfil;
 import br.unitins.topicos1.repository.UsuarioRepository;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;

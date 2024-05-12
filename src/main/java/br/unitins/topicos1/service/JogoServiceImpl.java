@@ -3,23 +3,14 @@ package br.unitins.topicos1.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import com.arjuna.ats.internal.jdbc.drivers.modifiers.list;
-
-import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
-import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
-
-import br.unitins.topicos1.dto.telefone.TelefoneDTO;
 import br.unitins.topicos1.model.Classificacao;
 import br.unitins.topicos1.model.Desenvolvedora;
-import br.unitins.topicos1.model.FormaPagamento;
 import br.unitins.topicos1.model.Genero;
 import br.unitins.topicos1.model.Jogo;
 import br.unitins.topicos1.model.Plataforma;
 import br.unitins.topicos1.model.Requisito;
-import br.unitins.topicos1.model.Telefone;
 import br.unitins.topicos1.repository.DesenvolvedoraRepository;
 import br.unitins.topicos1.repository.GeneroRepository;
 import br.unitins.topicos1.repository.JogoRepository;

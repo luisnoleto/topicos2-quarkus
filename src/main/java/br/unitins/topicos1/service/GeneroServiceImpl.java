@@ -6,7 +6,6 @@ import java.util.stream.Collectors;
 import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.model.Genero;
-import br.unitins.topicos1.model.Pais;
 import br.unitins.topicos1.repository.GeneroRepository;
 import br.unitins.topicos1.repository.PaisRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -29,7 +28,6 @@ public class GeneroServiceImpl implements GeneroService {
     public GeneroResponseDTO insert(@Valid GeneroDTO dto) {
         Genero novoGenero = new Genero();
         novoGenero.setNome(dto.nome());
-       
 
         repository.persist(novoGenero);
 
@@ -68,7 +66,6 @@ public class GeneroServiceImpl implements GeneroService {
         return repository.findByNome(nome).stream()
                 .map(e -> GeneroResponseDTO.valueOf(e)).toList();
     }
-
 
     @Override
     public List<GeneroResponseDTO> findByAll(int page, int pageSize) {
