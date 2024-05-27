@@ -64,7 +64,7 @@ public class FabricanteServiceImpl implements FabricanteService {
     }
 
     @Override
-    public List<FabricanteResponseDTO> findByAll(int page, int pageSize) {
+    public List<FabricanteResponseDTO> getAll(int page, int pageSize) {
         List<Fabricante> fabricantes = repository.findAll().page(page, pageSize).list();
 
         return fabricantes.stream()

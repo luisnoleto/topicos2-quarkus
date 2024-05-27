@@ -9,19 +9,21 @@ import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 
 public interface JogoService {
 
-    public JogoResponseDTO insert(JogoDTO dto);
+    //Recursos basicos CRUD
+    JogoResponseDTO create(JogoDTO dto);
 
-    public JogoResponseDTO update(JogoDTO dto, Long id);
+    JogoResponseDTO update(JogoDTO dto, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 
-    public JogoResponseDTO findById(Long id);
+    JogoResponseDTO findById(Long id);
 
-    public List<JogoResponseDTO> findByNome(String nome);
+    List<JogoResponseDTO> findAll(int page , int pageSize); 
 
-    public List<JogoResponseDTO> findAll(int page , int pageSize); 
+    //Recursos extras
+    List<JogoResponseDTO> findByNome(String nome);
 
-    public JogoResponseDTO updateNomeImagem(Long id, String nomeImagem);
+    JogoResponseDTO updateNomeImagem(Long id, String nomeImagem);
 
-    public long count();
+    long count();
 }

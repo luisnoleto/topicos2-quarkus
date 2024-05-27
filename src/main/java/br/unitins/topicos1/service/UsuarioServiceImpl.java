@@ -259,9 +259,11 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public List<UsuarioResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> UsuarioResponseDTO.valueOf(e)).toList();
+    public List<UsuarioResponseDTO> getAll(int page, int pageSize) {
+        List<Usuario> usuarios = repository.findAll().page(page, pageSize).list();
+
+        return usuarios.stream()
+                .map(e -> UsuarioResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
     @Override

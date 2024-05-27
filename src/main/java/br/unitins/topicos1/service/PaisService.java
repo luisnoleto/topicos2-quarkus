@@ -8,16 +8,18 @@ import jakarta.validation.Valid;
 
 public interface PaisService {
 
-    public PaisResponseDTO insert(@Valid PaisDTO dto);
+    PaisResponseDTO insert(@Valid PaisDTO dto);
 
-    public PaisResponseDTO update(PaisDTO dto, Long id);
+    PaisResponseDTO update(PaisDTO dto, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 
-    public PaisResponseDTO findById(Long id);
+    PaisResponseDTO findById(Long id);
 
-    public List<PaisResponseDTO> findByNome(String nome);
+    List<PaisResponseDTO> findByNome(String nome);
 
-    public List<PaisResponseDTO> findByAll();
+    List<PaisResponseDTO> getAll(int page, int pageSize);
+
+    long count();
 
 }

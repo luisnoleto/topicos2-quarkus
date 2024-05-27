@@ -1,6 +1,7 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.estado.EstadoDTO;
 import br.unitins.topicos1.dto.estado.EstadoResponseDTO;
@@ -20,7 +21,7 @@ public class EstadoServiceImpl implements EstadoService {
 
     @Override
     @Transactional
-    public EstadoResponseDTO insert(@Valid EstadoDTO dto) {
+    public EstadoResponseDTO create(@Valid EstadoDTO dto) {
         Estado novoEstado = new Estado();
         novoEstado.setNomeEstado(dto.nome());
         novoEstado.setSigla(dto.sigla());
@@ -32,7 +33,7 @@ public class EstadoServiceImpl implements EstadoService {
 
     @Override
     @Transactional
-    public EstadoResponseDTO update(EstadoDTO dto, Long id) {
+    public EstadoResponseDTO update(Long id, EstadoDTO dto) {
         
         Estado estado = repository.findById(id);
         if (estado != null) {
@@ -67,10 +68,18 @@ public class EstadoServiceImpl implements EstadoService {
             .map(e -> EstadoResponseDTO.valueOf(e)).toList();
     }
 
+  @Override
+    public List<EstadoResponseDTO> getAll(int page, int pageSize) {
+        List<Estado> list = repository
+                                .findAll()
+                                .page(page, pageSize)
+                                .list();
+        
+        return list.stream().map(e -> EstadoResponseDTO.valueOf(e)).collect(Collectors.toList());
+    } 
+
     @Override
-    public List<EstadoResponseDTO> findByAll() {
-        return repository.listAll().stream()
-            .map(e -> EstadoResponseDTO.valueOf(e)).toList();
+    public long count() {
+        return repository.count();
     }
-    
 }

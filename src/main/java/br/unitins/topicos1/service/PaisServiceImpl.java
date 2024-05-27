@@ -1,6 +1,8 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.pais.PaisDTO;
 import br.unitins.topicos1.dto.pais.PaisResponseDTO;
@@ -63,9 +65,15 @@ public class PaisServiceImpl implements PaisService {
     }
 
     @Override
-    public List<PaisResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> PaisResponseDTO.valueOf(e)).toList();
+    public List<PaisResponseDTO> getAll(int page, int pageSize) {
+        List<Pais> paises = repository.findAll().page(page, pageSize).list();
+
+        return paises.stream()
+                .map(e -> PaisResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
-}
+    @Override
+    public long count() {
+        return repository.count();
+    }
+}   

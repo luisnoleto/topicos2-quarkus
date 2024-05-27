@@ -8,16 +8,20 @@ import jakarta.validation.Valid;
 
 public interface DesenvolvedoraService {
 
-    public DesenvolvedoraResponseDTO insert(@Valid DesenvolvedoraDTO dto);
+    //Recursos basicos CRUD
+    DesenvolvedoraResponseDTO create(@Valid DesenvolvedoraDTO dto);
 
-    public DesenvolvedoraResponseDTO update(DesenvolvedoraDTO dto, Long id);
+    DesenvolvedoraResponseDTO update(DesenvolvedoraDTO dto, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 
-    public DesenvolvedoraResponseDTO findById(Long id);
+    DesenvolvedoraResponseDTO findById(Long id);
 
-    public List<DesenvolvedoraResponseDTO> findByNome(String nome);
+    List<DesenvolvedoraResponseDTO> getAll(int page, int pageSize);
 
-    public List<DesenvolvedoraResponseDTO> findByAll();
+    //Recursos extras
+    List<DesenvolvedoraResponseDTO> findByNome(String nome);
+
+    long count();
 
 }

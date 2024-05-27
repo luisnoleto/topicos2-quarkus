@@ -8,17 +8,19 @@ import jakarta.validation.Valid;
 
 public interface FabricanteService {
 
-    public FabricanteResponseDTO insert(@Valid FabricanteDTO dto);
+    //Recursos basicos CRUD
+    FabricanteResponseDTO insert(@Valid FabricanteDTO dto);
 
-    public FabricanteResponseDTO update(FabricanteDTO dto, Long id);
+    FabricanteResponseDTO update(FabricanteDTO dto, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 
-    public FabricanteResponseDTO findById(Long id);
+    FabricanteResponseDTO findById(Long id);
 
-    public List<FabricanteResponseDTO> findByNome(String nome);
+    List<FabricanteResponseDTO> getAll(int page, int pageSize);
+    
+    //Recursos extras
+    List<FabricanteResponseDTO> findByNome(String nome);
 
-    public List<FabricanteResponseDTO> findByAll(int page, int pageSize);
-
-    public long count();
+    long count();
 }

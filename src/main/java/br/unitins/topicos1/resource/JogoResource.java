@@ -54,8 +54,8 @@ public class JogoResource {
 
     @POST
     // @RolesAllowed({ "Admin" })
-    public Response insert(@Valid JogoDTO dto) {
-        return Response.status(Status.CREATED).entity(jogoService.insert(dto)).build();
+    public Response create(@Valid JogoDTO dto) {
+        return Response.status(Status.CREATED).entity(jogoService.create(dto)).build();
     }
 
     @PUT
@@ -78,7 +78,6 @@ public class JogoResource {
     }
 
     @GET
-
     public Response findAll(
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("100") int pageSize) {

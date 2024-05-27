@@ -29,7 +29,7 @@ public interface UsuarioService {
 
     public UsuarioResponseDTO findByLogin(String login);
 
-    public List<UsuarioResponseDTO> findByAll();
+    public List<UsuarioResponseDTO> getAll(int page, int pageSize);
 
     public UsuarioResponseDTO updateSenha(@Valid UpdateSenhaDTO dto, String login);
 

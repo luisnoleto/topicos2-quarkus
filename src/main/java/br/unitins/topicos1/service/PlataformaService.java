@@ -8,16 +8,16 @@ import jakarta.validation.Valid;
 
 public interface PlataformaService {
 
-    public PlataformaResponseDTO insert(@Valid PlataformaDTO dto);
+    PlataformaResponseDTO insert(@Valid PlataformaDTO dto);
 
-    public PlataformaResponseDTO update(PlataformaDTO dto, Long id);
+    PlataformaResponseDTO update(PlataformaDTO dto, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 
-    public PlataformaResponseDTO findById(Long id);
+    PlataformaResponseDTO findById(Long id);
 
-    public List<PlataformaResponseDTO> findByNome(String nome);
+    List<PlataformaResponseDTO> findByNome(String nome);
 
-    public List<PlataformaResponseDTO> findByAll();
+    List<PlataformaResponseDTO> getAll(int page, int pageSize); 
 
 }
