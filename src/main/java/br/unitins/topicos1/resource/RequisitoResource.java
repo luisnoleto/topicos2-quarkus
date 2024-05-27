@@ -65,7 +65,7 @@ public class RequisitoResource {
         @QueryParam("pageSize") @DefaultValue("100") int pageSize){
         LOG.debug("Encontrando Requisitos.");
 
-        return Response.ok(service.findByAll(page, pageSize)).build();
+        return Response.ok(service.getAll(page, pageSize)).build();
     }
 
     @GET
