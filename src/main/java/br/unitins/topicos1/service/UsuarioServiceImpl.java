@@ -293,4 +293,9 @@ public class UsuarioServiceImpl implements UsuarioService {
         return UsuarioResponseDTO.valueOf(usuario);
     }
 
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
 }

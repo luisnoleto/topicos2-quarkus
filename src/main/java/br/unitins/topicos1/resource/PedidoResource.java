@@ -66,5 +66,9 @@ public class PedidoResource {
         }
     }
 
-
+    @GET
+    @Path("/count")
+    public long count(){
+        return service.count();
+    }
 }

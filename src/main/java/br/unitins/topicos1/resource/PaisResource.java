@@ -77,4 +77,10 @@ public class PaisResource {
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }
+
+    @GET
+    @Path("/count")
+    public long count(){
+        return service.count();
+    }
 }

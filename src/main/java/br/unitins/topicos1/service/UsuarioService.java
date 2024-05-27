@@ -15,36 +15,38 @@ import jakarta.validation.Valid;
 
 public interface UsuarioService {
 
-    public UsuarioResponseDTO insert(@Valid UsuarioDTO dto);
+    UsuarioResponseDTO insert(@Valid UsuarioDTO dto);
 
-    public UsuarioResponseDTO update(@Valid UsuarioDTO dto, Long id);
+    UsuarioResponseDTO update(@Valid UsuarioDTO dto, Long id);
 
-    public void delete(Long id);
+    void delete(Long id);
 
-    public UsuarioResponseDTO findById(Long id);
+    UsuarioResponseDTO findById(Long id);
 
-    public List<UsuarioResponseDTO> findByNome(String nome);
+    List<UsuarioResponseDTO> findByNome(String nome);
 
-    public UsuarioResponseDTO findByLoginAndSenha(String login, String senha);
+    UsuarioResponseDTO findByLoginAndSenha(String login, String senha);
 
-    public UsuarioResponseDTO findByLogin(String login);
+    UsuarioResponseDTO findByLogin(String login);
 
-    public List<UsuarioResponseDTO> getAll(int page, int pageSize);
+    List<UsuarioResponseDTO> getAll(int page, int pageSize);
 
-    public UsuarioResponseDTO updateSenha(@Valid UpdateSenhaDTO dto, String login);
+    long count();
 
-    public UsuarioResponseDTO updateNome(@Valid UpdateNomeDTO dto, String login);
+    UsuarioResponseDTO updateSenha(@Valid UpdateSenhaDTO dto, String login);
 
-    public UsuarioResponseDTO updateEmail(@Valid UpdateEmailDTO dto, String login);
+    UsuarioResponseDTO updateNome(@Valid UpdateNomeDTO dto, String login);
 
-    public UsuarioResponseDTO updateTelefone(@Valid UpdateTelefoneDTO dto, String login);
+    UsuarioResponseDTO updateEmail(@Valid UpdateEmailDTO dto, String login);
 
-    public CadastroUsuarioResponseDTO cadastrarUsuario(@Valid CadastroUsuarioDTO dto);
+    UsuarioResponseDTO updateTelefone(@Valid UpdateTelefoneDTO dto, String login);
 
-    public CadastroUsuarioResponseDTO findByLoginAndSenhaPerfil(String login, String hashSenha);
+    CadastroUsuarioResponseDTO cadastrarUsuario(@Valid CadastroUsuarioDTO dto);
 
-    public PerfilDTO perfilNome(String login);
+    CadastroUsuarioResponseDTO findByLoginAndSenhaPerfil(String login, String hashSenha);
 
-    public List<PerfilDTO> findAllPerfis();
+    PerfilDTO perfilNome(String login);
+
+    List<PerfilDTO> findAllPerfis();
 
 }

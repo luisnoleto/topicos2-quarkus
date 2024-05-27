@@ -20,4 +20,6 @@ public interface PlataformaService {
 
     List<PlataformaResponseDTO> getAll(int page, int pageSize); 
 
+    long count();
+
 }

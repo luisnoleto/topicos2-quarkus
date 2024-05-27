@@ -82,4 +82,9 @@ public class PlataformaServiceImpl implements PlataformaService {
                 .map(e -> PlataformaResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
+    @Override
+    public long count() {
+        return repository.count();
+    }
+
 }
