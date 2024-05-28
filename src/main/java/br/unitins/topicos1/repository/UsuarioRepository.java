@@ -6,7 +6,6 @@ import br.unitins.topicos1.model.Usuario;
 import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import jakarta.enterprise.context.ApplicationScoped;
-import jakarta.persistence.NoResultException;
 
 @ApplicationScoped
 public class UsuarioRepository implements PanacheRepository<Usuario> {
@@ -14,14 +13,22 @@ public class UsuarioRepository implements PanacheRepository<Usuario> {
         return find("UPPER(nome) LIKE UPPER(?1) ", "%" + nome + "%").list();
     }
 
+    // public Usuario findByLogin(String login) {
+    // try {
+    // return find("login = ?1 ", login).singleResult();
+    // } catch (NoResultException e) {
+    // e.printStackTrace();
+    // return null;
+    // }
+
+    // }
     public Usuario findByLogin(String login) {
         try {
-            return find("login = ?1 ", login).singleResult();
-        } catch (NoResultException e) {
+            return find("login", login).firstResult();
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
-
     }
 
     public PanacheQuery<Usuario> findByLoginAndSenha(String login, String senha) {

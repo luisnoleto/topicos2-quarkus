@@ -1,0 +1,5 @@
+21-05-2024 23:18:17 INFO  [br.un.to.re.AuthResource] (executor-thread-4) Iniciando a autenticacao do joao123
+21-05-2024 23:18:17 INFO  [br.un.to.re.AuthResource] (executor-thread-4) Hash da senha gerado.
+21-05-2024 23:18:17 DEBUG [br.un.to.re.AuthResource] (executor-thread-4) UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==
+21-05-2024 23:18:17 INFO  [br.un.to.re.AuthResource] (executor-thread-4) Login e senha corretos.
+21-05-2024 23:18:17 INFO  [br.un.to.re.AuthResource] (executor-thread-4) Finalizando o processo de login.

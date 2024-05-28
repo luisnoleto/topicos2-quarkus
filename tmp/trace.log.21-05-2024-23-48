@@ -1,0 +1,11 @@
+21-05-2024 23:48:41 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Iniciando a autenticacao do joao123
+21-05-2024 23:48:41 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Hash da senha gerado.
+21-05-2024 23:48:41 DEBUG [br.un.to.re.AuthResource] (executor-thread-1) 3GK7mtcuST/Mhu8c4aoAmhnoY6lUhZC7Nd+LEgJgZIL5tjmbna7sPOih11HLJf7HluRe7ZRqEW+vZ+deCczURQ==
+21-05-2024 23:48:48 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Iniciando a autenticacao do joao1235
+21-05-2024 23:48:48 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Hash da senha gerado.
+21-05-2024 23:48:48 DEBUG [br.un.to.re.AuthResource] (executor-thread-1) UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==
+21-05-2024 23:48:58 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Iniciando a autenticacao do joao123
+21-05-2024 23:48:58 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Hash da senha gerado.
+21-05-2024 23:48:58 DEBUG [br.un.to.re.AuthResource] (executor-thread-1) UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==
+21-05-2024 23:48:58 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Login e senha corretos.
+21-05-2024 23:48:58 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Finalizando o processo de login.
