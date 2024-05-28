@@ -3,6 +3,8 @@ package br.unitins.topicos1.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.itempedido.ItemPedidoDTO;
 import br.unitins.topicos1.dto.pedido.PedidoDTO;
@@ -93,9 +95,11 @@ public class PedidoServiceImpl implements PedidoService {
     }
 
     @Override
-    public List<PedidoResponseDTO> findByAll() {
-    return pedidoRepository.listAll().stream()
-    .map(e -> PedidoResponseDTO.valueOf(e)).toList();
+    public List<PedidoResponseDTO> getAll(int page, int pageSize) {
+        List<Pedido> list = pedidoRepository.findAll().page(page, pageSize).list();
+
+        return list.stream()
+            .map(e -> PedidoResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
     @Override
@@ -104,4 +108,15 @@ public class PedidoServiceImpl implements PedidoService {
                 .map(e -> PedidoResponseDTO.valueOf(e)).toList();
     }
 
-}
+    @Override
+    public long count() {
+        return pedidoRepository.count();
+    }
+
+    // @Override
+    // public List<PedidoResponseDTO> findByUsuario(String login) {
+    //     Usuario usuario = usuarioRepository.findByLogin(login);
+    //     return pedidoRepository.findByUsuario(usuario).stream()
+    //             .map(e -> PedidoResponseDTO.valueOf(e)).toList();
+    // }
+}   

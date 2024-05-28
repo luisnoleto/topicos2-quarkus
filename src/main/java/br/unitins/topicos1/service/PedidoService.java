@@ -7,9 +7,15 @@ import br.unitins.topicos1.dto.pedido.PedidoResponseDTO;
 import jakarta.validation.Valid;
 
 public interface PedidoService {
-    
-    public PedidoResponseDTO insert(String login, @Valid PedidoDTO dto);
-    public PedidoResponseDTO findById(Long id);
-    public List<PedidoResponseDTO> findByAll();
-    public List<PedidoResponseDTO> findByAll(String login);
+
+    PedidoResponseDTO insert(String login, @Valid PedidoDTO dto);
+
+    PedidoResponseDTO findById(Long id);
+
+    List<PedidoResponseDTO> getAll(int page, int pageSize);
+
+    // Recurso extra
+    List<PedidoResponseDTO> findByAll(String login);
+
+    long count();
 }

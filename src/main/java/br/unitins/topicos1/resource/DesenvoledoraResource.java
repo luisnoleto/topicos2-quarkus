@@ -9,12 +9,14 @@ import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
+import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
+import jakarta.ws.rs.QueryParam;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.Status;
@@ -33,7 +35,7 @@ public class DesenvoledoraResource {
     @Path("/cadastro")
     public Response insert(DesenvolvedoraDTO dto) {
         LOG.info("Iniciando insert desenvolvedora");
-        DesenvolvedoraResponseDTO retorno = service.insert(dto);
+        DesenvolvedoraResponseDTO retorno = service.create(dto);
         // return Response.status(Status.CREATED).entity(retorno).build();
         return Response.status(201).entity(retorno).build();
     }
@@ -55,9 +57,11 @@ public class DesenvoledoraResource {
     }
 
     @GET
-    public Response findAll() {
-        LOG.debug("Encontrando Países.");
-        return Response.ok(service.findByAll()).build();
+    public Response findAll(
+        @QueryParam("page") @DefaultValue("0") int page,
+        @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+            
+        return Response.ok(service.getAll(page, pageSize)).build();
     }
 
     @GET
@@ -71,4 +75,11 @@ public class DesenvoledoraResource {
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }
+
+    @GET
+    @Path("/count")
+    public long count() {
+        return service.count();
+    }
+
 }

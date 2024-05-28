@@ -19,7 +19,7 @@ public interface RequisitoService {
 
     public List<RequisitoResponseDTO> findByRequisito(String desempenho);
 
-    public List<RequisitoResponseDTO> findByAll(int page, int pageSize);
+    public List<RequisitoResponseDTO> getAll(int page, int pageSize);
 
     public List<DesempenhoDTO> findAllDesempenhos();
 

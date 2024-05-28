@@ -81,7 +81,7 @@ public class RequisitoServiceImpl implements RequisitoService {
     }
 
     @Override
-    public List<RequisitoResponseDTO> findByAll(int page, int pageSize) {
+    public List<RequisitoResponseDTO> getAll(int page, int pageSize) {
         List<Requisito> requisitos = repository.findAll().page(page, pageSize).list();
 
         return requisitos.stream()

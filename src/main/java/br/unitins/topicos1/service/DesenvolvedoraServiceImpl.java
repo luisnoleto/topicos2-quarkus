@@ -1,6 +1,7 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraDTO;
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
@@ -25,7 +26,7 @@ public class DesenvolvedoraServiceImpl implements DesenvolvedoraService {
 
     @Override
     @Transactional
-    public DesenvolvedoraResponseDTO insert(@Valid DesenvolvedoraDTO dto) {
+    public DesenvolvedoraResponseDTO create(@Valid DesenvolvedoraDTO dto) {
         Desenvolvedora novoDesenvolvedora = new Desenvolvedora();
         novoDesenvolvedora.setNome(dto.nome());
         novoDesenvolvedora.setCnpj(dto.cnpj());
@@ -75,9 +76,18 @@ public class DesenvolvedoraServiceImpl implements DesenvolvedoraService {
     }
 
     @Override
-    public List<DesenvolvedoraResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> DesenvolvedoraResponseDTO.valueOf(e)).toList();
+    public List<DesenvolvedoraResponseDTO> getAll(int page, int pageSize) {
+        List<Desenvolvedora> desenvolvedoras = repository
+                                                        .findAll()
+                                                        .page(page,pageSize)
+                                                        .list();
+
+        return desenvolvedoras.stream()
+                .map(e -> DesenvolvedoraResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
+    @Override
+    public long count() {
+        return repository.count();
+    }
 }

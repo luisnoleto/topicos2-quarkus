@@ -1,6 +1,8 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.plataforma.PlataformaDTO;
 import br.unitins.topicos1.dto.plataforma.PlataformaResponseDTO;
@@ -73,9 +75,16 @@ public class PlataformaServiceImpl implements PlataformaService {
     }
 
     @Override
-    public List<PlataformaResponseDTO> findByAll() {
-        return repository.listAll().stream()
-                .map(e -> PlataformaResponseDTO.valueOf(e)).toList();
+    public List<PlataformaResponseDTO> getAll(int page, int pageSize) {
+        List<Plataforma> list = repository.findAll().page(page, pageSize).list();
+
+        return list.stream()
+                .map(e -> PlataformaResponseDTO.valueOf(e)).collect(Collectors.toList());
+    }
+
+    @Override
+    public long count() {
+        return repository.count();
     }
 
 }

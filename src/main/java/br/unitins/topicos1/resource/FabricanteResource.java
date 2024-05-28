@@ -59,8 +59,9 @@ public class FabricanteResource {
     public Response findAll(
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+                
         LOG.debug("Encontrando Fabricantes.");
-        return Response.ok(service.findByAll(page, pageSize)).build();
+        return Response.ok(service.getAll(page, pageSize)).build();
     }
 
     @GET

@@ -8,16 +8,21 @@ import jakarta.validation.Valid;
 
 public interface EstadoService {
 
-    public EstadoResponseDTO insert(@Valid EstadoDTO dto);
+    // recursos basicos
+    List<EstadoResponseDTO> getAll(int page, int pageSize);
 
-    public EstadoResponseDTO update(EstadoDTO dto, Long id);
+    EstadoResponseDTO findById(Long id);
 
-    public void delete(Long id);
+    EstadoResponseDTO create(@Valid EstadoDTO dto);
 
-    public EstadoResponseDTO findById(Long id);
+    EstadoResponseDTO update(Long id, EstadoDTO dto);
 
-    public List<EstadoResponseDTO> findByNome(String nome);
+    void delete(Long id);
 
-    public List<EstadoResponseDTO> findByAll(); 
-    
+    // recursos extras
+
+    List<EstadoResponseDTO> findByNome(String nome);
+
+    long count();
+
 }
