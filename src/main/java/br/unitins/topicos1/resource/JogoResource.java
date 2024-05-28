@@ -13,8 +13,6 @@ import br.unitins.topicos1.service.JogoFileService;
 import br.unitins.topicos1.service.JogoService;
 import br.unitins.topicos1.service.JwtService;
 
-import jakarta.annotation.security.RolesAllowed;
-import jakarta.enterprise.inject.Default;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;

@@ -7,7 +7,6 @@ import org.jboss.logging.Logger;
 import br.unitins.topicos1.dto.requisito.DesempenhoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoResponseDTO;
-import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.service.RequisitoService;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -61,8 +60,8 @@ public class RequisitoResource {
 
     @GET
     public Response findAll(
-        @QueryParam("page") @DefaultValue("0") int page, 
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize){
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
         LOG.debug("Encontrando Requisitos.");
 
         return Response.ok(service.getAll(page, pageSize)).build();
@@ -86,7 +85,7 @@ public class RequisitoResource {
         return service.count();
     }
 
-        @GET
+    @GET
     @Path("/perfis")
     public Response findAllDesempenhos() {
         List<DesempenhoDTO> desempenho = service.findAllDesempenhos();
