@@ -103,28 +103,26 @@ public class JogoResource {
     }
 
     @PATCH
-    @Path("/upload/imagem/{id}")
-    // @RolesAllowed({ "Admin" })
+    @Path("/image/upload")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
-    public Response salvarImagem(@MultipartForm JogoImageForm form, @PathParam("id") Long id) throws IOException {
-        LOG.info("Iniciando a inserção de imagem");
-        String nomeImagem;
-        nomeImagem = jogoFileService.salvar(form.getNomeImagem(), form.getImagem());
-        JogoResponseDTO jogoDTO = jogoService.findById(id);
-        jogoDTO = jogoService.updateNomeImagem(jogoDTO.id(), nomeImagem);
+    public Response salvarImagem(@MultipartForm JogoImageForm form) {
+        LOG.info("nome imagem: " + form.getNomeImagem());
+        System.out.println("nome imagem: " + form.getNomeImagem());
 
-        return Response.ok(jogoDTO).build();
+        if (form.getImagem() == null) {
+            return Response.status(Status.BAD_REQUEST).entity("Image data is missing").build();
+        }
+
+        jogoFileService.salvar(form.getId(), form.getNomeImagem(), form.getImagem());
+        return Response.noContent().build();
     }
 
     @GET
-    @Path("/download/imagem/jogo/{nomeImagem}")
-
-    // @RolesAllowed({"Admin" })
-
+    @Path("/image/download/{nomeImagem}")
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
-        LOG.info("Iniciando a inserção download imagem");
-        ResponseBuilder response = Response.ok(jogoFileService.obter(nomeImagem));
+        System.out.println(nomeImagem);
+        ResponseBuilder response = Response.ok(jogoFileService.download(nomeImagem));
         response.header("Content-Disposition", "attachment;filename=" + nomeImagem);
         return response.build();
     }
