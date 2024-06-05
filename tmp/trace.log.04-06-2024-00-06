@@ -1,0 +1,4 @@
+04-06-2024 00:06:05 DEBUG [br.un.to.re.GeneroResource] (executor-thread-2) Encontrando Países.
+04-06-2024 00:06:05 DEBUG [br.un.to.re.PlataformaResource] (executor-thread-1) Encontrando Países.
+04-06-2024 00:06:05 DEBUG [br.un.to.re.RequisitoResource] (executor-thread-2) Encontrando Requisitos.
+04-06-2024 00:06:41 DEBUG [br.un.to.re.FabricanteResource] (executor-thread-1) Encontrando Fabricantes.

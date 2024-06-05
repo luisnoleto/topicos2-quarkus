@@ -1,0 +1,10 @@
+21-05-2024 23:41:33 INFO  [io.quarkus] (Quarkus Main Thread) quarkus-topicos1-2023-2 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.2.4.Final) started in 3.138s. Listening on: http://localhost:8080
+21-05-2024 23:41:33 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+21-05-2024 23:41:33 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, narayana-jta, reactive-routes, resteasy, resteasy-jackson, resteasy-multipart, security, smallrye-context-propagation, smallrye-jwt, smallrye-openapi, swagger-ui, vertx]
+21-05-2024 23:41:33 INFO  [io.qu.de.de.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 5.182s 
+21-05-2024 23:41:33 INFO  [io.qu.de.de.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload took more than 4 seconds, you may want to enable instrumentation based reload (quarkus.live-reload.instrumentation=true). This allows small changes to take effect without restarting Quarkus.
+21-05-2024 23:41:51 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Iniciando a autenticacao do joao123
+21-05-2024 23:41:51 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Hash da senha gerado.
+21-05-2024 23:41:51 DEBUG [br.un.to.re.AuthResource] (executor-thread-1) UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==
+21-05-2024 23:41:51 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Login e senha corretos.
+21-05-2024 23:41:51 INFO  [br.un.to.re.AuthResource] (executor-thread-1) Finalizando o processo de login.

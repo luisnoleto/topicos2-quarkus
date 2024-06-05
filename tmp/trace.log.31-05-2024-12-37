@@ -1,0 +1,8 @@
+31-05-2024 12:37:03 INFO  [io.quarkus] (Quarkus Main Thread) quarkus-topicos1-2023-2 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.2.4.Final) started in 8.659s. Listening on: http://localhost:8080
+31-05-2024 12:37:03 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+31-05-2024 12:37:03 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, narayana-jta, reactive-routes, resteasy, resteasy-jackson, resteasy-multipart, security, smallrye-context-propagation, smallrye-jwt, smallrye-openapi, swagger-ui, vertx]
+31-05-2024 12:37:43 INFO  [br.un.to.re.AuthResource] (executor-thread-5) Iniciando a autenticacao do joao123
+31-05-2024 12:37:43 INFO  [br.un.to.re.AuthResource] (executor-thread-5) Hash da senha gerado.
+31-05-2024 12:37:43 DEBUG [br.un.to.re.AuthResource] (executor-thread-5) UTD+AWUM7xWFkmQV+0A76Z1At65WUe0yNG+HC/zdRauqPtv5XBnBJywgdfg+vb2oRK5ddlpXjLPFJu8M2zf3Bw==
+31-05-2024 12:37:43 INFO  [br.un.to.re.AuthResource] (executor-thread-5) Login e senha corretos.
+31-05-2024 12:37:43 INFO  [br.un.to.re.AuthResource] (executor-thread-5) Finalizando o processo de login.

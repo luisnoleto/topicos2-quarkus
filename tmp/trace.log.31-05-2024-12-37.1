@@ -1,0 +1,50 @@
+31-05-2024 12:24:52 INFO  [io.qu.de.de.IsolatedDevModeMain] (main) Attempting to start live reload endpoint to recover from previous Quarkus startup failure
+31-05-2024 12:24:53 ERROR [io.qu.ru.bo.StartupActionImpl] (Quarkus Main Thread) Error running Quarkus: java.lang.reflect.InvocationTargetException
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:568)
+	at io.quarkus.runner.bootstrap.StartupActionImpl$1.run(StartupActionImpl.java:104)
+	at java.base/java.lang.Thread.run(Thread.java:833)
+Caused by: java.lang.ExceptionInInitializerError
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at java.base/jdk.internal.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:77)
+	at java.base/jdk.internal.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.base/java.lang.reflect.Constructor.newInstanceWithCaller(Constructor.java:499)
+	at java.base/java.lang.reflect.Constructor.newInstance(Constructor.java:480)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:70)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:44)
+	at io.quarkus.runtime.Quarkus.run(Quarkus.java:124)
+	at io.quarkus.runner.GeneratedMain.main(Unknown Source)
+	... 6 more
+Caused by: java.lang.RuntimeException: Failed to start quarkus
+	at io.quarkus.runner.ApplicationImpl.<clinit>(Unknown Source)
+	... 15 more
+Caused by: java.lang.NoClassDefFoundError: br/unitins/topicos1/dto/usuario/PerfilDTO
+	at java.base/java.lang.Class.getDeclaredMethods0(Native Method)
+	at java.base/java.lang.Class.privateGetDeclaredMethods(Class.java:3402)
+	at java.base/java.lang.Class.getDeclaredMethods(Class.java:2504)
+	at org.hibernate.validator.internal.util.privilegedactions.GetDeclaredMethods.run(GetDeclaredMethods.java:30)
+	at org.hibernate.validator.internal.util.privilegedactions.GetDeclaredMethods.run(GetDeclaredMethods.java:17)
+	at org.hibernate.validator.internal.metadata.provider.AnnotationMetaDataProvider.run(AnnotationMetaDataProvider.java:602)
+	at org.hibernate.validator.internal.metadata.provider.AnnotationMetaDataProvider.getMethodMetaData(AnnotationMetaDataProvider.java:277)
+	at org.hibernate.validator.internal.metadata.provider.AnnotationMetaDataProvider.retrieveBeanConfiguration(AnnotationMetaDataProvider.java:131)
+	at org.hibernate.validator.internal.metadata.provider.AnnotationMetaDataProvider.getBeanConfiguration(AnnotationMetaDataProvider.java:121)
+	at org.hibernate.validator.internal.metadata.PredefinedScopeBeanMetaDataManager.getBeanConfigurationForHierarchy(PredefinedScopeBeanMetaDataManager.java:183)
+	at org.hibernate.validator.internal.metadata.PredefinedScopeBeanMetaDataManager.createBeanMetaData(PredefinedScopeBeanMetaDataManager.java:150)
+	at org.hibernate.validator.internal.metadata.PredefinedScopeBeanMetaDataManager.<init>(PredefinedScopeBeanMetaDataManager.java:100)
+	at org.hibernate.validator.internal.engine.PredefinedScopeValidatorFactoryImpl.<init>(PredefinedScopeValidatorFactoryImpl.java:206)
+	at org.hibernate.validator.PredefinedScopeHibernateValidator.buildValidatorFactory(PredefinedScopeHibernateValidator.java:42)
+	at org.hibernate.validator.internal.engine.AbstractConfigurationImpl.buildValidatorFactory(AbstractConfigurationImpl.java:435)
+	at io.quarkus.hibernate.validator.runtime.HibernateValidatorRecorder$2.created(HibernateValidatorRecorder.java:178)
+	at io.quarkus.arc.runtime.ArcRecorder.initBeanContainer(ArcRecorder.java:79)
+	at io.quarkus.deployment.steps.ArcProcessor$generateResources844392269.deploy_0(Unknown Source)
+	at io.quarkus.deployment.steps.ArcProcessor$generateResources844392269.deploy(Unknown Source)
+	... 16 more
+Caused by: java.lang.ClassNotFoundException: br.unitins.topicos1.dto.usuario.PerfilDTO
+	at io.quarkus.bootstrap.classloading.QuarkusClassLoader.loadClass(QuarkusClassLoader.java:489)
+	at io.quarkus.bootstrap.classloading.QuarkusClassLoader.loadClass(QuarkusClassLoader.java:466)
+	at io.quarkus.bootstrap.classloading.QuarkusClassLoader.loadClass(QuarkusClassLoader.java:516)
+	at io.quarkus.bootstrap.classloading.QuarkusClassLoader.loadClass(QuarkusClassLoader.java:466)
+	... 35 more
+
