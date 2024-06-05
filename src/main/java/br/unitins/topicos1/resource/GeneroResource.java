@@ -5,6 +5,7 @@ import org.jboss.logging.Logger;
 import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.service.GeneroService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -32,6 +33,7 @@ public class GeneroResource {
     private static final Logger LOG = Logger.getLogger(GeneroResource.class);
 
     @POST
+    @RolesAllowed({ "Admin" })
     public Response insert(GeneroDTO dto) {
         LOG.info("Iniciando insert genero");
         GeneroResponseDTO retorno = service.insert(dto);
@@ -42,6 +44,7 @@ public class GeneroResource {
     @PUT
     @Transactional
     @Path("/{id}")
+    @RolesAllowed({ "Admin" })
     public Response update(GeneroDTO dto, @PathParam("id") Long id) {
         service.update(dto, id);
         return Response.status(Status.NO_CONTENT).build();
@@ -50,12 +53,14 @@ public class GeneroResource {
     @DELETE
     @Transactional
     @Path("/{id}")
+    @RolesAllowed({ "Admin" })
     public Response delete(@PathParam("id") Long id) {
         service.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @GET
+    @RolesAllowed({ "Admin" })
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page, 
         @QueryParam("pageSize") @DefaultValue("100") int pageSize
@@ -66,12 +71,14 @@ public class GeneroResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({ "Admin" })
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
+    @RolesAllowed({ "Admin" })
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }
