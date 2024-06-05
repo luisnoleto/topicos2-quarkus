@@ -38,6 +38,7 @@ public class JogoFileService implements FileService {
         try {
             String novoNomeImagem = salvarImagem(imagem, nomeImagem);
             jogo.setNomeImagem(novoNomeImagem);
+            System.out.println("nome imagem: " + novoNomeImagem);
             // excluir a imagem antiga (trabalho pra quem????)
         } catch (IOException e) {
             e.printStackTrace();
@@ -48,8 +49,14 @@ public class JogoFileService implements FileService {
     private String salvarImagem(byte[] imagem, String nomeImagem) throws IOException {
         // verificando o tipo da imagem
 
-        File file = new File(nomeImagem);
+        // criando as pastas quando não existir
+        File diretorio = new File(PATH_USER);
+        if (!diretorio.exists())
+            diretorio.mkdirs();
+
+        File file = new File(diretorio, nomeImagem);
         file.createNewFile();
+
         String mimeType = Files.probeContentType(file.toPath());
         if (mimeType == null) {
             throw new IOException("Could not determine MIME type of the file.");
@@ -62,22 +69,12 @@ public class JogoFileService implements FileService {
         if (imagem.length > MAX_FILE_SIZE)
             throw new IOException("Arquivo muito grande.");
 
-        // criando as pastas quando não existir
-        File diretorio = new File(PATH_USER);
-        if (!diretorio.exists())
-            diretorio.mkdirs();
+        try (FileOutputStream fos = new FileOutputStream(file)) {
+            fos.write(imagem);
+            fos.flush();
+        }
 
-        // gerando o nome do arquivo
-        String nomeArquivo = UUID.randomUUID()
-                + "." + mimeType.substring(mimeType.lastIndexOf("/") + 1);
-
-        FileOutputStream fos = new FileOutputStream(file);
-        fos.write(imagem);
-        // garantindo o envio do ultimo lote de bytes
-        fos.flush();
-        fos.close();
-
-        return nomeArquivo;
+        return nomeImagem;
     }
 
     @Override

@@ -1,5 +1,10 @@
-05-06-2024 04:01:26 INFO  [br.un.to.re.JogoResource] (executor-thread-1) nome imagem: mine.png
-05-06-2024 04:01:31 ERROR [io.qu.ve.ht.ru.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /jogos/image/download/null failed, error id: 1b9e9d7d-566b-48ac-86d1-13487f17e9ae-109: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: C:\Users\luis_\quarkus\images\usuario\null (O sistema não pode encontrar o arquivo especificado)
+05-06-2024 01:44:17 INFO  [io.quarkus] (Quarkus Main Thread) quarkus-topicos1-2023-2 1.0.0-SNAPSHOT on JVM (powered by Quarkus 3.2.4.Final) started in 3.149s. Listening on: http://localhost:8080
+05-06-2024 01:44:17 INFO  [io.quarkus] (Quarkus Main Thread) Profile dev activated. Live Coding activated.
+05-06-2024 01:44:17 INFO  [io.quarkus] (Quarkus Main Thread) Installed features: [agroal, cdi, hibernate-orm, hibernate-orm-panache, hibernate-validator, jdbc-postgresql, narayana-jta, reactive-routes, resteasy, resteasy-jackson, resteasy-multipart, security, smallrye-context-propagation, smallrye-jwt, smallrye-openapi, swagger-ui, vertx]
+05-06-2024 01:44:17 INFO  [io.qu.de.de.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload total time: 4.842s 
+05-06-2024 01:44:17 INFO  [io.qu.de.de.RuntimeUpdatesProcessor] (Aesh InputStream Reader) Live reload took more than 4 seconds, you may want to enable instrumentation based reload (quarkus.live-reload.instrumentation=true). This allows small changes to take effect without restarting Quarkus.
+05-06-2024 01:44:35 INFO  [br.un.to.re.JogoResource] (executor-thread-1) nome imagem: mine.png
+05-06-2024 01:44:46 ERROR [io.qu.ve.ht.ru.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /jogos/image/download/null failed, error id: 1b9e9d7d-566b-48ac-86d1-13487f17e9ae-3: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: C:\Users\luis_\quarkus\images\usuario\null (O sistema não pode encontrar o arquivo especificado)
 	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:357)
 	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:205)
 	at org.jboss.resteasy.core.SynchronousDispatcher.writeResponse(SynchronousDispatcher.java:537)

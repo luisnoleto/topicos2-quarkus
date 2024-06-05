@@ -1,5 +1,4 @@
-05-06-2024 04:01:26 INFO  [br.un.to.re.JogoResource] (executor-thread-1) nome imagem: mine.png
-05-06-2024 04:01:31 ERROR [io.qu.ve.ht.ru.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /jogos/image/download/null failed, error id: 1b9e9d7d-566b-48ac-86d1-13487f17e9ae-109: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: C:\Users\luis_\quarkus\images\usuario\null (O sistema não pode encontrar o arquivo especificado)
+05-06-2024 01:42:19 ERROR [io.qu.ve.ht.ru.QuarkusErrorHandler] (executor-thread-1) HTTP Request to /jogos/image/download/teste.jpg failed, error id: 1b9e9d7d-566b-48ac-86d1-13487f17e9ae-2: org.jboss.resteasy.spi.UnhandledException: java.io.FileNotFoundException: C:\Users\luis_\quarkus\images\usuario\teste.jpg (O sistema não pode encontrar o arquivo especificado)
 	at org.jboss.resteasy.core.ExceptionHandler.handleException(ExceptionHandler.java:357)
 	at org.jboss.resteasy.core.SynchronousDispatcher.writeException(SynchronousDispatcher.java:205)
 	at org.jboss.resteasy.core.SynchronousDispatcher.writeResponse(SynchronousDispatcher.java:537)
@@ -19,7 +18,7 @@
 	at org.jboss.threads.ThreadLocalResettingRunnable.run(ThreadLocalResettingRunnable.java:29)
 	at io.netty.util.concurrent.FastThreadLocalRunnable.run(FastThreadLocalRunnable.java:30)
 	at java.base/java.lang.Thread.run(Thread.java:833)
-Caused by: java.io.FileNotFoundException: C:\Users\luis_\quarkus\images\usuario\null (O sistema não pode encontrar o arquivo especificado)
+Caused by: java.io.FileNotFoundException: C:\Users\luis_\quarkus\images\usuario\teste.jpg (O sistema não pode encontrar o arquivo especificado)
 	at java.base/java.io.FileInputStream.open0(Native Method)
 	at java.base/java.io.FileInputStream.open(FileInputStream.java:216)
 	at java.base/java.io.FileInputStream.<init>(FileInputStream.java:157)
