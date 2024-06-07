@@ -1,0 +1,8 @@
+07-06-2024 02:18:02 DEBUG [br.un.to.re.GeneroResource] (executor-thread-7) Encontrando Países.
+07-06-2024 02:18:03 DEBUG [br.un.to.re.FabricanteResource] (executor-thread-7) Encontrando Fabricantes.
+07-06-2024 02:18:05 DEBUG [br.un.to.re.GeneroResource] (executor-thread-7) Encontrando Países.
+07-06-2024 02:18:06 DEBUG [br.un.to.re.PaisResource] (executor-thread-8) Encontrando Países.
+07-06-2024 02:18:07 DEBUG [br.un.to.re.PlataformaResource] (executor-thread-8) Encontrando Países.
+07-06-2024 02:18:09 DEBUG [br.un.to.re.FabricanteResource] (executor-thread-7) Encontrando Fabricantes.
+07-06-2024 02:18:12 DEBUG [br.un.to.re.FabricanteResource] (executor-thread-7) Encontrando Fabricantes.
+07-06-2024 02:18:13 DEBUG [br.un.to.re.FabricanteResource] (executor-thread-8) Encontrando Fabricantes.

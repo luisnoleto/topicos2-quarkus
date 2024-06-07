@@ -1,0 +1,4 @@
+07-06-2024 06:23:20 INFO  [br.un.to.re.PedidoResource] (executor-thread-1) Iniciando busca de Pedidos
+07-06-2024 06:23:42 INFO  [br.un.to.re.PedidoResource] (executor-thread-1) Iniciando inserção de Pedido
+07-06-2024 06:23:42 INFO  [br.un.to.re.PedidoResource] (executor-thread-1) usuario logado joao123
+07-06-2024 06:23:42 INFO  [br.un.to.re.PedidoResource] (executor-thread-1) Finalizando o processo de pedido.

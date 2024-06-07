@@ -1,0 +1,6 @@
+07-06-2024 01:41:08 INFO  [br.un.to.re.JogoResource] (executor-thread-3) Iniciando  a busca pelo jogo 5
+07-06-2024 01:41:08 INFO  [br.un.to.re.JogoResource] (executor-thread-3) Iniciando  a busca pelo jogo 4
+07-06-2024 01:41:17 INFO  [br.un.to.re.JogoResource] (executor-thread-3) Iniciando  a busca pelo jogo 4
+07-06-2024 01:41:17 INFO  [br.un.to.re.JogoResource] (executor-thread-4) Iniciando  a busca pelo jogo 5
+07-06-2024 01:41:24 INFO  [br.un.to.re.JogoResource] (executor-thread-4) Iniciando  a busca pelo jogo 4
+07-06-2024 01:41:24 INFO  [br.un.to.re.JogoResource] (executor-thread-3) Iniciando  a busca pelo jogo 5
