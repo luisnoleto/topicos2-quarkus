@@ -8,6 +8,7 @@ import br.unitins.topicos1.dto.requisito.DesempenhoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoDTO;
 import br.unitins.topicos1.dto.requisito.RequisitoResponseDTO;
 import br.unitins.topicos1.service.RequisitoService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
@@ -45,6 +46,7 @@ public class RequisitoResource {
     @PUT
     @Transactional
     @Path("/{id}")
+    @RolesAllowed({ "Admin" })
     public Response update(RequisitoDTO dto, @PathParam("id") Long id) {
         service.update(dto, id);
         return Response.status(Status.NO_CONTENT).build();
@@ -53,12 +55,14 @@ public class RequisitoResource {
     @DELETE
     @Transactional
     @Path("/{id}")
+    @RolesAllowed({ "Admin" })
     public Response delete(@PathParam("id") Long id) {
         service.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @GET
+    @RolesAllowed({ "Admin" })
     public Response findAll(
             @QueryParam("page") @DefaultValue("0") int page,
             @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
@@ -69,12 +73,14 @@ public class RequisitoResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({ "Admin" })
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
 
     @GET
     @Path("/search/requisito/{requisito}")
+    @RolesAllowed({ "Admin" })
     public Response findByNome(@PathParam("requisito") String requisito) {
         return Response.ok(service.findByRequisito(requisito)).build();
     }

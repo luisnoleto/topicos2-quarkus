@@ -24,4 +24,6 @@ public interface DesenvolvedoraService {
 
     long count();
 
+    DesenvolvedoraResponseDTO alterarSituacao(Long id);
+
 }

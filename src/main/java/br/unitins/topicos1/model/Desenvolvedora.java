@@ -10,6 +10,7 @@ public class Desenvolvedora extends DefaultEntity {
 
     private String nome;
     private String cnpj;
+    private boolean ativo;
 
     @ManyToOne
     @JoinColumn(name = "id_pais")
@@ -38,4 +39,15 @@ public class Desenvolvedora extends DefaultEntity {
     public void setPais(@NotNull(message = "O campo pais não pode ser nulo") Pais pais) {
         this.pais = pais;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    
+
 }
