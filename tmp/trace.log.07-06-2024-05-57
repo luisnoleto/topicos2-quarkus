@@ -1,0 +1,7 @@
+07-06-2024 05:57:02 INFO  [br.un.to.re.UsuarioResource] (executor-thread-11) Procurando o Usuario 2
+07-06-2024 05:57:08 INFO  [br.un.to.re.UsuarioResource] (executor-thread-11) Procurando o Usuario 2
+07-06-2024 05:57:12 INFO  [br.un.to.re.UsuarioResource] (executor-thread-11) Procurando o Usuario 2
+07-06-2024 05:57:27 DEBUG [br.un.to.re.PaisResource] (executor-thread-11) Encontrando Países.
+07-06-2024 05:57:31 INFO  [br.un.to.re.UsuarioResource] (executor-thread-11) Procurando o Usuario 2
+07-06-2024 05:57:51 INFO  [br.un.to.re.JogoResource] (executor-thread-11) Iniciando  a busca pelo jogo 1
+07-06-2024 05:57:54 INFO  [br.un.to.re.JogoResource] (executor-thread-11) Iniciando  a busca pelo jogo 1

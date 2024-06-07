@@ -4,26 +4,6 @@
 -- insert into myentity (id, field) values(2, 'field-2');
 -- insert into myentity (id, field) values(3, 'field-3');
 -- alter sequence myentity_seq restart with 4;
-INSERT INTO Usuario (
-    nome,
-    login,
-    senha,
-    email,
-    cpf,
-    perfil,
-    dataNascimento,
-    nomeImage
-  )
-VALUES (
-    'Test User',
-    'testuser',
-    'password',
-    'testuser@example.com',
-    '123.456.789-00',
-    1,
-    '2022-01-01',
-    'image.jpg'
-  );
 INSERT INTO usuario (nome, login, senha, email, perfil, cpf)
 VALUES (
     'Joao Silva',
@@ -572,34 +552,25 @@ VALUES ('Itália', 'IT');
 /* ---------------------------Insert de desenvolvedora---------------------------- */
 -- Primeiro insert
 INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
-VALUES ('Desenvolvedora 1', '11111111111111', 1, true);
--- Segundo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 2', '22222222222222', 2, false);
--- Terceiro insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 3', '33333333333333', 3 , true);
--- Quarto insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 4', '44444444444444', 4 , false);
--- Quinto insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 5', '55555555555555', 5 , true);
--- Sexto insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 6', '66666666666666', 6 , false);
--- Sétimo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 7', '77777777777777', 7 , true);
--- Oitavo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 8', '88888888888888', 8 , false );
--- Nono insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 9', '99999999999999', 9 , true);
--- Décimo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
-VALUES ('Desenvolvedora 10', '10101010101010', 10 , false);
+VALUES ('Xbox Game Studios', '12345678000195', 1, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Bethesda Softworks', '23456789000188', 2, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Rockstar Games', '34567890000160', 3, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Electronic Arts', '45678901000142', 4, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Ubisoft', '56789012000123', 5, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('CD Projekt Red', '67890123000104', 6, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Valve Corporation', '78901234000185', 7, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Capcom', '89012345000166', 8, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Square Enix', '90123456000147', 9, true);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Naughty Dog', '01234567000128', 10, true);
 /* ---------------------------Insert de jogo---------------------------- */
 -- Primeiro insert (Classificação: Livre)
 INSERT INTO jogo (
@@ -719,7 +690,7 @@ INSERT INTO jogo (
   )
 VALUES (
     'GTA V',
-    'Jogo de Explorar e Caos',
+    'Jogo de Exploração e História',
     69.99,
     70,
     'DEZOITO_ANOS',
@@ -739,16 +710,15 @@ INSERT INTO jogo (
     id_requisito
   )
 VALUES (
-    'Jogo 7',
-    'Descrição do Jogo 7',
-    59.99,
-    60,
+    'Portal 2',
+    'Resolva puzzles com portais.',
+    19.99,
+    20,
     'LIVRE',
     7,
     7,
     7
   );
--- Oitavo insert (Classificação: 10 anos)
 INSERT INTO jogo (
     nome,
     descricao,
@@ -760,16 +730,15 @@ INSERT INTO jogo (
     id_requisito
   )
 VALUES (
-    'Jogo 8',
-    'Descrição do Jogo 8',
-    89.99,
-    90,
+    'Monster Hunter: World',
+    'Mate Montros em um dinamico mundo.',
+    59.99,
+    60,
     'DEZ_ANOS',
     8,
     8,
     8
   );
--- Nono insert (Classificação: 12 anos)
 INSERT INTO jogo (
     nome,
     descricao,
@@ -781,16 +750,15 @@ INSERT INTO jogo (
     id_requisito
   )
 VALUES (
-    'Jogo 9',
-    'Descrição do Jogo 9',
-    19.99,
-    20,
+    'Final Fantasy XV',
+    'RPG Ação e Aventura.',
+    89.99,
+    90,
     'DOZE_ANOS',
     9,
     9,
     9
   );
--- Décimo insert (Classificação: 14 anos)
 INSERT INTO jogo (
     nome,
     descricao,
@@ -802,8 +770,8 @@ INSERT INTO jogo (
     id_requisito
   )
 VALUES (
-    'Jogo 10',
-    'Descrição do Jogo 10',
+    'Uncharted 4',
+    'Jogo de Ação e Aventura.',
     109.99,
     110,
     'QUATORZE_ANOS',
