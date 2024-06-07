@@ -102,9 +102,7 @@ public class JogoResource {
         return Response.ok(jogoService.findByNome(nome)).build();
     }
 
-
-
-@PATCH
+    @PATCH
     @Path("/image/upload")
     @RolesAllowed({ "Admin" })
     @Consumes(MediaType.MULTIPART_FORM_DATA)
@@ -122,7 +120,6 @@ public class JogoResource {
 
     @GET
     @Path("/image/download/{nomeImagem}")
-    @RolesAllowed({ "Admin" })
     @Produces(MediaType.APPLICATION_OCTET_STREAM)
     public Response download(@PathParam("nomeImagem") String nomeImagem) {
         System.out.println(nomeImagem);

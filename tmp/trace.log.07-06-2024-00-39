@@ -1,0 +1,16 @@
+07-06-2024 00:39:36 INFO  [br.un.to.re.UsuarioResource] (executor-thread-4) Procurando o Usuario 2
+07-06-2024 00:39:39 INFO  [br.un.to.re.JogoResource] (executor-thread-4) Iniciando  a busca pelo jogo 7
+07-06-2024 00:39:39 INFO  [br.un.to.re.JogoResource] (executor-thread-6) Iniciando  a busca pelo jogo 9
+07-06-2024 00:39:39 INFO  [br.un.to.re.JogoResource] (executor-thread-4) Iniciando  a busca pelo jogo 8
+07-06-2024 00:39:39 INFO  [br.un.to.re.JogoResource] (executor-thread-6) Iniciando  a busca pelo jogo 10
+07-06-2024 00:39:39 INFO  [br.un.to.re.JogoResource] (executor-thread-7) Iniciando  a busca pelo jogo 1
+07-06-2024 00:39:39 INFO  [br.un.to.re.JogoResource] (executor-thread-8) Iniciando  a busca pelo jogo 6
+07-06-2024 00:39:39 INFO  [br.un.to.re.JogoResource] (executor-thread-7) Iniciando  a busca pelo jogo 3
+07-06-2024 00:39:40 INFO  [br.un.to.re.UsuarioResource] (executor-thread-7) Procurando o Usuario 2
+07-06-2024 00:39:42 INFO  [br.un.to.re.JogoResource] (executor-thread-7) Iniciando  a busca pelo jogo 7
+07-06-2024 00:39:42 INFO  [br.un.to.re.JogoResource] (executor-thread-8) Iniciando  a busca pelo jogo 1
+07-06-2024 00:39:42 INFO  [br.un.to.re.JogoResource] (executor-thread-6) Iniciando  a busca pelo jogo 9
+07-06-2024 00:39:42 INFO  [br.un.to.re.JogoResource] (executor-thread-4) Iniciando  a busca pelo jogo 6
+07-06-2024 00:39:42 INFO  [br.un.to.re.JogoResource] (executor-thread-7) Iniciando  a busca pelo jogo 8
+07-06-2024 00:39:42 INFO  [br.un.to.re.JogoResource] (executor-thread-4) Iniciando  a busca pelo jogo 10
+07-06-2024 00:39:42 INFO  [br.un.to.re.JogoResource] (executor-thread-4) Iniciando  a busca pelo jogo 3
