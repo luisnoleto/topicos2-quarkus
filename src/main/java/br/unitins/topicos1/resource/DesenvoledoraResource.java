@@ -5,12 +5,14 @@ import org.jboss.logging.Logger;
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraDTO;
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
 import br.unitins.topicos1.service.DesenvolvedoraService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -33,6 +35,7 @@ public class DesenvoledoraResource {
 
     @POST
     @Path("/cadastro")
+    @RolesAllowed("Admin")
     public Response insert(DesenvolvedoraDTO dto) {
         LOG.info("Iniciando insert desenvolvedora");
         DesenvolvedoraResponseDTO retorno = service.create(dto);
@@ -43,6 +46,7 @@ public class DesenvoledoraResource {
     @PUT
     @Transactional
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response update(DesenvolvedoraDTO dto, @PathParam("id") Long id) {
         service.update(dto, id);
         return Response.status(Status.NO_CONTENT).build();
@@ -51,12 +55,14 @@ public class DesenvoledoraResource {
     @DELETE
     @Transactional
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response delete(@PathParam("id") Long id) {
         service.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @GET
+    @RolesAllowed("Admin")
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
@@ -71,15 +77,25 @@ public class DesenvoledoraResource {
     }
 
     @GET
+    @RolesAllowed("Admin")
     @Path("/search/nome/{nome}")
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }
 
     @GET
+    @RolesAllowed("Admin")
     @Path("/count")
     public long count() {
         return service.count();
+    }
+
+    @PATCH
+    @Transactional
+    @Path("/alterarSituacao/{id}")
+    @RolesAllowed("Admin")
+    public Response alterarSituacao(@PathParam("id") Long id) {
+        return Response.ok(service.alterarSituacao(id)).build();
     }
 
 }

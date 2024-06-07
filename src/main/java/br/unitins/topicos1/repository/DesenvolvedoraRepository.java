@@ -11,4 +11,5 @@ public class DesenvolvedoraRepository implements PanacheRepository<Desenvolvedor
     public List<Desenvolvedora> findByNome(String nome) {
         return find("UPPER(nome) LIKE UPPER(?1) ", "%" + nome + "%").list();
     }
+
 }

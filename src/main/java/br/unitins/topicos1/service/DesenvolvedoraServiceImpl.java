@@ -90,4 +90,18 @@ public class DesenvolvedoraServiceImpl implements DesenvolvedoraService {
     public long count() {
         return repository.count();
     }
+
+    @Override
+    public DesenvolvedoraResponseDTO alterarSituacao(Long id) {
+        Desenvolvedora desenvolvedora = repository.findById(id);
+
+        if (desenvolvedora.isAtivo() == true) {
+            desenvolvedora.setAtivo(false);
+        } else {
+            desenvolvedora.setAtivo(true);
+
+        }
+
+        return DesenvolvedoraResponseDTO.valueOf(desenvolvedora);
+    }
 }

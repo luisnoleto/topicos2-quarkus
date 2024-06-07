@@ -571,35 +571,35 @@ INSERT INTO pais (nome, sigla)
 VALUES ('Itália', 'IT');
 /* ---------------------------Insert de desenvolvedora---------------------------- */
 -- Primeiro insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 1', '11111111111111', 1);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais, ativo)
+VALUES ('Desenvolvedora 1', '11111111111111', 1, true);
 -- Segundo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 2', '22222222222222', 2);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 2', '22222222222222', 2, false);
 -- Terceiro insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 3', '33333333333333', 3);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 3', '33333333333333', 3 , true);
 -- Quarto insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 4', '44444444444444', 4);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 4', '44444444444444', 4 , false);
 -- Quinto insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 5', '55555555555555', 5);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 5', '55555555555555', 5 , true);
 -- Sexto insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 6', '66666666666666', 6);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 6', '66666666666666', 6 , false);
 -- Sétimo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 7', '77777777777777', 7);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 7', '77777777777777', 7 , true);
 -- Oitavo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 8', '88888888888888', 8);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 8', '88888888888888', 8 , false );
 -- Nono insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 9', '99999999999999', 9);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 9', '99999999999999', 9 , true);
 -- Décimo insert
-INSERT INTO desenvolvedora (nome, cnpj, id_pais)
-VALUES ('Desenvolvedora 10', '10101010101010', 10);
+INSERT INTO desenvolvedora (nome, cnpj, id_pais , ativo)
+VALUES ('Desenvolvedora 10', '10101010101010', 10 , false);
 /* ---------------------------Insert de jogo---------------------------- */
 -- Primeiro insert (Classificação: Livre)
 INSERT INTO jogo (
