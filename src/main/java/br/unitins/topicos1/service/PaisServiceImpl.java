@@ -4,8 +4,10 @@ import java.util.List;
 import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
+import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
 import br.unitins.topicos1.dto.pais.PaisDTO;
 import br.unitins.topicos1.dto.pais.PaisResponseDTO;
+import br.unitins.topicos1.model.Desenvolvedora;
 import br.unitins.topicos1.model.Pais;
 import br.unitins.topicos1.repository.PaisRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -75,5 +77,19 @@ public class PaisServiceImpl implements PaisService {
     @Override
     public long count() {
         return repository.count();
+    }
+
+     @Override
+    public PaisResponseDTO alterarSituacao(Long id) {
+        Pais pais = repository.findById(id);
+
+        if (pais.isAtivo() == true) {
+            pais.setAtivo(false);
+        } else {
+            pais.setAtivo(true);
+
+        }
+
+        return PaisResponseDTO.valueOf(pais);
     }
 }   

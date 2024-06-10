@@ -23,4 +23,6 @@ public interface FabricanteService {
     List<FabricanteResponseDTO> findByNome(String nome);
 
     long count();
+
+    FabricanteResponseDTO alterarSituacao(Long id);
 }

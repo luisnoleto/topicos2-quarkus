@@ -4,7 +4,8 @@ package br.unitins.topicos1.dto.plataforma;
 public record PlataformaDTO(
     
     String nome,
-    long fabricante
+    long fabricante,
+    boolean ativo
 
 ) {
 }

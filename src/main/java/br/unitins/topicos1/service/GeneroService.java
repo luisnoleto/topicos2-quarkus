@@ -21,4 +21,6 @@ public interface GeneroService {
     public List<GeneroResponseDTO> findByAll(int page, int pageSize);
 
     public long count();
+
+    GeneroResponseDTO alterarSituacao(Long id);
 }

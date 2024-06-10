@@ -3,8 +3,10 @@ package br.unitins.topicos1.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
 import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
+import br.unitins.topicos1.model.Desenvolvedora;
 import br.unitins.topicos1.model.Genero;
 import br.unitins.topicos1.repository.GeneroRepository;
 import br.unitins.topicos1.repository.PaisRepository;
@@ -78,6 +80,20 @@ public class GeneroServiceImpl implements GeneroService {
     @Override
     public long count() {
         return repository.count();
+    }
+
+     @Override
+    public GeneroResponseDTO alterarSituacao(Long id) {
+        Genero genero = repository.findById(id);
+
+        if (genero.isAtivo() == true) {
+            genero.setAtivo(false);
+        } else {
+            genero.setAtivo(true);
+
+        }
+
+        return GeneroResponseDTO.valueOf(genero);
     }
 
 }

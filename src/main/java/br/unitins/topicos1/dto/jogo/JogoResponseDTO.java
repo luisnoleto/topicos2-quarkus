@@ -5,7 +5,6 @@ import java.util.List;
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
 import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.dto.plataforma.PlataformaResponseDTO;
-import br.unitins.topicos1.dto.requisito.RequisitoResponseDTO;
 import br.unitins.topicos1.model.Classificacao;
 import br.unitins.topicos1.model.Jogo;
 
@@ -16,9 +15,14 @@ public record JogoResponseDTO(
         String descricao,
         Double preco,
         int estoque,
+        String processador,
+        String memoria,
+        String placaVideo,
+        String sistemaOperacional,
+        String armazenamento,
+        boolean ativo,
         List<GeneroResponseDTO> listaGenero,
         PlataformaResponseDTO plataforma,
-        RequisitoResponseDTO requisito,
         Classificacao classificacao,
         DesenvolvedoraResponseDTO desenvolvedora,
 
@@ -31,10 +35,15 @@ public record JogoResponseDTO(
                 jogo.getDescricao(),
                 jogo.getPreco(),
                 jogo.getEstoque(),
+                jogo.getProcessador(),
+                jogo.getMemoria(),
+                jogo.getPlacaVideo(),
+                jogo.getSistemaOperacional(),
+                jogo.getArmazenamento(),
+                jogo.isAtivo(),
                 jogo.getListaGeneros().stream()
                         .map(t -> GeneroResponseDTO.valueOf(t)).toList(),
                 PlataformaResponseDTO.valueOf(jogo.getPlataforma()),
-                RequisitoResponseDTO.valueOf(jogo.getRequisito()),
                 jogo.getClassificacao(),
                 DesenvolvedoraResponseDTO.valueOf(jogo.getDesenvolvedora()),
 

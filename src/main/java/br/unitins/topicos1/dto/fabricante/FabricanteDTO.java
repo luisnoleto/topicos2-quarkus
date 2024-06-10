@@ -4,7 +4,9 @@ import jakarta.validation.constraints.NotEmpty;
 
 public record FabricanteDTO(
         @NotEmpty(message = "O campo nome não pode ser nulo.")
-        String nome
+        String nome,
+
+        boolean ativo
 
 ) {
 

@@ -26,4 +26,6 @@ public interface JogoService {
     JogoResponseDTO updateNomeImagem(Long id, String nomeImagem);
 
     long count();
+
+    JogoResponseDTO alterarSituacao(Long id);
 }

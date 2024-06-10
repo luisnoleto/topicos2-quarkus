@@ -22,4 +22,5 @@ public interface PaisService {
 
     long count();
 
+    PaisResponseDTO alterarSituacao(Long id);
 }

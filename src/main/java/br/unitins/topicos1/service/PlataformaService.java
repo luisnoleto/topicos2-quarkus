@@ -22,4 +22,6 @@ public interface PlataformaService {
 
     long count();
 
+    PlataformaResponseDTO alterarSituacao(Long id);
+
 }
