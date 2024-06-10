@@ -1,4 +1,4 @@
-#GL GAMES - QUARKUS
+# GL GAMES - QUARKUS
 
 Este repositório contem o back-end da aplicação desenvolvida em Angular, como projeto na disciplina de Tópicos em Programação II, Na Universidade Estadual do Tocantins - UNITINS.
 
