@@ -1,6 +1,7 @@
 # GL GAMES - QUARKUS
 
 Este repositório contem o back-end da aplicação desenvolvida em Angular, como projeto na disciplina de Tópicos em Programação II, Na Universidade Estadual do Tocantins - UNITINS.
+A aplicação é o modelo de uma loja virtual vendedora de jogos em mídia fisica.
 
 
 
@@ -21,7 +22,7 @@ Este repositório contem o back-end da aplicação desenvolvida em Angular, como
 
 
 
-#README QUARKUS
+# README QUARKUS
 # quarkus-topicos1-2023-2
 
 This project uses Quarkus, the Supersonic Subatomic Java Framework.
