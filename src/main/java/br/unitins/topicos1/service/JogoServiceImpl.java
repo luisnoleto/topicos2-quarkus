@@ -3,6 +3,8 @@ package br.unitins.topicos1.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
+
+import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 import br.unitins.topicos1.model.Classificacao;
@@ -10,12 +12,10 @@ import br.unitins.topicos1.model.Desenvolvedora;
 import br.unitins.topicos1.model.Genero;
 import br.unitins.topicos1.model.Jogo;
 import br.unitins.topicos1.model.Plataforma;
-import br.unitins.topicos1.model.Requisito;
 import br.unitins.topicos1.repository.DesenvolvedoraRepository;
 import br.unitins.topicos1.repository.GeneroRepository;
 import br.unitins.topicos1.repository.JogoRepository;
 import br.unitins.topicos1.repository.PlataformaRepository;
-import br.unitins.topicos1.repository.RequisitoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
@@ -28,8 +28,7 @@ public class JogoServiceImpl implements JogoService {
     JogoRepository repository;
     @Inject
     PlataformaRepository plataformaRepository;
-    @Inject
-    RequisitoRepository requisitoRepository;
+
     @Inject
     GeneroRepository generoRepository;
     @Inject
@@ -41,7 +40,6 @@ public class JogoServiceImpl implements JogoService {
     public JogoResponseDTO create(JogoDTO dto) {
         Jogo novoJogo = new Jogo();
         Plataforma plataforma = plataformaRepository.findById(dto.idPlataforma());
-        Requisito requisito = requisitoRepository.findById(dto.idRequisito());
         Desenvolvedora desenvolvedora = desenvolvedoraRepository.findById(dto.idDesenvolvedora());
 
 
@@ -52,7 +50,6 @@ public class JogoServiceImpl implements JogoService {
 
         novoJogo.setDesenvolvedora(desenvolvedora);
         novoJogo.setPlataforma(plataforma);
-        novoJogo.setRequisito(requisito);
 
         novoJogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
@@ -76,7 +73,6 @@ public class JogoServiceImpl implements JogoService {
 
         Jogo jogo = repository.findById(id);
         Plataforma plataforma = plataformaRepository.findById(dto.idPlataforma());
-        Requisito requisito = requisitoRepository.findById(dto.idRequisito());
         Desenvolvedora desenvolvedora = desenvolvedoraRepository.findById(dto.idDesenvolvedora());
 
         if (jogo != null) {
@@ -89,7 +85,6 @@ public class JogoServiceImpl implements JogoService {
             
             jogo.setDesenvolvedora(desenvolvedora);
             jogo.setPlataforma(plataforma);
-            jogo.setRequisito(requisito);
 
             jogo.setClassificacao(Classificacao.ValueOf(dto.classificacao()));
 
@@ -159,6 +154,20 @@ public class JogoServiceImpl implements JogoService {
     @Override
     public long count() {
         return repository.count();
+    }
+
+     @Override
+    public JogoResponseDTO alterarSituacao(Long id) {
+        Jogo jogo = repository.findById(id);
+
+        if (jogo.isAtivo() == true) {
+            jogo.setAtivo(false);
+        } else {
+            jogo.setAtivo(true);
+
+        }
+
+        return JogoResponseDTO.valueOf(jogo);
     }
 
 

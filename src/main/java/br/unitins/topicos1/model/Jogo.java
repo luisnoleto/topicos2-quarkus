@@ -19,6 +19,13 @@ public class Jogo extends DefaultEntity {
     private String descricao;
     private Double preco;
     private int estoque;
+    private String processador;
+    private String memoria;
+    private String placaVideo;
+    private String sistemaOperacional;
+    private String armazenamento;
+
+    private boolean ativo;
 
     @Enumerated(EnumType.STRING)
     private Classificacao classificacao;
@@ -30,10 +37,6 @@ public class Jogo extends DefaultEntity {
     @ManyToOne
     @JoinColumn(name = "id_plataforma")
     private Plataforma plataforma;
-    
-    @ManyToOne
-    @JoinColumn(name = "id_requisito")
-    private Requisito requisito;
     
     private String nomeImagem;
 
@@ -97,14 +100,6 @@ public class Jogo extends DefaultEntity {
         this.plataforma = plataforma;
     }
 
-    public Requisito getRequisito() {
-        return requisito;
-    }
-
-    public void setRequisito(Requisito requisito) {
-        this.requisito = requisito;
-    }
-
     public List<Genero> getListaGeneros() {
         return listaGeneros;
     }
@@ -120,6 +115,57 @@ public class Jogo extends DefaultEntity {
     public void setDesenvolvedora(Desenvolvedora desenvolvedora) {
         this.desenvolvedora = desenvolvedora;
     }
+
+    public String getProcessador() {
+        return processador;
+    }
+
+    public void setProcessador(String processador) {
+        this.processador = processador;
+    }
+
+    public String getMemoria() {
+        return memoria;
+    }
+
+    public void setMemoria(String memoria) {
+        this.memoria = memoria;
+    }
+
+    public String getPlacaVideo() {
+        return placaVideo;
+    }
+
+    public void setPlacaVideo(String placaVideo) {
+        this.placaVideo = placaVideo;
+    }
+
+    public String getSistemaOperacional() {
+        return sistemaOperacional;
+    }
+
+    public void setSistemaOperacional(String sistemaOperacional) {
+        this.sistemaOperacional = sistemaOperacional;
+    }
+
+    public String getArmazenamento() {
+        return armazenamento;
+    }
+
+    public void setArmazenamento(String armazenamento) {
+        this.armazenamento = armazenamento;
+    }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    
+    
     
     
 }

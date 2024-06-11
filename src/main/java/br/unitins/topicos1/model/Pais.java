@@ -7,6 +7,7 @@ public class Pais extends DefaultEntity {
 
     private String nome;
     private String sigla;
+    private boolean ativo;
 
     public String getNome() {
         return nome;
@@ -24,4 +25,12 @@ public class Pais extends DefaultEntity {
         this.sigla = sigla;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+    
 }

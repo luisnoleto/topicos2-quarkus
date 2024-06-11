@@ -16,12 +16,26 @@ public record JogoDTO(
     Double preco,  
     @NotNull(message = "O campo nome não pode ser nulo.")
     int estoque,
+
+    @NotBlank(message = "O campo nome não pode ser nulo.")
+    String processador,
+
+    @NotBlank(message = "O campo nome não pode ser nulo.")
+    String memoria,
+
+    @NotBlank(message = "O campo nome não pode ser nulo.")
+    String placaVideo,
+
+    @NotBlank(message = "O campo nome não pode ser nulo.")
+    String sistemaOperacional,
+    
+    @NotBlank(message = "O campo nome não pode ser nulo.")
+    String armazenamento,
+
     //@NotNull(message = "O campo nome não pode ser nulo.")
     Integer classificacao,
     @NotNull(message = "O campo nome não pode ser nulo.")
     Long idPlataforma,
-    @NotNull(message = "O campo nome não pode ser nulo.")
-    Long idRequisito,
     @NotNull(message = "O campo nome não pode ser nulo.")
     Long idDesenvolvedora,
 

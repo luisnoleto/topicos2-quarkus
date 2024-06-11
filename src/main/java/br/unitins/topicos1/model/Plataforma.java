@@ -8,6 +8,7 @@ import jakarta.persistence.ManyToOne;
 public class Plataforma extends DefaultEntity {
 
     private String nome;
+    private boolean ativo;
     
     @ManyToOne
     @JoinColumn(name = "id_fabricante")
@@ -29,5 +30,15 @@ public class Plataforma extends DefaultEntity {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    
 
 }

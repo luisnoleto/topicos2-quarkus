@@ -5,11 +5,13 @@ import br.unitins.topicos1.model.Pais;
 public record PaisResponseDTO(
         Long id,
         String nome,
-        String sigla) {
+        String sigla,
+        boolean ativo) {
     public static PaisResponseDTO valueOf(Pais pais) {
         return new PaisResponseDTO(
                 pais.getId(),
                 pais.getNome(),
-                pais.getSigla());
+                pais.getSigla(),
+                pais.isAtivo());
     }
 }

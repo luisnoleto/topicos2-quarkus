@@ -5,6 +5,7 @@ import jakarta.persistence.Entity;
 @Entity
 public class Fabricante extends DefaultEntity {
     private String nome;
+    private boolean ativo;
 
     public String getNome() {
         return nome;
@@ -14,4 +15,13 @@ public class Fabricante extends DefaultEntity {
         this.nome = nome;
     }
 
+    public boolean isAtivo() {
+        return ativo;
+    }
+
+    public void setAtivo(boolean ativo) {
+        this.ativo = ativo;
+    }
+
+    
 }

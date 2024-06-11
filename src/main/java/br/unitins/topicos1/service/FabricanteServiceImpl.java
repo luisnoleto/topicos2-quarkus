@@ -81,4 +81,18 @@ public class FabricanteServiceImpl implements FabricanteService {
         return repository.count();
     }
 
+    @Override
+    public FabricanteResponseDTO alterarSituacao(Long id) {
+        Fabricante fabricante = repository.findById(id);
+
+        if (fabricante.isAtivo() == true) {
+            fabricante.setAtivo(false);
+        } else {
+            fabricante.setAtivo(true);
+
+        }
+
+        return FabricanteResponseDTO.valueOf(fabricante);
+    }
+
 }
