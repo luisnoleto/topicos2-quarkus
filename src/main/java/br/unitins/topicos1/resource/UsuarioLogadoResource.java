@@ -16,6 +16,7 @@ import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.repository.UsuarioRepository;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -66,7 +67,7 @@ public class UsuarioLogadoResource {
     @POST
     @Path("/cadastro")
 
-    // @RolesAllowed("Admin")
+    @RolesAllowed("Admin")
     public Response cadastrarUsuario(@Valid CadastroUsuarioDTO dto) {
         LOG.info("Iniciando a inserção de usuario");
 
@@ -98,7 +99,7 @@ public class UsuarioLogadoResource {
     @PATCH
     @Path("/alterar/senha")
 
-    // @RolesAllowed({ "User", "Admin" })
+    @RolesAllowed({ "User", "Admin" })
     public Response updateSenha(@Valid UpdateSenhaDTO dto) {
         LOG.info("Iniciando  o Update de senha");
 
@@ -112,7 +113,7 @@ public class UsuarioLogadoResource {
     @PATCH
     @Path("/alterar/nome")
 
-    // @RolesAllowed({ "User", "Admin" })
+    @RolesAllowed({ "User", "Admin" })
     public Response updateNome(@Valid UpdateNomeDTO dto) {
         LOG.info("Iniciando a o Update de nome");
         String login = jwt.getSubject();
@@ -125,7 +126,7 @@ public class UsuarioLogadoResource {
     @PATCH
     @Path("/alterar/email")
 
-    // @RolesAllowed({ "User", "Admin" })
+    @RolesAllowed({ "User", "Admin" })
     public Response updateEmail(@Valid UpdateEmailDTO dto) {
         LOG.info("Iniciando a o Update de email");
         String login = jwt.getSubject();
@@ -138,7 +139,7 @@ public class UsuarioLogadoResource {
     @PATCH
     @Path("/alterar/telefone")
 
-    // @RolesAllowed({ "User", "Admin" })
+    @RolesAllowed({ "User", "Admin" })
     public Response updateTelefone(@Valid UpdateTelefoneDTO dto) {
         LOG.info("Iniciando a o Update de telefone");
         String login = jwt.getSubject();
@@ -148,6 +149,6 @@ public class UsuarioLogadoResource {
         return Response.status(201).entity(retorno).build();
     }
 
-    // ---------------------------------
+    
 
 }

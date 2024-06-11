@@ -14,6 +14,7 @@ import br.unitins.topicos1.service.JogoService;
 import br.unitins.topicos1.service.JwtService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
+import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
@@ -134,4 +135,11 @@ public class JogoResource {
         return jogoService.count();
     }
 
+        @PATCH
+    @Transactional
+    @Path("/alterarSituacao/{id}")
+    @RolesAllowed("Admin")
+    public Response alterarSituacao(@PathParam("id") Long id) {
+        return Response.ok(jogoService.alterarSituacao(id)).build();
+    }
 }
