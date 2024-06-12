@@ -54,9 +54,7 @@ public class UsuarioLogadoResource {
 
     @GET
     @Path("/meusdados")
-
-    // @RolesAllowed({ "User", "Admin" })
-
+    @RolesAllowed({ "User", "Admin" })
     public Response getUsuario() {
 
         String login = jwt.getSubject();

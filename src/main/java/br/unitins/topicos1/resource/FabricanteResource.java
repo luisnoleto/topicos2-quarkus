@@ -92,4 +92,10 @@ public class FabricanteResource {
         return Response.ok(service.alterarSituacao(id)).build();
     }
 
+    @GET
+    @RolesAllowed("Admin")
+    @Path("/search/ativo/{ativo}")
+    public Response findByAtivo(@PathParam("ativo") boolean ativo) {
+        return Response.ok(service.findByAtivo(ativo)).build();
+    }
 }

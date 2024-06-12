@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
+import br.unitins.topicos1.dto.fabricante.FabricanteResponseDTO;
 import br.unitins.topicos1.dto.genero.GeneroDTO;
 import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.model.Desenvolvedora;
@@ -95,5 +96,12 @@ public class GeneroServiceImpl implements GeneroService {
 
         return GeneroResponseDTO.valueOf(genero);
     }
+
+    @Override
+    public List<GeneroResponseDTO> findByAtivo(boolean ativo) {
+        return repository.findByAtivo(ativo).stream()
+                .map(e -> GeneroResponseDTO.valueOf(e)).toList();
+    }
+
 
 }

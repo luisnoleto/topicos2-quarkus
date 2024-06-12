@@ -23,4 +23,6 @@ public interface PaisService {
     long count();
 
     PaisResponseDTO alterarSituacao(Long id);
+
+    List<PaisResponseDTO> findByAtivo(boolean ativo);
 }

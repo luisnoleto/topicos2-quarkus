@@ -24,4 +24,6 @@ public interface PlataformaService {
 
     PlataformaResponseDTO alterarSituacao(Long id);
 
+    List<PlataformaResponseDTO> findByAtivo(boolean ativo);
+
 }

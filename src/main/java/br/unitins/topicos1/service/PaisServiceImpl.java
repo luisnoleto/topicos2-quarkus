@@ -5,6 +5,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
+import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.dto.pais.PaisDTO;
 import br.unitins.topicos1.dto.pais.PaisResponseDTO;
 import br.unitins.topicos1.model.Desenvolvedora;
@@ -91,5 +92,11 @@ public class PaisServiceImpl implements PaisService {
         }
 
         return PaisResponseDTO.valueOf(pais);
+    }
+
+     @Override
+    public List<PaisResponseDTO> findByAtivo(boolean ativo) {
+        return repository.findByAtivo(ativo).stream()
+                .map(e -> PaisResponseDTO.valueOf(e)).toList();
     }
 }   

@@ -5,6 +5,7 @@ import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
+import br.unitins.topicos1.dto.pais.PaisResponseDTO;
 import br.unitins.topicos1.dto.plataforma.PlataformaDTO;
 import br.unitins.topicos1.dto.plataforma.PlataformaResponseDTO;
 import br.unitins.topicos1.model.Plataforma;
@@ -101,5 +102,11 @@ public class PlataformaServiceImpl implements PlataformaService {
         }
 
         return PlataformaResponseDTO.valueOf(plataforma);
+    }
+
+    @Override
+    public List<PlataformaResponseDTO> findByAtivo(boolean ativo) {
+        return repository.findByAtivo(ativo).stream()
+                .map(e -> PlataformaResponseDTO.valueOf(e)).toList();
     }
 }

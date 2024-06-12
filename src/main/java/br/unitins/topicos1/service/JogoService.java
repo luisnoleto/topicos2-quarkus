@@ -28,4 +28,6 @@ public interface JogoService {
     long count();
 
     JogoResponseDTO alterarSituacao(Long id);
+
+    List<JogoResponseDTO> findByAtivo(boolean ativo);
 }

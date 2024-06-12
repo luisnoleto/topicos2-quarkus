@@ -95,4 +95,10 @@ public class FabricanteServiceImpl implements FabricanteService {
         return FabricanteResponseDTO.valueOf(fabricante);
     }
 
+    @Override
+    public List<FabricanteResponseDTO> findByAtivo(boolean ativo) {
+        return repository.findByAtivo(ativo).stream()
+                .map(e -> FabricanteResponseDTO.valueOf(e)).toList();
+    }
+
 }

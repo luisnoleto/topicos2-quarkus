@@ -23,4 +23,6 @@ public interface GeneroService {
     public long count();
 
     GeneroResponseDTO alterarSituacao(Long id);
+
+    List<GeneroResponseDTO> findByAtivo(boolean ativo);
 }

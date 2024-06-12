@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
+import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 import br.unitins.topicos1.model.Classificacao;
@@ -170,6 +171,11 @@ public class JogoServiceImpl implements JogoService {
         return JogoResponseDTO.valueOf(jogo);
     }
 
+     @Override
+    public List<JogoResponseDTO> findByAtivo(boolean ativo) {
+        return repository.findByAtivo(ativo).stream()
+                .map(e -> JogoResponseDTO.valueOf(e)).toList();
+    }
 
     
 }

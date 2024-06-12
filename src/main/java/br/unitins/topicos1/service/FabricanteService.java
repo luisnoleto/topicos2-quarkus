@@ -25,4 +25,6 @@ public interface FabricanteService {
     long count();
 
     FabricanteResponseDTO alterarSituacao(Long id);
+
+    List<FabricanteResponseDTO> findByAtivo(boolean ativo);
 }
