@@ -206,146 +206,106 @@ VALUES (
     'Complemento D',
     '33333-444'
   );
-INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
-VALUES (
-    'Rua E',
-    'Bairro E',
-    '202',
-    'Complemento E',
-    '55555-666'
-  );
-INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
-VALUES (
-    'Rua F',
-    'Bairro F',
-    '303',
-    'Complemento F',
-    '77777-888'
-  );
-INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
-VALUES (
-    'Rua G',
-    'Bairro G',
-    '404',
-    'Complemento G',
-    '99999-000'
-  );
-INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
-VALUES (
-    'Rua H',
-    'Bairro H',
-    '505',
-    'Complemento H',
-    '12345-678'
-  );
-INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
-VALUES (
-    'Rua I',
-    'Bairro I',
-    '606',
-    'Complemento I',
-    '98765-432'
-  );
-INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
-VALUES (
-    'Rua J',
-    'Bairro J',
-    '707',
-    'Complemento J',
-    '11111-222'
-  );
+insert into usuario_endereco (id_usuario, id_endereco)
+values(2, 4);
+insert into usuario_endereco (id_usuario, id_endereco)
+values(3, 5);
+insert into usuario_endereco (id_usuario, id_endereco)
+values(3, 6);
+insert into usuario_endereco (id_usuario, id_endereco)
+values(4, 7);
 /* ---------------------------Insert de generos---------------------------- */
 -- Primeiro insert
 INSERT INTO genero (nome, ativo)
 VALUES ('Ação', true);
 -- Segundo insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Aventura', true);
 -- Terceiro insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('RPG', true);
 -- Quarto insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Estratégia', true);
 -- Quinto insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Esporte', true);
 -- Sexto insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Corrida', true);
 -- Sétimo insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Simulação', true);
 -- Oitavo insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Quebra-Cabeça', true);
 -- Nono insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Ficção Científica', true);
 -- Décimo insert
-INSERT INTO genero ( nome, ativo)
+INSERT INTO genero (nome, ativo)
 VALUES ('Fantasia', true);
 /* ---------------------------Insert de fabricante---------------------------- */
 -- Primeiro insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('Sony', true);
 -- Segundo insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('Microsoft', true);
 -- Terceiro insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('Nintendo', true);
 -- Quarto insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('Intel', true);
 -- Quinto insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('AMD', true);
 -- Sexto insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('NVIDIA', true);
 -- Sétimo insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('Apple', true);
 -- Oitavo insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('Samsung', true);
 -- Nono insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('Google', true);
 -- Décimo insert
-INSERT INTO fabricante ( nome, ativo)
+INSERT INTO fabricante (nome, ativo)
 VALUES ('ASUS', true);
 /* ---------------------------Insert de plataforma---------------------------- */
 -- Primeiro insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('PlayStation 5', 1, true);
 -- Segundo insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('Xbox Series X', 2, true);
 -- Terceiro insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('Nintendo Switch', 3, true);
 -- Quarto insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('PC', 4, true);
 -- Quinto insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('PlayStation 4', 1, true);
 -- Sexto insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('Xbox One', 2, true);
 -- Sétimo insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('Nintendo 3DS', 3, true);
 -- Oitavo insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('PlayStation 3', 1, true);
 -- Nono insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('Xbox 360', 2, true);
 -- Décimo insert
-INSERT INTO plataforma (nome, id_fabricante, ativo )
+INSERT INTO plataforma (nome, id_fabricante, ativo)
 VALUES ('Nintendo Wii', 3, true);
 /* ---------------------------Insert de pais---------------------------- */
 -- Primeiro insert
@@ -417,7 +377,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Minecraft',
     'Jogo de Criar',
@@ -432,8 +392,7 @@ VALUES (
     1,
     1,
     true
-);
-
+  );
 -- Segundo insert (Classificação: 10 anos)
 INSERT INTO jogo (
     nome,
@@ -449,7 +408,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'The Sims',
     'Criar Pessoas',
@@ -464,8 +423,7 @@ VALUES (
     2,
     2,
     true
-);
-
+  );
 -- Terceiro insert (Classificação: 12 anos)
 INSERT INTO jogo (
     nome,
@@ -481,7 +439,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Fallout 4',
     'Sobreviva',
@@ -496,8 +454,7 @@ VALUES (
     3,
     3,
     true
-);
-
+  );
 -- Quarto insert (Classificação: 14 anos)
 INSERT INTO jogo (
     nome,
@@ -513,7 +470,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Starfield',
     'Explorar o Espaço',
@@ -528,8 +485,7 @@ VALUES (
     4,
     4,
     true
-);
-
+  );
 -- Quinto insert (Classificação: 16 anos)
 INSERT INTO jogo (
     nome,
@@ -545,7 +501,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Call Of Duty: Warzone',
     'Jogo de Tiro',
@@ -560,8 +516,7 @@ VALUES (
     5,
     5,
     true
-);
-
+  );
 -- Sexto insert (Classificação: 18 anos)
 INSERT INTO jogo (
     nome,
@@ -577,7 +532,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'GTA V',
     'Jogo de Exploração e História',
@@ -592,8 +547,7 @@ VALUES (
     6,
     6,
     true
-);
-
+  );
 -- Sétimo insert (Classificação: Livre)
 INSERT INTO jogo (
     nome,
@@ -609,7 +563,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Portal 2',
     'Resolva puzzles com portais.',
@@ -624,8 +578,7 @@ VALUES (
     7,
     7,
     true
-);
-
+  );
 -- Oitavo insert (Classificação: 10 anos)
 INSERT INTO jogo (
     nome,
@@ -641,7 +594,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Monster Hunter: World',
     'Mate Montros em um dinamico mundo.',
@@ -656,8 +609,7 @@ VALUES (
     8,
     8,
     true
-);
-
+  );
 -- Nono insert (Classificação: 12 anos)
 INSERT INTO jogo (
     nome,
@@ -673,7 +625,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Final Fantasy XV',
     'RPG Ação e Aventura.',
@@ -688,8 +640,7 @@ VALUES (
     9,
     9,
     true
-);
-
+  );
 -- Décimo insert (Classificação: 14 anos)
 INSERT INTO jogo (
     nome,
@@ -705,7 +656,7 @@ INSERT INTO jogo (
     id_desenvolvedora,
     id_plataforma,
     ativo
-)
+  )
 VALUES (
     'Uncharted 4',
     'Jogo de Ação e Aventura.',
@@ -720,4 +671,4 @@ VALUES (
     10,
     10,
     true
-);
+  );
