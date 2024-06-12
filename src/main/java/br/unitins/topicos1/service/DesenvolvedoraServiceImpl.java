@@ -104,4 +104,10 @@ public class DesenvolvedoraServiceImpl implements DesenvolvedoraService {
 
         return DesenvolvedoraResponseDTO.valueOf(desenvolvedora);
     }
+
+    @Override
+    public List<DesenvolvedoraResponseDTO> findByAtivo(boolean ativo) {
+        return repository.findByAtivo(ativo).stream()
+                .map(e -> DesenvolvedoraResponseDTO.valueOf(e)).toList();
+    }
 }

@@ -26,4 +26,5 @@ public interface DesenvolvedoraService {
 
     DesenvolvedoraResponseDTO alterarSituacao(Long id);
 
+    List<DesenvolvedoraResponseDTO> findByAtivo(boolean ativo);
 }

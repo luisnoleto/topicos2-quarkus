@@ -12,4 +12,12 @@ public class DesenvolvedoraRepository implements PanacheRepository<Desenvolvedor
         return find("UPPER(nome) LIKE UPPER(?1) ", "%" + nome + "%").list();
     }
 
+    public List<Desenvolvedora> findByAtivo(boolean ativo) {
+        if (ativo) {
+            return find("ativo", true).list();
+        } else {
+            return List.of(); 
+        }
+    }
+
 }

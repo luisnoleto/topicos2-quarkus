@@ -12,6 +12,7 @@ import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.DefaultValue;
 import jakarta.ws.rs.GET;
+import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.PUT;
 import jakarta.ws.rs.Path;
@@ -89,5 +90,13 @@ public class PaisResource {
     @Path("/count")
     public long count(){
         return service.count();
+    }
+
+        @PATCH
+    @Transactional
+    @Path("/alterarSituacao/{id}")
+    @RolesAllowed("Admin")
+    public Response alterarSituacao(@PathParam("id") Long id) {
+        return Response.ok(service.alterarSituacao(id)).build();
     }
 }
