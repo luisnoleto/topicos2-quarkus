@@ -31,13 +31,11 @@ public class EnderecoServiceImpl implements EnderecoService {
     @Inject
     UsuarioService usuarioService;
 
-
     @Override
     @Transactional
-    public EnderecoResponseDTO insert( @Valid EnderecoDTO dto, String login) {
+    public EnderecoResponseDTO insert(@Valid EnderecoDTO dto, String login) {
         Usuario usuario = repositoryUser.findByLogin(login);
         Cidade cidade = repositoryCidade.findById(dto.idCidade());
-        
 
         Endereco endereco = new Endereco();
         endereco.setBairro(dto.bairro());
@@ -83,15 +81,15 @@ public class EnderecoServiceImpl implements EnderecoService {
         Usuario usuario = repositoryUser.findById(idUsuario);
         Endereco endereco = new Endereco();
 
-        for (Endereco end : usuario.getListaEndereco()){
-            if(end.getId().equals(idEndereco)){
+        for (Endereco end : usuario.getListaEndereco()) {
+            if (end.getId().equals(idEndereco)) {
                 endereco = end;
             }
         }
 
         usuario.getListaEndereco().remove(endereco);
 
-        if(!repositoryEnd.deleteById(idEndereco))
+        if (!repositoryEnd.deleteById(idEndereco))
             throw new NotFoundException();
     }
 
@@ -108,8 +106,14 @@ public class EnderecoServiceImpl implements EnderecoService {
 
     @Override
     public List<EnderecoResponseDTO> findByAll() {
-       return repositoryEnd.listAll().stream()
-       .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
+        return repositoryEnd.listAll().stream()
+                .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
     }
 
+    @Override
+    public List<EnderecoResponseDTO> findByUser(Long id) {
+        Usuario usuario = repositoryUser.findById(id);
+        return usuario.getListaEndereco().stream()
+                .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
+    }
 }

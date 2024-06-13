@@ -89,4 +89,11 @@ public class EnderecoResource {
         return Response.noContent().build();
     }
 
+    @GET
+    @Path("/usuario/{id}")
+    public Response findByUser(@PathParam("id") Long id) {
+        LOG.infof("Listando os endereços do usuário %s", id);
+        return Response.ok(service.findByUser(id)).build();
+    }
+
 }
