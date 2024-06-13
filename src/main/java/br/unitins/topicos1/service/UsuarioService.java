@@ -4,6 +4,7 @@ import java.util.List;
 
 import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
+import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.PerfilDTO;
@@ -25,7 +26,7 @@ public interface UsuarioService {
 
     List<UsuarioResponseDTO> findByNome(String nome);
 
-    UsuarioResponseDTO findByLoginAndSenha(String login, String senha);
+    Usuario findByLoginAndSenha(String login, String senha);
 
     UsuarioResponseDTO findByLogin(String login);
 

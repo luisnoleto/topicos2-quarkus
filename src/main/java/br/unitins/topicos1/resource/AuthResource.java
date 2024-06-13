@@ -5,9 +5,11 @@ import org.jboss.logging.Logger;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.LoginDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
+import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.service.HashService;
 import br.unitins.topicos1.service.JwtService;
 import br.unitins.topicos1.service.UsuarioService;
+import jakarta.annotation.security.PermitAll;
 import jakarta.inject.Inject;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
@@ -35,20 +37,26 @@ public class AuthResource {
     private static final Logger LOG = Logger.getLogger(AuthResource.class);
 
     @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    @PermitAll
     public Response login(@Valid LoginDTO dto) {
-    
+        
+        LOG.infof("Fazendo login de usuário: %s", dto.login());
+
         String hashSenha = hashService.getHashSenha(dto.senha());
 
-        CadastroUsuarioResponseDTO result = null;
-        if(dto.perfil() == 1)
-            result = service.findByLoginAndSenhaPerfil(dto.login(), hashSenha);
-        else if(dto.perfil()==2){
-            result = service.findByLoginAndSenhaPerfil(dto.login(), hashSenha);
+         Usuario usuario = service.findByLoginAndSenha(dto.login(), hashSenha);
+
+        if(usuario == null){
+            return Response.status(Status.NOT_FOUND).entity("Usuario não encontrado").build();
         } else{
-            return Response.status(Status.NOT_FOUND).entity("Perfil não encontrado.").build();
+            return Response.ok()
+                .header("Authorization", jwtService.generateJwt(usuario))
+                .build();
         }
 
-        return Response.ok(result).header("Authorization", jwtService.generateJwt(result)).build();
+
+        
     }
 
 }

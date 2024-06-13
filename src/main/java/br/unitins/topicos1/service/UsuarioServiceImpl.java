@@ -267,17 +267,13 @@ public class UsuarioServiceImpl implements UsuarioService {
     }
 
     @Override
-    public UsuarioResponseDTO findByLoginAndSenha(String login, String senha) {
-        Usuario usuario = repository.findByLoginAndSenha(login, senha).firstResult();
-        if (usuario == null)
-            throw new ValidationException("login", "Login ou senha inválido");
-
-        return UsuarioResponseDTO.valueOf(usuario);
+    public Usuario findByLoginAndSenha(String login, String senha) {
+        return repository.findByLoginAndSenha(login, senha);
     }
 
     @Override
     public CadastroUsuarioResponseDTO findByLoginAndSenhaPerfil(String login, String senha) {
-        Usuario usuario = repository.findByLoginAndSenha(login, senha).firstResult();
+        Usuario usuario = repository.findByLoginAndSenha(login, senha);
         if (usuario == null)
             throw new ValidationException("login", "Login ou senha inválido");
 
