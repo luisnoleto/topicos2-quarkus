@@ -68,12 +68,14 @@ public class FabricanteResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed({"Admin" })
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
+    @RolesAllowed({"Admin" })
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }

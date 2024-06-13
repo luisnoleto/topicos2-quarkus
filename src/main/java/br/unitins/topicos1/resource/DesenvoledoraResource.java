@@ -72,6 +72,7 @@ public class DesenvoledoraResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }

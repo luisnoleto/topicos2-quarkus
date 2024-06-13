@@ -42,6 +42,7 @@ public class EstadoResource {
     @PUT
     @Transactional
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response update(EstadoDTO dto, @PathParam("id") Long id) {
         service.update(id, dto);
         return Response.status(Status.NO_CONTENT).build();
@@ -50,13 +51,14 @@ public class EstadoResource {
     @DELETE
     @Transactional
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response delete(@PathParam("id") Long id) {
         service.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @GET
-    //@RolesAllowed("")
+    @RolesAllowed("Admin")
     public Response findAll(
                 @QueryParam("page") @DefaultValue("0") int page,
                 @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
@@ -67,12 +69,14 @@ public class EstadoResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
     
     @GET
     @Path("/search/nome/{nome}")
+    @RolesAllowed("Admin")
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }

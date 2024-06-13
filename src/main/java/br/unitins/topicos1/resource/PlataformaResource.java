@@ -35,7 +35,7 @@ public class PlataformaResource {
 
     @POST
     @Path("/cadastro")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed("Admin")
     public Response insert(PlataformaDTO dto) {
         LOG.info("Iniciando insert plataforma");
         PlataformaResponseDTO retorno = service.insert(dto);
@@ -46,7 +46,7 @@ public class PlataformaResource {
     @PUT
     @Transactional
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed("Admin")
     public Response update(PlataformaDTO dto, @PathParam("id") Long id) {
         service.update(dto, id);
         return Response.status(Status.NO_CONTENT).build();
@@ -55,14 +55,14 @@ public class PlataformaResource {
     @DELETE
     @Transactional
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed("Admin")
     public Response delete(@PathParam("id") Long id) {
         service.delete(id);
         return Response.status(Status.NO_CONTENT).build();
     }
 
     @GET
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed("Admin")
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize
@@ -73,14 +73,14 @@ public class PlataformaResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed("Admin")
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
 
     @GET
     @Path("/search/nome/{nome}")
-    @RolesAllowed({ "Admin" })
+    @RolesAllowed("Admin")
     public Response findByNome(@PathParam("nome") String nome) {
         return Response.ok(service.findByNome(nome)).build();
     }

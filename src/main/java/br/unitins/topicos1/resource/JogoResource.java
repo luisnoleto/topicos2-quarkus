@@ -97,6 +97,7 @@ public class JogoResource {
 
     @GET
     @Path("/search/nome/{nome}")
+    @RolesAllowed({ "User", "Admin" })
     public Response findByNome(@PathParam("nome") String nome) {
         LOG.infof("Iniciando  a busca pelo jogo %s", nome);
 

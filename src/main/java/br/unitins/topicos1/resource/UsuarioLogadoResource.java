@@ -64,7 +64,6 @@ public class UsuarioLogadoResource {
 
     @POST
     @Path("/cadastro")
-
     @RolesAllowed("Admin")
     public Response cadastrarUsuario(@Valid CadastroUsuarioDTO dto) {
         LOG.info("Iniciando a inserção de usuario");
@@ -82,6 +81,7 @@ public class UsuarioLogadoResource {
 
     @GET
     @Path("/perfil/{login}")
+    @RolesAllowed({ "User", "Admin" })
     public Response perfilNome(@PathParam("login") String login) {
         PerfilDTO perfilDTO = usuarioService.perfilNome(login);
         return Response.ok(perfilDTO).build();
@@ -89,6 +89,7 @@ public class UsuarioLogadoResource {
 
     @GET
     @Path("/perfis")
+    @RolesAllowed("Admin")
     public Response findAllPerfis() {
         List<PerfilDTO> perfis = usuarioService.findAllPerfis();
         return Response.ok(perfis).build();
@@ -96,7 +97,6 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/senha")
-
     @RolesAllowed({ "User", "Admin" })
     public Response updateSenha(@Valid UpdateSenhaDTO dto) {
         LOG.info("Iniciando  o Update de senha");
@@ -110,7 +110,6 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/nome")
-
     @RolesAllowed({ "User", "Admin" })
     public Response updateNome(@Valid UpdateNomeDTO dto) {
         LOG.info("Iniciando a o Update de nome");
@@ -123,7 +122,6 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/email")
-
     @RolesAllowed({ "User", "Admin" })
     public Response updateEmail(@Valid UpdateEmailDTO dto) {
         LOG.info("Iniciando a o Update de email");
@@ -136,7 +134,6 @@ public class UsuarioLogadoResource {
 
     @PATCH
     @Path("/alterar/telefone")
-
     @RolesAllowed({ "User", "Admin" })
     public Response updateTelefone(@Valid UpdateTelefoneDTO dto) {
         LOG.info("Iniciando a o Update de telefone");

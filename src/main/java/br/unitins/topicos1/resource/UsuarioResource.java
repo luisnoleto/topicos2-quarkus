@@ -6,6 +6,7 @@ import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.repository.UsuarioRepository;
 import br.unitins.topicos1.service.UsuarioService;
+import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -37,6 +38,7 @@ public class UsuarioResource {
 
     @POST
     @Path("/cadastro")
+    @RolesAllowed("Admin")
     public Response insert(@Valid UsuarioDTO dto) {
         LOG.info("Iniciando a inserção de usuario");
 
@@ -54,6 +56,7 @@ public class UsuarioResource {
     @PUT
     @Transactional
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response update(@Valid UsuarioDTO dto, @PathParam("id") Long id) {
         LOG.infof("Atualizando o dados do Usuario %s", id);
         service.update(dto, id);
@@ -64,6 +67,7 @@ public class UsuarioResource {
     @DELETE
     @Transactional
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response delete(@PathParam("id") Long id) {
         LOG.infof("Deletando Usuario %s", id);
         service.delete(id);
@@ -72,6 +76,7 @@ public class UsuarioResource {
     }
 
     @GET
+    @RolesAllowed("Admin")
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
@@ -81,6 +86,7 @@ public class UsuarioResource {
 
     @GET
     @Path("/{id}")
+    @RolesAllowed("Admin")
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Procurando o Usuario %s", id);
 
@@ -89,6 +95,7 @@ public class UsuarioResource {
 
     @GET
     @Path("/search/nome/{nome}")
+    @RolesAllowed("Admin")
     public Response findByNome(@PathParam("nome") String nome) {
         LOG.infof("Buscando usuario pelo nome: %s", nome);
 
