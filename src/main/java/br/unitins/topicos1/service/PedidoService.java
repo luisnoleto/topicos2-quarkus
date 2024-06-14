@@ -18,4 +18,6 @@ public interface PedidoService {
     List<PedidoResponseDTO> findByAll(String login);
 
     long count();
+
+    List<PedidoResponseDTO> findByUsuarioId(Long usuarioId);
 }

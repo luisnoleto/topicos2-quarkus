@@ -11,5 +11,9 @@ public class PedidoRepository implements PanacheRepository<Pedido> {
     public List<Pedido> findAll(String login) {
         return find("usuario.login = ?1", login).list();
     }
-    
+
+    public List<Pedido> findByUsuarioId(Long usuarioId) {
+        return find("usuario.id = ?1", usuarioId).list();
+    }
+
 }

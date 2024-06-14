@@ -32,17 +32,15 @@ public class PedidoResource {
 
     @POST
     @Path("/fazendopedido")
-    @RolesAllowed({ "User", "Admin" })
+    // @RolesAllowed({ "User", "Admin" })
     public Response insert(@Valid PedidoDTO dto) {
         LOG.info("Iniciando inserção de Pedido");
         String login = jwt.getSubject();
         LOG.infof("usuario logado %s", login);
-        PedidoResponseDTO retorno = service.insert(login,dto);
+        PedidoResponseDTO retorno = service.insert(login, dto);
         LOG.info("Finalizando o processo de pedido.");
         return Response.status(201).entity(retorno).build();
     }
-
-
 
     @GET
     @RolesAllowed({ "User", "Admin" })
@@ -68,7 +66,14 @@ public class PedidoResource {
 
     @GET
     @Path("/count")
-    public long count(){
+    public long count() {
         return service.count();
+    }
+
+    @Path("/usuario/{id}")
+    @GET
+    public Response findByUsuarioId(@PathParam("id") Long usuarioId) {
+        List<PedidoResponseDTO> pedidos = service.findByUsuarioId(usuarioId);
+        return Response.ok(pedidos).build();
     }
 }

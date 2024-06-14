@@ -13,16 +13,16 @@ import jakarta.validation.constraints.Size;
 
 public record UsuarioDTO(
 
-                Long id,
-                @NotBlank(message = "O campo nome não pode ser nulo.") String nome,
-                @NotBlank(message = "O campo login não pode ser nulo.") String login,
-                @NotBlank(message = "O campo senha não pode ser nulo.") @Size(min = 3, max = 15) String senha,
+        Long id,
+        @NotBlank(message = "O campo nome não pode ser nulo.") String nome,
+        @NotBlank(message = "O campo login não pode ser nulo.") String login,
+        @NotBlank(message = "O campo senha não pode ser nulo.") @Size(min = 3, max = 15) String senha,
 
-                @Email String email,
+        @Email String email,
 
-                @NotNull Date dataNascimento,
+        // @NotNull Date dataNascimento,
 
-                @NotBlank(message = "O CPF não pode estar em branco") @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "Formato de CPF inválido ---- Ex. 999.999.999-99") String cpf,
-                @Valid List<TelefoneDTO> listaTelefone) {
+        @NotBlank(message = "O CPF não pode estar em branco") @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "Formato de CPF inválido ---- Ex. 999.999.999-99") String cpf,
+        @Valid List<TelefoneDTO> listaTelefone) {
 
 }
