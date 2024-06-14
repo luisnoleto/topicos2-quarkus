@@ -266,8 +266,9 @@ public class UsuarioServiceImpl implements UsuarioService {
                 .map(e -> UsuarioResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
-    @Override
     public Usuario findByLoginAndSenha(String login, String senha) {
+        if (login == null || senha == null)
+            throw new ValidationException("login", "Login ou senha inválido");
         return repository.findByLoginAndSenha(login, senha);
     }
 
@@ -294,4 +295,16 @@ public class UsuarioServiceImpl implements UsuarioService {
         return repository.count();
     }
 
+    public String getPerfilLabel(int perfilId) {
+
+        switch (perfilId) {
+            case 1:
+                return "User";
+            case 2:
+                return "Admin";
+            default:
+                return "Admin";
+        }
+
+    }
 }

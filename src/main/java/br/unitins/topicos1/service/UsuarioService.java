@@ -50,4 +50,6 @@ public interface UsuarioService {
 
     List<PerfilDTO> findAllPerfis();
 
+    String getPerfilLabel(int perfil);
+
 }

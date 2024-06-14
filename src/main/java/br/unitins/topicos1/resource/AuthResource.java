@@ -37,26 +37,20 @@ public class AuthResource {
     private static final Logger LOG = Logger.getLogger(AuthResource.class);
 
     @POST
-    @Produces(MediaType.TEXT_PLAIN)
-    @PermitAll
-    public Response login(@Valid LoginDTO dto) {
-        
+    @Produces(MediaType.APPLICATION_JSON)
+    public Response login(LoginDTO dto) {
         LOG.infof("Fazendo login de usuário: %s", dto.login());
 
         String hashSenha = hashService.getHashSenha(dto.senha());
+        Usuario usuario = service.findByLoginAndSenha(dto.login(), hashSenha);
 
-         Usuario usuario = service.findByLoginAndSenha(dto.login(), hashSenha);
-
-        if(usuario == null){
-            return Response.status(Status.NOT_FOUND).entity("Usuario não encontrado").build();
-        } else{
-            return Response.ok()
-                .header("Authorization", jwtService.generateJwt(usuario))
-                .build();
+        if (usuario == null) {
+            return Response.status(Response.Status.NOT_FOUND).entity("Usuario não encontrado").build();
+        } else {
+            UsuarioResponseDTO usuarioDTO = UsuarioResponseDTO.valueOf(usuario);
+            return Response.ok(usuarioDTO)
+                    .header("Authorization", jwtService.generateJwt(usuarioDTO))
+                    .build();
         }
-
-
-        
     }
-
 }
