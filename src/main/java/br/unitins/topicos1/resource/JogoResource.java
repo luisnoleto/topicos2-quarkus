@@ -1,6 +1,7 @@
 package br.unitins.topicos1.resource;
 
 import java.io.IOException;
+import java.util.List;
 
 import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
@@ -8,7 +9,9 @@ import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
+import br.unitins.topicos1.form.CarouselImageForm;
 import br.unitins.topicos1.form.JogoImageForm;
+import br.unitins.topicos1.service.CarouselFileService;
 import br.unitins.topicos1.service.JogoFileService;
 import br.unitins.topicos1.service.JogoService;
 import br.unitins.topicos1.service.JwtService;
@@ -48,6 +51,9 @@ public class JogoResource {
 
     @Inject
     JwtService jwtService;
+
+    @Inject
+    CarouselFileService carouselFileService;
 
     private static final Logger LOG = Logger.getLogger(JogoResource.class);
 
@@ -143,4 +149,5 @@ public class JogoResource {
     public Response alterarSituacao(@PathParam("id") Long id) {
         return Response.ok(jogoService.alterarSituacao(id)).build();
     }
+
 }

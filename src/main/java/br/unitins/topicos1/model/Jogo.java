@@ -6,11 +6,12 @@ import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
-
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Jogo extends DefaultEntity {
@@ -37,8 +38,11 @@ public class Jogo extends DefaultEntity {
     @ManyToOne
     @JoinColumn(name = "id_plataforma")
     private Plataforma plataforma;
-    
+
     private String nomeImagem;
+
+    @OneToOne(mappedBy = "jogoId", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Slide slide;
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "genero_jogo", joinColumns = @JoinColumn(name = "id_genero"), inverseJoinColumns = @JoinColumn(name = "id_jogo"))
@@ -164,9 +168,11 @@ public class Jogo extends DefaultEntity {
         this.ativo = ativo;
     }
 
-    
-    
-    
-    
+    public Slide getSlide() {
+        return slide;
+    }
+
+    public void setSlide(Slide slide) {
+        this.slide = slide;
+    }
 }
- 

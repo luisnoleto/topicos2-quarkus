@@ -20,7 +20,7 @@ public class JogoFileService implements FileService {
     private final String PATH_USER = System.getProperty("user.home") +
             File.separator + "quarkus" +
             File.separator + "images" +
-            File.separator + "usuario" + File.separator;
+            File.separator + "jogos" + File.separator;
 
     private static final List<String> SUPPORTED_MIME_TYPES = Arrays.asList("image/jpeg", "image/jpg", "image/png",
             "image/gif");
