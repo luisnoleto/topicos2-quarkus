@@ -10,6 +10,7 @@ import br.unitins.topicos1.service.UsuarioService;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.PerfilDTO;
+import br.unitins.topicos1.dto.usuario.UpdateCPFDTO;
 import br.unitins.topicos1.dto.usuario.UpdateEmailDTO;
 import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
@@ -145,5 +146,16 @@ public class UsuarioLogadoResource {
     }
 
     
+    @PATCH
+    @Path("/alterar/cpf")
+    @RolesAllowed({ "User", "Admin" })
+    public Response updateCPF(@Valid UpdateCPFDTO dto) {
+        LOG.info("Iniciando a o Update de Cpf");
+        String login = jwt.getSubject();
+
+        UsuarioResponseDTO retorno = usuarioService.updateCPF(dto, login);
+
+        return Response.status(201).entity(retorno).build();
+    }
 
 }

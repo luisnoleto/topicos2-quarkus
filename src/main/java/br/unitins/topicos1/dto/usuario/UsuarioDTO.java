@@ -22,7 +22,9 @@ public record UsuarioDTO(
 
         // @NotNull Date dataNascimento,
 
-        @NotBlank(message = "O CPF não pode estar em branco") @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "Formato de CPF inválido ---- Ex. 999.999.999-99") String cpf,
-        @Valid List<TelefoneDTO> listaTelefone) {
+                @NotBlank(message = "O CPF não pode estar em branco") 
+                @Pattern(regexp = "\\d{3}\\.\\d{3}\\.\\d{3}-\\d{2}", message = "Formato de CPF inválido ---- Ex. 999.999.999-99") 
+                String cpf,
+                @Valid List<TelefoneDTO> listaTelefone) {
 
 }
