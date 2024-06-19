@@ -1,15 +1,11 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
-import br.unitins.topicos1.dto.pais.PaisResponseDTO;
 import br.unitins.topicos1.dto.plataforma.PlataformaDTO;
 import br.unitins.topicos1.dto.plataforma.PlataformaResponseDTO;
 import br.unitins.topicos1.model.Plataforma;
-import br.unitins.topicos1.model.Desenvolvedora;
 import br.unitins.topicos1.model.Fabricante;
 import br.unitins.topicos1.repository.PlataformaRepository;
 import br.unitins.topicos1.repository.FabricanteRepository;
@@ -90,7 +86,7 @@ public class PlataformaServiceImpl implements PlataformaService {
         return repository.count();
     }
 
-     @Override
+    @Override
     public PlataformaResponseDTO alterarSituacao(Long id) {
         Plataforma plataforma = repository.findById(id);
 

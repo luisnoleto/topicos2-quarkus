@@ -3,7 +3,6 @@ package br.unitins.topicos1.service;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.itempedido.ItemPedidoDTO;

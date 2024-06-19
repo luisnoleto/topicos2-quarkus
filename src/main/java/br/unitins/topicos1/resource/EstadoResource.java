@@ -1,4 +1,5 @@
 package br.unitins.topicos1.resource;
+
 import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.estado.EstadoDTO;
@@ -35,7 +36,8 @@ public class EstadoResource {
     @RolesAllowed("Admin")
     public Response create(EstadoDTO dto) {
         EstadoResponseDTO retorno = service.create(dto);
-        //return Response.status(Status.CREATED).entity(retorno).build();
+        // return Response.status(Status.CREATED).entity(retorno).build();
+        LOG.infof("Estado criado: %s", retorno);
         return Response.status(201).entity(retorno).build();
     }
 
@@ -60,12 +62,11 @@ public class EstadoResource {
     @GET
     @RolesAllowed("Admin")
     public Response findAll(
-                @QueryParam("page") @DefaultValue("0") int page,
-                @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
 
         return Response.ok(service.getAll(page, pageSize)).build();
     }
-
 
     @GET
     @Path("/{id}")
@@ -73,7 +74,7 @@ public class EstadoResource {
     public Response findById(@PathParam("id") Long id) {
         return Response.ok(service.findById(id)).build();
     }
-    
+
     @GET
     @Path("/search/nome/{nome}")
     @RolesAllowed("Admin")
@@ -83,7 +84,7 @@ public class EstadoResource {
 
     @GET
     @Path("/count")
-    public long count(){
+    public long count() {
         return service.count();
     }
 

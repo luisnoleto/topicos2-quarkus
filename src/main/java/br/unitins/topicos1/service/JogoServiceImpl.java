@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
-import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 import br.unitins.topicos1.model.Classificacao;
@@ -35,14 +33,12 @@ public class JogoServiceImpl implements JogoService {
     @Inject
     DesenvolvedoraRepository desenvolvedoraRepository;
 
-
     @Override
     @Transactional
     public JogoResponseDTO create(JogoDTO dto) {
         Jogo novoJogo = new Jogo();
         Plataforma plataforma = plataformaRepository.findById(dto.idPlataforma());
         Desenvolvedora desenvolvedora = desenvolvedoraRepository.findById(dto.idDesenvolvedora());
-
 
         novoJogo.setNome(dto.nome());
         novoJogo.setDescricao(dto.descricao());
@@ -82,8 +78,6 @@ public class JogoServiceImpl implements JogoService {
             jogo.setPreco(dto.preco());
             jogo.setEstoque(dto.estoque());
 
-
-            
             jogo.setDesenvolvedora(desenvolvedora);
             jogo.setPlataforma(plataforma);
 
@@ -125,18 +119,17 @@ public class JogoServiceImpl implements JogoService {
         return JogoResponseDTO.valueOf(jogo);
     }
 
-
     @Override
-    public List<JogoResponseDTO> findAll(int page , int pageSize) {
+    public List<JogoResponseDTO> findAll(int page, int pageSize) {
         List<Jogo> jogos = repository
-                                .findAll()
-                                .page(page, pageSize)
-                                .list();
+                .findAll()
+                .page(page, pageSize)
+                .list();
 
         return jogos.stream().map(e -> JogoResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
-        @Override
+    @Override
     public List<JogoResponseDTO> findByNome(String nome) {
         return repository.findByNome(nome)
                 .stream()
@@ -157,7 +150,7 @@ public class JogoServiceImpl implements JogoService {
         return repository.count();
     }
 
-     @Override
+    @Override
     public JogoResponseDTO alterarSituacao(Long id) {
         Jogo jogo = repository.findById(id);
 
@@ -171,11 +164,10 @@ public class JogoServiceImpl implements JogoService {
         return JogoResponseDTO.valueOf(jogo);
     }
 
-     @Override
+    @Override
     public List<JogoResponseDTO> findByAtivo(boolean ativo) {
         return repository.findByAtivo(ativo).stream()
                 .map(e -> JogoResponseDTO.valueOf(e)).toList();
     }
 
-    
 }

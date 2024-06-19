@@ -3,10 +3,8 @@ package br.unitins.topicos1.service;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
 import br.unitins.topicos1.dto.fabricante.FabricanteDTO;
 import br.unitins.topicos1.dto.fabricante.FabricanteResponseDTO;
-import br.unitins.topicos1.model.Desenvolvedora;
 import br.unitins.topicos1.model.Fabricante;
 import br.unitins.topicos1.repository.FabricanteRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -68,9 +66,9 @@ public class FabricanteServiceImpl implements FabricanteService {
     @Override
     public List<FabricanteResponseDTO> getAll(int page, int pageSize) {
         List<Fabricante> fabricantes = repository
-                                    .findAll()
-                                    .page(page, pageSize)
-                                    .list();
+                .findAll()
+                .page(page, pageSize)
+                .list();
 
         return fabricantes.stream()
                 .map(e -> FabricanteResponseDTO.valueOf(e)).collect(Collectors.toList());

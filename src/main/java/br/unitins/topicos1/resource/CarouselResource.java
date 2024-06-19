@@ -3,7 +3,6 @@ package br.unitins.topicos1.resource;
 import java.io.File;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import org.jboss.logging.Logger;
 import org.jboss.resteasy.annotations.providers.multipart.MultipartForm;
 import br.unitins.topicos1.dto.jogo.SlideResponseDTO;
@@ -13,7 +12,6 @@ import jakarta.inject.Inject;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.DELETE;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.PATCH;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;

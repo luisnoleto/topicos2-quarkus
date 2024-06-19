@@ -1,14 +1,10 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
-import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
-import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.dto.pais.PaisDTO;
 import br.unitins.topicos1.dto.pais.PaisResponseDTO;
-import br.unitins.topicos1.model.Desenvolvedora;
 import br.unitins.topicos1.model.Pais;
 import br.unitins.topicos1.repository.PaisRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -80,7 +76,7 @@ public class PaisServiceImpl implements PaisService {
         return repository.count();
     }
 
-     @Override
+    @Override
     public PaisResponseDTO alterarSituacao(Long id) {
         Pais pais = repository.findById(id);
 
@@ -94,9 +90,9 @@ public class PaisServiceImpl implements PaisService {
         return PaisResponseDTO.valueOf(pais);
     }
 
-     @Override
+    @Override
     public List<PaisResponseDTO> findByAtivo(boolean ativo) {
         return repository.findByAtivo(ativo).stream()
                 .map(e -> PaisResponseDTO.valueOf(e)).toList();
     }
-}   
+}
