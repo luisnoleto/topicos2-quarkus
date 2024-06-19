@@ -8,6 +8,7 @@ import br.unitins.topicos1.model.Usuario;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.PerfilDTO;
+import br.unitins.topicos1.dto.usuario.UpdateCPFDTO;
 import br.unitins.topicos1.dto.usuario.UpdateEmailDTO;
 import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
@@ -41,6 +42,8 @@ public interface UsuarioService {
     UsuarioResponseDTO updateEmail(@Valid UpdateEmailDTO dto, String login);
 
     UsuarioResponseDTO updateTelefone(@Valid UpdateTelefoneDTO dto, String login);
+
+    UsuarioResponseDTO updateCPF(@Valid UpdateCPFDTO dto, String login);
 
     CadastroUsuarioResponseDTO cadastrarUsuario(@Valid CadastroUsuarioDTO dto);
 
