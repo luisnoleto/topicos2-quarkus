@@ -86,7 +86,7 @@ public class JogoResource {
 
     @GET
     @Path("/{id}")
-    @RolesAllowed({ "Admin" })
+    // @RolesAllowed({ "Admin" })
     public Response findById(@PathParam("id") Long id) {
         LOG.infof("Iniciando  a busca pelo jogo %s", id);
 
@@ -136,7 +136,7 @@ public class JogoResource {
         return jogoService.count();
     }
 
-        @PATCH
+    @PATCH
     @Transactional
     @Path("/alterarSituacao/{id}")
     @RolesAllowed("Admin")

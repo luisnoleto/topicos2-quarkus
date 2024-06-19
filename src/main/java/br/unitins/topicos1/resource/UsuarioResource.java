@@ -20,6 +20,7 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
 import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.QueryParam;
+import jakarta.ws.rs.WebApplicationException;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
@@ -38,19 +39,19 @@ public class UsuarioResource {
 
     @POST
     @Path("/cadastro")
-    @RolesAllowed("Admin")
+    // @RolesAllowed("Admin")
     public Response insert(@Valid UsuarioDTO dto) {
-        LOG.info("Iniciando a inserção de usuario");
+        LOG.info("Received usuario data: " + dto);
 
         if (usuarioRepository.findByLogin(dto.login()) != null) {
             LOG.info("Usuario não inserido, login já existente");
-        } else
+            throw new WebApplicationException("Login já existe.", Response.Status.BAD_REQUEST);
+        } else {
             LOG.info("Usuario inserido");
-
-        UsuarioResponseDTO retorno = service.insert(dto);
-
-        LOG.infof("Terminando a inserção do usuario", dto.nome());
-        return Response.status(201).entity(retorno).build();
+            UsuarioResponseDTO retorno = service.insert(dto);
+            LOG.info("Inserido: " + retorno);
+            return Response.status(201).entity(retorno).build();
+        }
     }
 
     @PUT
@@ -78,8 +79,8 @@ public class UsuarioResource {
     @GET
     @RolesAllowed("Admin")
     public Response findAll(
-        @QueryParam("page") @DefaultValue("0") int page,
-        @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
+            @QueryParam("page") @DefaultValue("0") int page,
+            @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
 
         return Response.ok(service.getAll(page, pageSize)).build();
     }
@@ -104,7 +105,7 @@ public class UsuarioResource {
 
     @GET
     @Path("/count")
-    public long count(){
+    public long count() {
         return service.count();
     }
 }

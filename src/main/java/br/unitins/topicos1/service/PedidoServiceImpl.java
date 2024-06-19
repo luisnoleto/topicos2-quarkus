@@ -54,7 +54,6 @@ public class PedidoServiceImpl implements PedidoService {
 
         }
 
-
         novoPedido.setPagamento(FormaPagamento.ValueOf(dto.pagamento()));
 
         novoPedido.setStatusPedido(StatusPedido.PROCESSANDO);
@@ -99,7 +98,7 @@ public class PedidoServiceImpl implements PedidoService {
         List<Pedido> list = pedidoRepository.findAll().page(page, pageSize).list();
 
         return list.stream()
-            .map(e -> PedidoResponseDTO.valueOf(e)).collect(Collectors.toList());
+                .map(e -> PedidoResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
 
     @Override
@@ -115,8 +114,15 @@ public class PedidoServiceImpl implements PedidoService {
 
     // @Override
     // public List<PedidoResponseDTO> findByUsuario(String login) {
-    //     Usuario usuario = usuarioRepository.findByLogin(login);
-    //     return pedidoRepository.findByUsuario(usuario).stream()
-    //             .map(e -> PedidoResponseDTO.valueOf(e)).toList();
+    // Usuario usuario = usuarioRepository.findByLogin(login);
+    // return pedidoRepository.findByUsuario(usuario).stream()
+    // .map(e -> PedidoResponseDTO.valueOf(e)).toList();
     // }
-}   
+    @Override
+    public List<PedidoResponseDTO> findByUsuarioId(Long usuarioId) {
+        List<Pedido> pedidos = pedidoRepository.findByUsuarioId(usuarioId);
+        return pedidos.stream()
+                .map(PedidoResponseDTO::valueOf)
+                .collect(Collectors.toList());
+    }
+}

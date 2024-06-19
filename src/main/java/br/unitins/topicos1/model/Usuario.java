@@ -21,7 +21,7 @@ public class Usuario extends DefaultEntity {
     private String email;
     private String cpf;
     private Perfil perfil;
-    private Date dataNascimento;
+    // private Date dataNascimento;
     private String nomeImage;
 
     @OneToMany(cascade = CascadeType.ALL)
@@ -107,12 +107,12 @@ public class Usuario extends DefaultEntity {
     public void setNomeImagem(String nomeImagem) {
     }
 
-    public Date getDataNascimento() {
-        return dataNascimento;
-    }
+    // public Date getDataNascimento() {
+    // return dataNascimento;
+    // }
 
-    public void setDataNascimento(Date dataNascimento) {
-        this.dataNascimento = dataNascimento;
-    }
+    // public void setDataNascimento(Date dataNascimento) {
+    // this.dataNascimento = dataNascimento;
+    // }
 
 }

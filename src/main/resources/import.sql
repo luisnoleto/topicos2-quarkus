@@ -174,13 +174,21 @@ insert into usuario_telefone (id_usuario, id_telefone)
 values(2, 3);
 insert into usuario_telefone (id_usuario, id_telefone)
 values(2, 4);
-INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
+INSERT INTO endereco (
+    logradouro,
+    bairro,
+    numero,
+    complemento,
+    cep,
+    id_cidade
+  )
 VALUES (
     'Rua A',
     'Bairro A',
     '123',
     'Complemento A',
-    '12345-678'
+    '12345-678',
+    2
   );
 INSERT INTO endereco (logradouro, bairro, numero, complemento, cep)
 VALUES (
