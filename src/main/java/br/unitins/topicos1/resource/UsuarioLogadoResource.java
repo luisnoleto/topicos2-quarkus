@@ -12,6 +12,7 @@ import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.dto.usuario.UpdateCPFDTO;
 import br.unitins.topicos1.dto.usuario.UpdateEmailDTO;
+import br.unitins.topicos1.dto.usuario.UpdateLoginDTO;
 import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
@@ -154,6 +155,18 @@ public class UsuarioLogadoResource {
         String login = jwt.getSubject();
 
         UsuarioResponseDTO retorno = usuarioService.updateCPF(dto, login);
+
+        return Response.status(201).entity(retorno).build();
+    }
+
+    @PATCH
+    @Path("/alterar/login")
+    @RolesAllowed({ "User", "Admin" })
+    public Response updateLogin(@Valid UpdateLoginDTO dto) {
+        LOG.info("Iniciando a o Update de Login");
+        String login = jwt.getSubject();
+
+        UsuarioResponseDTO retorno = usuarioService.updateLogin(dto, login);
 
         return Response.status(201).entity(retorno).build();
     }
