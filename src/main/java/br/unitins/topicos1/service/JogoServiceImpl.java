@@ -56,6 +56,7 @@ public class JogoServiceImpl implements JogoService {
                 novoJogo.getListaGeneros().add(genero);
             }
         }
+        novoJogo.setNomeImagem(dto.nomeImagem());
 
         repository.persist(novoJogo);
 
