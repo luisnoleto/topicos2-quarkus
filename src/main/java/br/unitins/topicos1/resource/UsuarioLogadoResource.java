@@ -128,7 +128,7 @@ public class UsuarioLogadoResource {
     public Response updateEmail(@Valid UpdateEmailDTO dto) {
         LOG.info("Iniciando a o Update de email");
         String login = jwt.getSubject();
-
+        LOG.info("quero saber se pegou o user" + login);
         UsuarioResponseDTO retorno = usuarioService.updateEmail(dto, login);
         LOG.info("Encerrando o update de email");
         return Response.status(201).entity(retorno).build();
