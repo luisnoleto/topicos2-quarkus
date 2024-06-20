@@ -388,7 +388,7 @@ INSERT INTO jogo (
   )
 VALUES (
     'Minecraft',
-    'Jogo de Criar',
+    'Explore mundos gerados aleatoriamente e construa das casas mais simples aos maiores castelos. Jogue no modo criativo com recursos ilimitados, ou minere as profundezas do mundo no modo sobrevivência, criando armas e armaduras para se defender dos monstros.',
     99.99,
     100,
     'Intel Core i3',

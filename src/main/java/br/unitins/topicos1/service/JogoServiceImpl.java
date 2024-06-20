@@ -3,7 +3,6 @@ package br.unitins.topicos1.service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 import br.unitins.topicos1.model.Classificacao;
@@ -22,7 +21,6 @@ import jakarta.ws.rs.NotFoundException;
 
 @ApplicationScoped
 public class JogoServiceImpl implements JogoService {
-
     @Inject
     JogoRepository repository;
     @Inject

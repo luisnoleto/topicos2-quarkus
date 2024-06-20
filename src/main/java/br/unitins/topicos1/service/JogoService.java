@@ -5,11 +5,9 @@ import java.util.List;
 import br.unitins.topicos1.dto.jogo.JogoDTO;
 import br.unitins.topicos1.dto.jogo.JogoResponseDTO;
 
-
-
 public interface JogoService {
 
-    //Recursos basicos CRUD
+    // Recursos basicos CRUD
     JogoResponseDTO create(JogoDTO dto);
 
     JogoResponseDTO update(JogoDTO dto, Long id);
@@ -18,9 +16,8 @@ public interface JogoService {
 
     JogoResponseDTO findById(Long id);
 
-    List<JogoResponseDTO> findAll(int page , int pageSize); 
+    List<JogoResponseDTO> findAll(int page, int pageSize);
 
-    //Recursos extras
     List<JogoResponseDTO> findByNome(String nome);
 
     JogoResponseDTO updateNomeImagem(Long id, String nomeImagem);
@@ -30,4 +27,5 @@ public interface JogoService {
     JogoResponseDTO alterarSituacao(Long id);
 
     List<JogoResponseDTO> findByAtivo(boolean ativo);
+
 }
