@@ -10,6 +10,7 @@ public record UsuarioResponseDTO(
         String nome,
         String login,
         String email,
+        String cpf,
         int perfil,
         List<TelefoneDTO> listaTelefone) {
     public static UsuarioResponseDTO valueOf(Usuario usuario) {
@@ -19,6 +20,7 @@ public record UsuarioResponseDTO(
                 usuario.getNome(),
                 usuario.getLogin(),
                 usuario.getEmail(),
+                usuario.getCpf(),
                 usuario.getPerfil().getId(),
                 usuario.getListaTelefone()
                         .stream()

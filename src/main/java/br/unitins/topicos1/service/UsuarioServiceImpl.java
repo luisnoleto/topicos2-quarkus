@@ -11,6 +11,7 @@ import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.dto.usuario.UpdateCPFDTO;
 import br.unitins.topicos1.dto.usuario.UpdateEmailDTO;
+import br.unitins.topicos1.dto.usuario.UpdateLoginDTO;
 import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
@@ -253,6 +254,22 @@ public class UsuarioServiceImpl implements UsuarioService {
 
     }
 
+    @Override
+    @Transactional
+    public UsuarioResponseDTO updateLogin(@Valid UpdateLoginDTO dto, String login) {
+
+        Usuario usuario = repository.findByLogin(login);
+
+        // Pedindo a senha do usuario como medida de proteção
+        if (usuario.getSenha().equals(hashService.getHashSenha(dto.senhaAtual()))) {
+            usuario.setLogin(dto.loginNovo());
+
+        } else
+            throw new ValidationException("Senha", "Senha atual incorreta. ");
+
+        return UsuarioResponseDTO.valueOf(usuario);
+
+    }
 
     // -------------------------------------------- FIND's e afins
     // --------------------------------------------

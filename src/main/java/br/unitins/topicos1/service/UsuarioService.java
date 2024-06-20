@@ -10,6 +10,7 @@ import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.PerfilDTO;
 import br.unitins.topicos1.dto.usuario.UpdateCPFDTO;
 import br.unitins.topicos1.dto.usuario.UpdateEmailDTO;
+import br.unitins.topicos1.dto.usuario.UpdateLoginDTO;
 import br.unitins.topicos1.dto.usuario.UpdateNomeDTO;
 import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
@@ -44,6 +45,8 @@ public interface UsuarioService {
     UsuarioResponseDTO updateTelefone(@Valid UpdateTelefoneDTO dto, String login);
 
     UsuarioResponseDTO updateCPF(@Valid UpdateCPFDTO dto, String login);
+
+    UsuarioResponseDTO updateLogin(@Valid UpdateLoginDTO dto, String login);
 
     CadastroUsuarioResponseDTO cadastrarUsuario(@Valid CadastroUsuarioDTO dto);
 
