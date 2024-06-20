@@ -15,9 +15,8 @@ public class Endereco extends DefaultEntity {
 
     @ManyToOne
     @JoinColumn(name = "id_cidade")
-    private Cidade idCidade;
+    private Cidade cidade;
 
-    
     public String getLogradouro() {
         return logradouro;
     }
@@ -58,12 +57,12 @@ public class Endereco extends DefaultEntity {
         this.cep = cep;
     }
 
-    public Cidade getIdCidade() {
-        return idCidade;
+    public Cidade getCidade() {
+        return cidade;
     }
 
-    public void setIdCidade(Cidade idCidade) {
-        this.idCidade = idCidade;
+    public void setCidade(Cidade cidade) {
+        this.cidade = cidade;
     }
 
 }

@@ -1,7 +1,6 @@
 package br.unitins.topicos1.service;
 
 import java.util.List;
-
 import br.unitins.topicos1.dto.endereco.EnderecoDTO;
 import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
 import br.unitins.topicos1.model.Cidade;
@@ -37,41 +36,49 @@ public class EnderecoServiceImpl implements EnderecoService {
         Usuario usuario = repositoryUser.findByLogin(login);
         Cidade cidade = repositoryCidade.findById(dto.idCidade());
 
+        if (cidade == null) {
+            throw new NotFoundException("Cidade não encontrada");
+        }
+
         Endereco endereco = new Endereco();
         endereco.setBairro(dto.bairro());
         endereco.setCep(dto.cep());
         endereco.setLogradouro(dto.logradouro());
         endereco.setNumero(dto.numero());
         endereco.setComplemento(dto.complemento());
-        endereco.setIdCidade(cidade);
+        endereco.setCidade(cidade);
 
         usuario.getListaEndereco().add(endereco);
 
         repositoryEnd.persist(endereco);
 
         return EnderecoResponseDTO.valueOf(endereco);
-
     }
 
     @Override
     @Transactional
     public EnderecoResponseDTO update(Long idUsuario, Long idEndereco, @Valid EnderecoDTO dto) {
         Usuario usuario = repositoryUser.findById(idUsuario);
-        Endereco endereco = new Endereco();
+        Endereco endereco = repositoryEnd.findById(idEndereco);
 
-        for (Endereco end : usuario.getListaEndereco()) {
-            if (end.getId().equals(idEndereco)) {
-                end.setBairro(dto.bairro());
-                end.setCep(dto.cep());
-                end.setLogradouro(dto.logradouro());
-                end.setNumero(dto.numero());
-                end.setComplemento(dto.complemento());
-
-                endereco = end;
-                repositoryEnd.persist(end);
-
-            }
+        if (endereco == null || !usuario.getListaEndereco().contains(endereco)) {
+            throw new NotFoundException("Endereço não encontrado");
         }
+
+        Cidade cidade = repositoryCidade.findById(dto.idCidade());
+
+        if (cidade == null) {
+            throw new NotFoundException("Cidade não encontrada");
+        }
+
+        endereco.setBairro(dto.bairro());
+        endereco.setCep(dto.cep());
+        endereco.setLogradouro(dto.logradouro());
+        endereco.setNumero(dto.numero());
+        endereco.setComplemento(dto.complemento());
+        endereco.setCidade(cidade);
+
+        repositoryEnd.persist(endereco);
 
         return EnderecoResponseDTO.valueOf(endereco);
     }
@@ -79,41 +86,47 @@ public class EnderecoServiceImpl implements EnderecoService {
     @Override
     public void delete(Long idUsuario, Long idEndereco) {
         Usuario usuario = repositoryUser.findById(idUsuario);
-        Endereco endereco = new Endereco();
+        Endereco endereco = repositoryEnd.findById(idEndereco);
 
-        for (Endereco end : usuario.getListaEndereco()) {
-            if (end.getId().equals(idEndereco)) {
-                endereco = end;
-            }
+        if (endereco == null || !usuario.getListaEndereco().contains(endereco)) {
+            throw new NotFoundException("Endereço não encontrado");
         }
 
         usuario.getListaEndereco().remove(endereco);
 
-        if (!repositoryEnd.deleteById(idEndereco))
+        if (!repositoryEnd.deleteById(idEndereco)) {
             throw new NotFoundException();
+        }
     }
 
     @Override
     public EnderecoResponseDTO findById(Long id) {
-        return EnderecoResponseDTO.valueOf(repositoryEnd.findById(id));
+        Endereco endereco = repositoryEnd.findById(id);
+        if (endereco == null) {
+            throw new NotFoundException("Endereço não encontrado");
+        }
+        return EnderecoResponseDTO.valueOf(endereco);
     }
 
     @Override
     public List<EnderecoResponseDTO> findByCep(String cep) {
         return repositoryEnd.findByCep(cep).stream()
-                .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
+                .map(EnderecoResponseDTO::valueOf).toList();
     }
 
     @Override
     public List<EnderecoResponseDTO> findByAll() {
         return repositoryEnd.listAll().stream()
-                .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
+                .map(EnderecoResponseDTO::valueOf).toList();
     }
 
     @Override
     public List<EnderecoResponseDTO> findByUser(Long id) {
         Usuario usuario = repositoryUser.findById(id);
+        if (usuario == null) {
+            throw new NotFoundException("Usuário não encontrado");
+        }
         return usuario.getListaEndereco().stream()
-                .map(e -> EnderecoResponseDTO.valueOf(e)).toList();
+                .map(EnderecoResponseDTO::valueOf).toList();
     }
 }
