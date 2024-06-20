@@ -116,9 +116,9 @@ public class UsuarioLogadoResource {
     public Response updateNome(@Valid UpdateNomeDTO dto) {
         LOG.info("Iniciando a o Update de nome");
         String login = jwt.getSubject();
-
+        LOG.info("quero saber se pegou o user" + login);
         UsuarioResponseDTO retorno = usuarioService.updateNome(dto, login);
-
+        LOG.info("Encerrando a o Update de nome");
         return Response.status(201).entity(retorno).build();
     }
 
@@ -153,9 +153,9 @@ public class UsuarioLogadoResource {
     public Response updateCPF(@Valid UpdateCPFDTO dto) {
         LOG.info("Iniciando a o Update de Cpf");
         String login = jwt.getSubject();
-
+        LOG.info("quero saber se pegou o user " + login);
         UsuarioResponseDTO retorno = usuarioService.updateCPF(dto, login);
-
+        LOG.info("Encerrando o update de cpf");
         return Response.status(201).entity(retorno).build();
     }
 
@@ -166,8 +166,9 @@ public class UsuarioLogadoResource {
         LOG.info("Iniciando a o Update de Login");
         String login = jwt.getSubject();
 
+        LOG.info("quero saber se pegou o user" + login);
         UsuarioResponseDTO retorno = usuarioService.updateLogin(dto, login);
-
+        LOG.info("Encerrando a o Update de Login");
         return Response.status(201).entity(retorno).build();
     }
 
