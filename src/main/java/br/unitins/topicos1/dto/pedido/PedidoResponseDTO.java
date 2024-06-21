@@ -11,25 +11,23 @@ import br.unitins.topicos1.model.Pedido;
 import br.unitins.topicos1.model.StatusPedido;
 
 public record PedidoResponseDTO(
-    Long id,
-    LocalDateTime dataCompra,
-    UsuarioResponseDTO usuario,
-    EnderecoResponseDTO endereco,
-    FormaPagamento pagamento,
-    Double totalPedido,
-    List<ItemPedidoResponseDTO> itens,
-    StatusPedido statusPedio
-) { 
-    public static PedidoResponseDTO valueOf(Pedido pedido){
+        Long id,
+        LocalDateTime dataCompra,
+        UsuarioResponseDTO usuario,
+        EnderecoResponseDTO endereco,
+        FormaPagamento pagamento,
+        Double totalPedido,
+        List<ItemPedidoResponseDTO> itens,
+        StatusPedido statusPedido) {
+    public static PedidoResponseDTO valueOf(Pedido pedido) {
         return new PedidoResponseDTO(
-            pedido.getId(), 
-            pedido.getdataCompra(),
-            UsuarioResponseDTO.valueOf(pedido.getUsuario()),
-            EnderecoResponseDTO.valueOf(pedido.getEndereco()),
-            pedido.getPagamento(),
-            pedido.getTotalPedido(),
-            ItemPedidoResponseDTO.valueOf(pedido.getItens()),
-            pedido.getStatusPedido()
-            );
+                pedido.getId(),
+                pedido.getdataCompra(),
+                UsuarioResponseDTO.valueOf(pedido.getUsuario()),
+                EnderecoResponseDTO.valueOf(pedido.getEndereco()),
+                pedido.getPagamento(),
+                pedido.getTotalPedido(),
+                ItemPedidoResponseDTO.valueOf(pedido.getItens()),
+                pedido.getStatusPedido());
     }
 }
