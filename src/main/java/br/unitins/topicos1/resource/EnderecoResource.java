@@ -58,7 +58,6 @@ public class EnderecoResource {
 
     @POST
     @Path("/insere-endereco")
-    @RolesAllowed({ "User", "Admin" })
     public Response insert(EnderecoDTO dto) {
         LOG.info("Inserindo endereço.");
         String login = jwt.getSubject();

@@ -36,4 +36,5 @@ public class UsuarioRepository implements PanacheRepository<Usuario> {
 
         return find("login = ?1 AND senha = ?2", login, senha).firstResult();
     }
+
 }
