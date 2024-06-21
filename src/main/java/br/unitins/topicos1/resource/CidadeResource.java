@@ -58,7 +58,7 @@ public class CidadeResource {
     }
 
     @GET
-    @RolesAllowed({"Admin"})
+    @RolesAllowed({"User", "Admin"})
     public Response findAll(
         @QueryParam("page") @DefaultValue("0") int page,
         @QueryParam("pageSize") @DefaultValue("100") int pageSize) {
