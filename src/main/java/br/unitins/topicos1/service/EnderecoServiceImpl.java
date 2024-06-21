@@ -42,6 +42,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 
         Endereco endereco = new Endereco();
         endereco.setBairro(dto.bairro());
+        
         endereco.setCep(dto.cep());
         endereco.setLogradouro(dto.logradouro());
         endereco.setNumero(dto.numero());

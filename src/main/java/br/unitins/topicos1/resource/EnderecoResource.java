@@ -62,6 +62,7 @@ public class EnderecoResource {
     public Response insert(EnderecoDTO dto) {
         LOG.info("Inserindo endereço.");
         String login = jwt.getSubject();
+        LOG.info("quero saber se pegou o user" + login);
         return Response.status(Status.CREATED).entity(service.insert(dto, login)).build();
     }
 
