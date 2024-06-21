@@ -104,9 +104,9 @@ public class UsuarioLogadoResource {
         LOG.info("Iniciando  o Update de senha");
 
         String login = jwt.getSubject();
-
+        LOG.info("quero saber se pegou o user " + login);
         UsuarioResponseDTO retorno = usuarioService.updateSenha(dto, login);
-
+        LOG.info("Encerrando  o Update de senha");
         return Response.status(201).entity(retorno).build();
     }
 
