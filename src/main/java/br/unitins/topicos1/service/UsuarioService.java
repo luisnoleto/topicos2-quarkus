@@ -5,6 +5,7 @@ import java.util.List;
 import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
 import br.unitins.topicos1.model.Usuario;
+import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
 import br.unitins.topicos1.dto.usuario.PerfilDTO;
@@ -57,5 +58,7 @@ public interface UsuarioService {
     List<PerfilDTO> findAllPerfis();
 
     String getPerfilLabel(int perfil);
+
+    EnderecoResponseDTO findEnderecoByUsuario(Long idUsuario, int indiceEndereco);
 
 }

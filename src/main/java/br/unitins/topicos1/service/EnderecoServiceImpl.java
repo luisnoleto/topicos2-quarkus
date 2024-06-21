@@ -42,7 +42,7 @@ public class EnderecoServiceImpl implements EnderecoService {
 
         Endereco endereco = new Endereco();
         endereco.setBairro(dto.bairro());
-        
+
         endereco.setCep(dto.cep());
         endereco.setLogradouro(dto.logradouro());
         endereco.setNumero(dto.numero());
@@ -68,6 +68,36 @@ public class EnderecoServiceImpl implements EnderecoService {
 
         Cidade cidade = repositoryCidade.findById(dto.idCidade());
 
+        if (cidade == null) {
+            throw new NotFoundException("Cidade não encontrada");
+        }
+
+        endereco.setBairro(dto.bairro());
+        endereco.setCep(dto.cep());
+        endereco.setLogradouro(dto.logradouro());
+        endereco.setNumero(dto.numero());
+        endereco.setComplemento(dto.complemento());
+        endereco.setCidade(cidade);
+
+        repositoryEnd.persist(endereco);
+
+        return EnderecoResponseDTO.valueOf(endereco);
+    }
+
+    @Override
+    @Transactional
+    public EnderecoResponseDTO updateByUser(Long idUsuario, Long idEndereco, @Valid EnderecoDTO dto) {
+        Usuario usuario = repositoryUser.findById(idUsuario);
+        if (usuario == null) {
+            throw new NotFoundException("Usuário não encontrado");
+        }
+
+        Endereco endereco = repositoryEnd.findById(idEndereco);
+        if (endereco == null || !usuario.getListaEndereco().contains(endereco)) {
+            throw new NotFoundException("Endereço não encontrado");
+        }
+
+        Cidade cidade = repositoryCidade.findById(dto.idCidade());
         if (cidade == null) {
             throw new NotFoundException("Cidade não encontrada");
         }

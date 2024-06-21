@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
 import br.unitins.topicos1.dto.telefone.TelefoneDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioDTO;
 import br.unitins.topicos1.dto.usuario.CadastroUsuarioResponseDTO;
@@ -17,6 +18,7 @@ import br.unitins.topicos1.dto.usuario.UpdateSenhaDTO;
 import br.unitins.topicos1.dto.usuario.UpdateTelefoneDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioDTO;
 import br.unitins.topicos1.dto.usuario.UsuarioResponseDTO;
+import br.unitins.topicos1.model.Endereco;
 import br.unitins.topicos1.model.Perfil;
 import br.unitins.topicos1.model.Telefone;
 import br.unitins.topicos1.model.Usuario;
@@ -342,5 +344,18 @@ public class UsuarioServiceImpl implements UsuarioService {
                 return "Admin";
         }
 
+    }
+
+    @Override
+    public EnderecoResponseDTO findEnderecoByUsuario(Long idUsuario, int indiceEndereco) {
+        Usuario usuario = repository.findById(idUsuario);
+        if (usuario == null)
+            throw new ValidationException("Usuário não encontrado", null);
+
+        if (indiceEndereco < 0 || indiceEndereco >= usuario.getListaEndereco().size())
+            throw new ValidationException("Endereço não encontrado", null);
+
+        Endereco endereco = usuario.getListaEndereco().get(indiceEndereco);
+        return EnderecoResponseDTO.valueOf(endereco);
     }
 }

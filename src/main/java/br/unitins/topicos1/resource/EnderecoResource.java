@@ -4,6 +4,7 @@ import org.eclipse.microprofile.jwt.JsonWebToken;
 import org.jboss.logging.Logger;
 
 import br.unitins.topicos1.dto.endereco.EnderecoDTO;
+import br.unitins.topicos1.dto.endereco.EnderecoResponseDTO;
 import br.unitins.topicos1.service.EnderecoService;
 import jakarta.annotation.security.RolesAllowed;
 import jakarta.inject.Inject;
@@ -96,4 +97,15 @@ public class EnderecoResource {
         return Response.ok(service.findByUser(id)).build();
     }
 
+    @PUT
+    @Transactional
+    @Path("/atualiza-endereco/{idUsuario}/{idEndereco}")
+    @RolesAllowed({ "User", "Admin" })
+    public Response updateByUser(@PathParam("idUsuario") Long idUsuario, @PathParam("idEndereco") Long idEndereco,
+            EnderecoDTO dto) {
+        LOG.infof("Atualizando o endereço %d do usuário %d", idEndereco, idUsuario);
+        EnderecoResponseDTO updatedEndereco = service.updateByUser(idUsuario, idEndereco, dto);
+        LOG.info("Finalizando a atualização do endereço.");
+        return Response.ok(updatedEndereco).build();
+    }
 }

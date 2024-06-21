@@ -22,4 +22,6 @@ public interface EnderecoService {
 
     public List<EnderecoResponseDTO> findByAll();
 
+    EnderecoResponseDTO updateByUser(Long idUsuario, Long idEndereco, @Valid EnderecoDTO dto);
+
 }
