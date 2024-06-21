@@ -42,6 +42,11 @@ public class JogoServiceImpl implements JogoService {
         novoJogo.setDescricao(dto.descricao());
         novoJogo.setPreco(dto.preco());
         novoJogo.setEstoque(dto.estoque());
+        novoJogo.setProcessador(dto.processador());
+        novoJogo.setMemoria(dto.memoria());
+        novoJogo.setPlacaVideo(dto.placaVideo());
+        novoJogo.setArmazenamento(dto.armazenamento());
+        novoJogo.setSistemaOperacional(dto.sistemaOperacional());
 
         novoJogo.setDesenvolvedora(desenvolvedora);
         novoJogo.setPlataforma(plataforma);
@@ -76,7 +81,13 @@ public class JogoServiceImpl implements JogoService {
             jogo.setDescricao(dto.descricao());
             jogo.setPreco(dto.preco());
             jogo.setEstoque(dto.estoque());
-
+            jogo.setProcessador(dto.processador());
+            jogo.setMemoria(dto.memoria());
+            jogo.setPlacaVideo(dto.placaVideo());
+            jogo.setArmazenamento(dto.armazenamento());
+            jogo.setSistemaOperacional(dto.sistemaOperacional());
+            
+            
             jogo.setDesenvolvedora(desenvolvedora);
             jogo.setPlataforma(plataforma);
 
