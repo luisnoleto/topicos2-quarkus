@@ -6,7 +6,11 @@ import java.util.stream.Collectors;
 
 import br.unitins.topicos1.dto.cidade.CidadeDTO;
 import br.unitins.topicos1.dto.cidade.CidadeResponseDTO;
+import br.unitins.topicos1.dto.desenvolvedora.DesenvolvedoraResponseDTO;
+import br.unitins.topicos1.dto.genero.GeneroResponseDTO;
 import br.unitins.topicos1.model.Cidade;
+import br.unitins.topicos1.model.Desenvolvedora;
+import br.unitins.topicos1.model.Genero;
 import br.unitins.topicos1.repository.CidadeRepository;
 import br.unitins.topicos1.repository.EstadoRepository;
 import jakarta.enterprise.context.ApplicationScoped;
@@ -29,11 +33,18 @@ public class CidadeServiceImpl implements CidadeService {
     @Inject
     Validator validator;
 
+
     @Override
-    public List<CidadeResponseDTO> getAll() {
-        List<Cidade> list = cidadeRepository.findAll2();
-        return list.stream().map(e -> CidadeResponseDTO.valueOf(e)).collect(Collectors.toList());
+    public List<CidadeResponseDTO> getAll(int page, int pageSize) {
+        List<Cidade> desenvolvedoras = cidadeRepository
+                                                        .findAll()
+                                                        .page(page,pageSize)
+                                                        .list();
+
+        return desenvolvedoras.stream()
+                .map(e -> CidadeResponseDTO.valueOf(e)).collect(Collectors.toList());
     }
+
 
     @Override
     public CidadeResponseDTO findById(Long id) {
